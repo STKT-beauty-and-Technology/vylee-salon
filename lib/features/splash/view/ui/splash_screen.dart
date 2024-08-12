@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
@@ -29,62 +28,68 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final sz = MediaQuery.sizeOf(context);
+   // final sz = MediaQuery.sizeOf(context);
     return Scaffold(
       backgroundColor: AppColors.green20,
-      body: Stack(
-        alignment: Alignment.center,
-        clipBehavior: Clip.none,
-        children: [
-          Positioned(
-            top: 80,
-            child: Transform.scale(
-              scale: 2,
-              child: Container(
-                width: sz.width,
-                height: sz.width,
-                decoration: BoxDecoration(
-                    color: AppColors.splashBgColor,
-                    borderRadius: BorderRadius.circular(200)),
-              ),
-            ),
-          ),
-          Positioned.fill(
-              child: Align(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ImageLoader.asset(
-                      ImagePath.vyleeLogo,
-                      height: 140,
-                      width: 140,
-                      fit: BoxFit.contain,
-                    ),
-                    ImageLoader.asset(
-                      ImagePath.vyleeTextLogo,
-                     height: 100 ,
-                      width: 180 ,
-                    )
-                  ],
-                ),
-              )).animate().fadeIn(
-              begin: 0,
-              curve: Curves.easeInOut,
-              delay: animationDuration - 400.milliseconds),
-          Positioned(
-            bottom: 0,
-            child: ImageLoader.asset(
-              ImagePath.vyleeSplashBottom,
-            ),
-          ).animate().moveY(
-              begin: 300,
-              end: 0,
-              duration: animationDuration,
-              curve: Curves.easeInOut),
-        ],
-      ),
+      body: Column(
+       children: [
+         Lottie.asset(ImagePath.lottieSplash)
+       ],
+      )
+
+      // Stack(
+      //   alignment: Alignment.center,
+      //   clipBehavior: Clip.none,
+      //   children: [
+      //     Positioned(
+      //       top: 80,
+      //       child: Transform.scale(
+      //         scale: 2,
+      //         child: Container(
+      //           width: sz.width,
+      //           height: sz.width,
+      //           decoration: BoxDecoration(
+      //               color: AppColors.splashBgColor,
+      //               borderRadius: BorderRadius.circular(200)),
+      //         ),
+      //       ),
+      //     ),
+      //     Positioned.fill(
+      //         child: Align(
+      //           alignment: Alignment.center,
+      //           child: Column(
+      //             mainAxisSize: MainAxisSize.min,
+      //             mainAxisAlignment: MainAxisAlignment.center,
+      //             children: [
+      //               ImageLoader.asset(
+      //                 ImagePath.vyleeLogo,
+      //                 height: 140,
+      //                 width: 140,
+      //                 fit: BoxFit.contain,
+      //               ),
+      //               ImageLoader.asset(
+      //                 ImagePath.vyleeTextLogo,
+      //                height: 100 ,
+      //                 width: 180 ,
+      //               )
+      //             ],
+      //           ),
+      //         )).animate().fadeIn(
+      //         begin: 0,
+      //         curve: Curves.easeInOut,
+      //         delay: animationDuration - 400.milliseconds),
+      //     Positioned(
+      //       bottom: 0,
+      //       child: ImageLoader.asset(
+      //         ImagePath.vyleeSplashBottom,
+      //       ),
+      //     ).animate().moveY(
+      //         begin: 300,
+      //         end: 0,
+      //         duration: animationDuration,
+      //         curve: Curves.easeInOut),
+      //   ],
+      // ),
     );
   }
 }

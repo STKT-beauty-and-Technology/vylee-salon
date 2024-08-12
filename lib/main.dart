@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return
       const MaterialApp(
         // theme: TorbitoTheme.lightTheme,
-          initialRoute: PageRoutes.splash,
+          initialRoute: PageRoutes.getStarted,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: Navigation.onGenerateRoutes,
           color: Colors.white);
