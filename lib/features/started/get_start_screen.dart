@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
@@ -15,6 +16,12 @@ class GetStarted extends StatefulWidget {
 }
 
 class _GetStartedState extends State<GetStarted> {
+final animationDuration = 1.seconds;
+  void initState() {
+    super.initState();
+    Future.delayed(animationDuration + 500.milliseconds)
+        .then((value) => {});
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
