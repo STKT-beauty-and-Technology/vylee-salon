@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'navigation/navigation.dart';
 import 'navigation/page_routes.dart';
 
@@ -13,12 +15,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-      const MaterialApp(
-        // theme: TorbitoTheme.lightTheme,
-          initialRoute: PageRoutes.getStarted,
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: Navigation.onGenerateRoutes,
-          color: Colors.white);
+      OrientationBuilder(builder: (context, orientation) {
+      return LayoutBuilder(builder: (context, constraints) {
+        SizeConfig.init(constraints, orientation);
+        return MaterialApp(
+            // theme: TorbitoTheme.lightTheme,
+            initialRoute: PageRoutes.getStarted,
+            debugShowCheckedModeBanner: false,
+            theme:
+                ThemeData(fontFamily: GoogleFonts.frankRuhlLibre().fontFamily),
+            onGenerateRoute: Navigation.onGenerateRoutes,
+            color: Colors.white);
+      });
+    });
   }
 }
 
