@@ -8,5 +8,6 @@ class ImagePath {
   static const lottieSplash = "asset/lotties/splash_logo.json";
   static const loginBackground = "asset/images/login_background.png";
   static const avatarIcon = "asset/images/avatar_icon.svg";
+  static const welcomeBg = "asset/images/welcome_bg.png";
 
 }

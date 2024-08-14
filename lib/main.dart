@@ -17,13 +17,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return
-      OrientationBuilder(builder: (context, orientation) {
+    return OrientationBuilder(builder: (context, orientation) {
       return LayoutBuilder(builder: (context, constraints) {
         SizeConfig.init(constraints, orientation);
         return MaterialApp(
             // theme: TorbitoTheme.lightTheme,
-            initialRoute: PageRoutes.getStarted,
+            initialRoute: PageRoutes.welcomeScreen,
             debugShowCheckedModeBanner: false,
             theme:
                 ThemeData(fontFamily: GoogleFonts.frankRuhlLibre().fontFamily),
@@ -33,5 +32,3 @@ class MyApp extends StatelessWidget {
     });
   }
 }
-
-

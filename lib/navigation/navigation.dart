@@ -4,6 +4,7 @@ import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
 import 'package:vylee_partner/features/login/view/ui/otp_screen.dart';
 import 'package:vylee_partner/features/register/view/ui/register_screen.dart';
 import 'package:vylee_partner/features/started/get_start_screen.dart';
+import 'package:vylee_partner/features/welcome/welcome_screen.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 
 import '../features/splash/view/ui/splash_screen.dart';
@@ -33,6 +34,10 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const RegisterScreen());
+      case PageRoutes.welcomeScreen:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const WelcomeScreen());
     }
     return null;
     }

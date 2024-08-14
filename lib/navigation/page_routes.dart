@@ -4,4 +4,5 @@ class PageRoutes {
   static const String getStarted = "getStarted";
   static const String otpScreen = "otp-screen";
   static const String registrationScreen = "registration-screen";
+  static const String welcomeScreen = "welcome-screen";
 }

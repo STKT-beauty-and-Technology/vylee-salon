@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Mobile Number",
+                            "Mobile Number or Email",
                             style: GoogleFonts.frankRuhlLibre(
                               textStyle:
                                   const TextStyle(color: AppColors.white),
