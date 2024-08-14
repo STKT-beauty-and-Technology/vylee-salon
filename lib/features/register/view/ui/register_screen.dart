@@ -66,7 +66,7 @@ class _State extends State<RegisterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Fields marked with an *are required"),
+                      const Text("Fields marked with * are Mandatory Field"),
                       RegisterTitleField(
                         controller: nameController,
                         title: "Full Name",
