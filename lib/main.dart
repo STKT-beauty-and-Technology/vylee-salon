@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
+    return OrientationBuilder(builder: (context, orientation) {
       return LayoutBuilder(builder: (context, constraints) {
         SizeConfig.init(constraints, orientation);
         return MaterialApp(

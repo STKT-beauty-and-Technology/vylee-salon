@@ -1,21 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
-import 'package:vylee_partner/core/load_image/image_loader.dart';
-import 'package:vylee_partner/core/path/image_path.dart';
-import 'package:vylee_partner/core/responsive/size_config.dart';
-import 'package:vylee_partner/features/register/view/helpers/register_title_field.dart';
-import 'package:vylee_partner/themes/app_colors.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+import '../../../../common/common widgets/custom_appbar.dart';
+import '../../../../core/load_image/image_loader.dart';
+import '../../../../core/path/image_path.dart';
+import '../../../../core/responsive/size_config.dart';
+import '../../../../themes/app_colors.dart';
+import '../../../register/view/helpers/register_title_field.dart';
+
+class AddAddressScreen extends StatefulWidget {
+  const AddAddressScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _State();
+  State<AddAddressScreen> createState() => _AddAddressScreenState();
 }
 
-class _State extends State<RegisterScreen> {
+class _AddAddressScreenState extends State<AddAddressScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController salonNameController = TextEditingController();
@@ -30,7 +30,7 @@ class _State extends State<RegisterScreen> {
           padding: const EdgeInsets.only(left: 8.0),
           child: ImageLoader.asset(
             ImagePath.vyleeTextLogo,
-            height: 20,
+            height: 10,
             width: 50,
             fit: BoxFit.contain,
           ),
@@ -49,7 +49,7 @@ class _State extends State<RegisterScreen> {
                 height: 15,
               ),
               const Text(
-                "VENDOR REGISTRATION",
+                "YOUR ADDRESS",
                 style: TextStyle(
                     color: AppColors.appViolet,
                     fontWeight: FontWeight.w400,

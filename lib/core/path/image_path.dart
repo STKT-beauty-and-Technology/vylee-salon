@@ -9,5 +9,6 @@ class ImagePath {
   static const splashVideo = "asset/videos/splash.mp4";
   static const loginBackground = "asset/images/login_background.png";
   static const avatarIcon = "asset/images/avatar_icon.svg";
+  static const welcomeBg = "asset/images/welcome_bg.png";
 
 }

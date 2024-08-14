@@ -34,7 +34,7 @@ class RegisterTitleField extends StatelessWidget {
               ]),
         ),
         const SizedBox(
-          height: 15,
+          height: 10,
         ),
         CustomFormField(
             isEnabled: true,
