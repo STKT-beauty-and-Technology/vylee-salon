@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         SizeConfig.init(constraints, orientation);
         return MaterialApp(
             // theme: TorbitoTheme.lightTheme,
-            initialRoute: PageRoutes.getStarted,
+            initialRoute: PageRoutes.splash,
             debugShowCheckedModeBanner: false,
             theme:
                 ThemeData(fontFamily: GoogleFonts.frankRuhlLibre().fontFamily),
