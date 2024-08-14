@@ -86,18 +86,36 @@ class _State extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 30),
                       Center(
-                        child: SizedBox(
-                          width: SizeConfig.screenWidth! * 0.4,
-                          child: CustomButton(
-                            text: "Submit",
-                            textStyle: GoogleFonts.lateef(
-                                fontWeight: FontWeight.w400, fontSize: 32),
-                            onPressed: () {
-                              _formKey.currentState!.validate();
-                            },
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _formKey.currentState!.validate();
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.appViolet,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8)),
+                              elevation: 0),
+                          child: const Padding(
+                              padding:
+                              EdgeInsets.symmetric(horizontal: 12.0,vertical: 10.0),
+                              child:
+                              Text("SIGN UP" , style: TextStyle(color: AppColors.white,fontSize: 22),)
                           ),
                         ),
                       )
+                      // Center(
+                      //   child: SizedBox(
+                      //    height: 40 * SizeConfig.screenHeight!,
+                      //     child: CustomButton(
+                      //       text: "Sign Up",
+                      //       textStyle: GoogleFonts.lateef(
+                      //           fontWeight: FontWeight.w400, fontSize: 32),
+                      //       onPressed: () {
+                      //         _formKey.currentState!.validate();
+                      //       },
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                 ),

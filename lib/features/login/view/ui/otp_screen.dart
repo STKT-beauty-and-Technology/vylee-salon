@@ -105,7 +105,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.black,
+                                      backgroundColor: AppColors.appViolet,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
@@ -116,7 +116,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 8.0, vertical: 10.0),
                                       child: Text(
-                                        "Submit",
+                                        "SUBMIT",
                                         style: TextStyle(
                                           color: AppColors.white,
                                           fontSize: 24,

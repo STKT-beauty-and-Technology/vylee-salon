@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 10,
                         ),
                         SizedBox(
-                          height: SizeConfig.heightMultiplier! * 40,
+                          height: SizeConfig.heightMultiplier! * 42,
                           child: TextField(
                             maxLines: 5,
                             controller: phoneController,
