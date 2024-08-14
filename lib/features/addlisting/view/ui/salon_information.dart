@@ -125,7 +125,6 @@ class _SalonInformationState extends State<SalonInformation> {
                       CustomFormField(
                           isEnabled: true,
                           height: 60,
-                          keyboardType: const TextInputType.numberWithOptions(),
                           width: double.infinity,
                           controller: websiteController),
                       const SizedBox(
