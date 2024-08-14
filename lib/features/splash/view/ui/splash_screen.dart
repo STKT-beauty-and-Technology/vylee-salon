@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:vylee_partner/core/responsive/size_config.dart';
-
-import '../../../../core/load_image/image_loader.dart';
+import 'package:video_player/video_player.dart';
+import 'package:vylee_partner/navigation/navigation.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
 import '../../../../core/path/image_path.dart';
 import '../../../../themes/app_colors.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -16,32 +13,38 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final animationDuration = 1.seconds;
+  late VideoPlayerController _controller;
   @override
   void initState() {
     super.initState();
-    // Future.delayed(animationDuration + 500.milliseconds)
-    //     .then((value) => {initialFunction()});
-    if (mounted) {
-      Future.delayed(const Duration(milliseconds: 3400), () {
-        Navigator.of(context).pushNamed("getStarted");
+    _controller = VideoPlayerController.asset(ImagePath.splashVideo)
+      ..initialize().then((_) {
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+        setState(() {});
+        _controller.play();
+        setState(() {});
       });
-    }
-  
-  }
 
-  initialFunction() async {}
+    Future.delayed(const Duration(seconds: 5), () {
+      if (mounted) {
+        Navigator.of(context).pushNamed(PageRoutes.getStarted);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // final sz = MediaQuery.sizeOf(context);
     return Scaffold(
-        backgroundColor: AppColors.green20,
-        body: Image.asset(
-          ImagePath.gifSplash,
-          width: SizeConfig.screenWidth,
-          height: SizeConfig.screenHeight,
-          fit: BoxFit.fill,
+        backgroundColor: AppColors.appViolet,
+        body: Center(
+          child: _controller.value.isInitialized
+              ? Builder(builder: (context) {
+                  return AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: VideoPlayer(_controller),
+                  );
+                })
+              : Container(),
         )
 
         // Stack(

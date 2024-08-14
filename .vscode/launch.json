@@ -19,6 +19,7 @@
             "name": "vylee-salon (release mode)",
             "request": "launch",
             "type": "dart",
+            "args": [""],
             "flutterMode": "release"
         }
     ]
