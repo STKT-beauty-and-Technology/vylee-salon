@@ -17,17 +17,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (context, orientation) {
-    return OrientationBuilder(builder: (context, orientation) {
-      return LayoutBuilder(builder: (context, constraints) {
-        SizeConfig.init(constraints, orientation);
-        return MaterialApp(
-            // theme: TorbitoTheme.lightTheme,
-            initialRoute: PageRoutes.splash,
-            debugShowCheckedModeBanner: false,
-            theme:
-                ThemeData(fontFamily: GoogleFonts.frankRuhlLibre().fontFamily),
-            onGenerateRoute: Navigation.onGenerateRoutes,
-            color: Colors.white);
+      return OrientationBuilder(builder: (context, orientation) {
+        return LayoutBuilder(builder: (context, constraints) {
+          SizeConfig.init(constraints, orientation);
+          return MaterialApp(
+              // theme: TorbitoTheme.lightTheme,
+              initialRoute: PageRoutes.splash,
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                  fontFamily: GoogleFonts.frankRuhlLibre().fontFamily),
+              onGenerateRoute: Navigation.onGenerateRoutes,
+              color: Colors.white);
+        });
       });
     });
   }
