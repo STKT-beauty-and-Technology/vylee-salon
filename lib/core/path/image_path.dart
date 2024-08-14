@@ -10,5 +10,8 @@ class ImagePath {
   static const loginBackground = "asset/images/login_background.png";
   static const avatarIcon = "asset/images/avatar_icon.svg";
   static const welcomeBg = "asset/images/welcome_bg.png";
+  static const listingAvatar = "asset/images/listing_avatar.png";
+  static const arrowRight = "asset/images/arrow_right_circle.png";
+
 
 }

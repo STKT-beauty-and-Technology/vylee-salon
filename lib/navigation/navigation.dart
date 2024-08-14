@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/salon_information.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
 import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
 import 'package:vylee_partner/features/login/view/ui/otp_screen.dart';
 import 'package:vylee_partner/features/register/view/ui/register_screen.dart';
 import 'package:vylee_partner/features/started/get_start_screen.dart';
-import 'package:vylee_partner/features/welcome/welcome_screen.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 
 import '../features/splash/view/ui/splash_screen.dart';
@@ -37,7 +39,17 @@ class Navigation {
       case PageRoutes.welcomeScreen:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const WelcomeScreen());
+            builder: (context) => WelcomeScreen(
+                  name: (arguments as Map<String, dynamic>)["name"],
+                ));
+      case PageRoutes.addAddress:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const AddAddressScreen());
+      case PageRoutes.salonInformation:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const SalonInformation());
     }
     return null;
     }

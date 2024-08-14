@@ -12,6 +12,8 @@ class CustomButton extends StatelessWidget {
     this.elevation,
     this.borderColor,
     this.textStyle,
+      this.iconAtFront,
+      this.borderRadius
   });
   final Function? onPressed;
   final String? text;
@@ -20,7 +22,9 @@ class CustomButton extends StatelessWidget {
   final Color? fgcolor;
   final double? elevation;
   final Color? borderColor;
+  final double? borderRadius;
   final TextStyle? textStyle;
+  final bool? iconAtFront;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +39,7 @@ class CustomButton extends StatelessWidget {
         foregroundColor: fgcolor ?? AppColors.white,
         elevation: elevation ?? 5,
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(borderRadius ?? 8),
             side: borderColor != null
                 ? BorderSide(color: borderColor!)
                 : BorderSide.none),
@@ -46,11 +50,13 @@ class CustomButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  Visibility(visible: iconAtFront == true, child: icon!),
                   Text(
                     text ?? "",
                     style: textStyle,
                   ),
-                  icon!,
+                  Visibility(visible: iconAtFront != true, child: icon!),
+
                 ],
               ),
             )

@@ -1,12 +1,14 @@
+import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
 
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
 import '../../../../core/responsive/size_config.dart';
 import '../../../../themes/app_colors.dart';
-import '../../../register/view/helpers/register_title_field.dart';
 
 class AddAddressScreen extends StatefulWidget {
   const AddAddressScreen({super.key});
@@ -17,9 +19,9 @@ class AddAddressScreen extends StatefulWidget {
 
 class _AddAddressScreenState extends State<AddAddressScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController salonNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController stateController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -48,12 +50,27 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
               const SizedBox(
                 height: 15,
               ),
-              const Text(
-                "YOUR ADDRESS",
-                style: TextStyle(
-                    color: AppColors.appViolet,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 28),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back_ios_rounded,
+                        size: 25,
+                        weight: 100,
+                        color: AppColors.appViolet,
+                      )),
+                  const Text(
+                    "YOUR ADDRESS",
+                    style: TextStyle(
+                        color: AppColors.appViolet,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 35,
@@ -66,35 +83,90 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Row(
-                        children: [
-                          Text("Fields marked with",),
-                          Text(" * ",style: TextStyle(color: AppColors.red)),
-                          Text("are Mandatory"),
-                        ],
+                      const SizedBox(
+                        height: 15,
                       ),
-                      RegisterTitleField(
-                        controller: nameController,
-                        title: "Full Name",
+                      const Text(
+                        "Enter Your Address",
+                        style: TextStyle(
+                            color: AppColors.appViolet,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15),
                       ),
-                      RegisterTitleField(
-                        controller: salonNameController,
-                        title: "Salon Name",
+                      const SizedBox(
+                        height: 10,
                       ),
-                      RegisterTitleField(
-                        controller: emailController,
-                        title: "Email Address",
+                      SizedBox(
+                        height: SizeConfig.screenHeight! * 0.16,
+                        child: CustomFormField(
+                            isEnabled: true,
+                            height: 60,
+                            keyboardType: TextInputType.multiline,
+                            isMultiline: true,
+                            width: double.infinity,
+                            controller: addressController),
                       ),
-                      RegisterTitleField(
-                        controller: phoneController,
-                        title: "Phone Number",
-                        inputType: const TextInputType.numberWithOptions(),
+                      const Text(
+                        "State & City:",
+                        style: TextStyle(
+                            color: AppColors.appViolet,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15),
                       ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      CSCPicker(
+                        disableCountry: true,
+                        dropdownDecoration: BoxDecoration(
+                            border: Border.all(
+                                color: AppColors.appViolet, width: 2),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10))),
+                        layout: Layout.vertical,
+                        defaultCountry: CscCountry.India,
+                        showStates: true,
+                        onCountryChanged: (value) {},
+                        showCities: true,
+                        currentState: stateController.text,
+                        currentCity: cityController.text,
+                        onStateChanged: (value) {
+                          setState(() {
+                            stateController.text = value ?? "";
+                          });
+                        },
+                        onCityChanged: (value) {
+                          setState(() {
+                            cityController.text = value ?? "";
+                          });
+                        },
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const Text(
+                        "Pincode",
+                        style: TextStyle(
+                            color: AppColors.appViolet,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15),
+                      ),
+                      const SizedBox(height: 10),
+                      CustomFormField(
+                          isEnabled: true,
+                          height: 60,
+                          keyboardType: const TextInputType.numberWithOptions(),
+                          width: double.infinity,
+                          controller: addressController),
                       const SizedBox(height: 30),
                       Center(
                         child: ElevatedButton(
                           onPressed: () {
                             _formKey.currentState!.validate();
+                            if (mounted) {
+                              Navigator.of(context)
+                                  .pushNamed(PageRoutes.salonInformation);
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.appViolet,
@@ -102,11 +174,13 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                   borderRadius: BorderRadius.circular(8)),
                               elevation: 0),
                           child: const Padding(
-                              padding:
-                              EdgeInsets.symmetric(horizontal: 12.0,vertical: 10.0),
-                              child:
-                              Text("SIGN UP" , style: TextStyle(color: AppColors.white,fontSize: 22),)
-                          ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12.0, vertical: 10.0),
+                              child: Text(
+                                "CONTINUE",
+                                style: TextStyle(
+                                    color: AppColors.white, fontSize: 22),
+                              )),
                         ),
                       )
                       // Center(

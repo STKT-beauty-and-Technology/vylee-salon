@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/features/register/view/helpers/register_title_field.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -68,8 +67,10 @@ class _State extends State<RegisterScreen> {
                     children: [
                       const Row(
                         children: [
-                          Text("Fields marked with",),
-                          Text(" * ",style: TextStyle(color: AppColors.red)),
+                          Text(
+                            "Fields marked with",
+                          ),
+                          Text(" * ", style: TextStyle(color: AppColors.red)),
                           Text("are Mandatory"),
                         ],
                       ),
@@ -95,6 +96,11 @@ class _State extends State<RegisterScreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             _formKey.currentState!.validate();
+                            if (mounted) {
+                              Navigator.of(context).pushNamed(
+                                  PageRoutes.welcomeScreen,
+                                  arguments: {"name": nameController.text});
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.appViolet,
@@ -102,11 +108,13 @@ class _State extends State<RegisterScreen> {
                                   borderRadius: BorderRadius.circular(8)),
                               elevation: 0),
                           child: const Padding(
-                              padding:
-                              EdgeInsets.symmetric(horizontal: 12.0,vertical: 10.0),
-                              child:
-                              Text("SIGN UP" , style: TextStyle(color: AppColors.white,fontSize: 22),)
-                          ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12.0, vertical: 10.0),
+                              child: Text(
+                                "SIGN UP",
+                                style: TextStyle(
+                                    color: AppColors.white, fontSize: 22),
+                              )),
                         ),
                       )
                       // Center(

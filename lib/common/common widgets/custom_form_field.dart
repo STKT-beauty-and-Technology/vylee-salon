@@ -37,7 +37,7 @@ class CustomFormField extends StatelessWidget {
         autocorrect: true,
         controller: controller,
         textAlign: TextAlign.start,
-        textInputAction: TextInputAction.next,
+        textInputAction: isMultiline == true ? null : TextInputAction.next,
         inputFormatters: inputFormatters,
         maxLines: isMultiline == true ? 4 : 1,
         keyboardType: keyboardType,
