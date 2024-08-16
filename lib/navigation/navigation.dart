@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/gallery_page.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/salon_information.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/working_hours.dart';
 import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
 import 'package:vylee_partner/features/login/view/ui/otp_screen.dart';
 import 'package:vylee_partner/features/register/view/ui/register_screen.dart';
@@ -50,6 +52,13 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const SalonInformation());
+      case PageRoutes.workingHours:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const WorkingHours());
+      case PageRoutes.galleryPage:
+        return MaterialPageRoute(
+            settings: routeSettings, builder: (context) => const GalleryPage());
     }
     return null;
     }

@@ -7,4 +7,6 @@ class PageRoutes {
   static const String welcomeScreen = "welcome-screen";
   static const String addAddress = "add-address";
   static const String salonInformation = "salon-information";
+  static const String workingHours = "working-hours";
+  static const String galleryPage = "gallery-page";
 }

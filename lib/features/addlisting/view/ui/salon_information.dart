@@ -253,7 +253,8 @@ class _SalonInformationState extends State<SalonInformation> {
                             ),
                             onPressed: () {
                               if (mounted) {
-                                // Navigator.of(context).pop();
+                                Navigator.of(context)
+                                    .pushNamed("working-hours");
                               }
                             },
                           )

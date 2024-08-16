@@ -12,6 +12,8 @@ class ImagePath {
   static const welcomeBg = "asset/images/welcome_bg.png";
   static const listingAvatar = "asset/images/listing_avatar.png";
   static const arrowRight = "asset/images/arrow_right_circle.png";
+  static const arrowUpDown =
+      "asset/images/working_hours_calender/arrow_up_down.svg";
 
 
 }
