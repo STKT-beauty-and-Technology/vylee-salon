@@ -188,27 +188,23 @@ class _WorkingHoursState extends State<WorkingHours> {
                   );
                 }))),
             const SizedBox(
-              height: 15,
+              height: 20,
             ),
             Center(
               child: SizedBox(
-                height: SizeConfig.screenHeight! * 0.05,
-                width: SizeConfig.screenWidth! * 0.4,
+                height: SizeConfig.screenHeight! * 0.055,
+                width: SizeConfig.screenWidth! * 0.42,
                 child: CustomButton(
                   text: "CONTINUE",
                   borderColor: AppColors.appBorderPurple,
                   textStyle: GoogleFonts.lateef(
-                      fontWeight: FontWeight.w400, fontSize: 24),
-                  onPressed: () {
-                    if (mounted) {
-                      Navigator.of(context).pushNamed(PageRoutes.galleryPage);
-                    }
-                  },
+                      fontWeight: FontWeight.w400, fontSize: 26),
+                  onPressed: () {},
                 ),
               ),
             ),
             const SizedBox(
-              height: 25,
+              height: 30,
             ),
           ],
         ),

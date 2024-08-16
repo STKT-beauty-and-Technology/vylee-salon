@@ -183,18 +183,18 @@ class _GalleryPageState extends State<GalleryPage> {
                 )
               ],
             ),
-            const SizedBox(
-              height: 35,
+            SizedBox(
+              height: SizeConfig.screenHeight! * 0.07,
             ),
             Center(
               child: SizedBox(
-                height: SizeConfig.screenHeight! * 0.05,
-                width: SizeConfig.screenWidth! * 0.4,
+                height: SizeConfig.screenHeight! * 0.055,
+                width: SizeConfig.screenWidth! * 0.42,
                 child: CustomButton(
                   text: "CONTINUE",
                   borderColor: AppColors.appBorderPurple,
                   textStyle: GoogleFonts.lateef(
-                      fontWeight: FontWeight.w400, fontSize: 24),
+                      fontWeight: FontWeight.w400, fontSize: 26),
                   onPressed: () {},
                 ),
               ),
