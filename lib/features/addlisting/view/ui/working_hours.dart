@@ -199,7 +199,11 @@ class _WorkingHoursState extends State<WorkingHours> {
                   borderColor: AppColors.appBorderPurple,
                   textStyle: GoogleFonts.lateef(
                       fontWeight: FontWeight.w400, fontSize: 26),
-                  onPressed: () {},
+                  onPressed: () {
+                    if (mounted) {
+                      Navigator.of(context).pushNamed(PageRoutes.galleryPage);
+                    }
+                  },
                 ),
               ),
             ),
