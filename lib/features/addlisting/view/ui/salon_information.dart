@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:csc_picker/csc_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
@@ -29,6 +27,7 @@ class _SalonInformationState extends State<SalonInformation> {
   final ImagePicker picker = ImagePicker();
   File? image;
   bool imagePicked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +53,7 @@ class _SalonInformationState extends State<SalonInformation> {
           child: Column(
             children: [
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -65,7 +64,7 @@ class _SalonInformationState extends State<SalonInformation> {
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_rounded,
-                        size: 25,
+                        size: 20,
                         weight: 100,
                         color: AppColors.appViolet,
                       )),
@@ -100,7 +99,7 @@ class _SalonInformationState extends State<SalonInformation> {
                             fontSize: 15),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       SizedBox(
                         height: SizeConfig.screenHeight! * 0.16,
@@ -112,9 +111,9 @@ class _SalonInformationState extends State<SalonInformation> {
                             width: double.infinity,
                             controller: descriptionController),
                       ),
-                      // const SizedBox(
-                      //   height: 12,
-                      // ),
+                      const SizedBox(
+                        height: 12,
+                      ),
                       const Text(
                         "Company Website",
                         style: TextStyle(
@@ -122,15 +121,15 @@ class _SalonInformationState extends State<SalonInformation> {
                             fontWeight: FontWeight.w400,
                             fontSize: 15),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       CustomFormField(
                           isEnabled: true,
                           height: 60,
                           width: double.infinity,
                           controller: websiteController),
-                      // const SizedBox(
-                      //   height: 12,
-                      // ),
+                      const SizedBox(
+                        height: 12,
+                      ),
                       const Text(
                         "Whatsapp Number",
                         style: TextStyle(
@@ -138,16 +137,17 @@ class _SalonInformationState extends State<SalonInformation> {
                             fontWeight: FontWeight.w400,
                             fontSize: 15),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 5),
                       CustomFormField(
                           isEnabled: true,
                           height: 60,
                           keyboardType: const TextInputType.numberWithOptions(),
                           width: double.infinity,
                           controller: phoneController),
-                      const SizedBox(height: 25),
+                      const SizedBox(height: 15),
                       !imagePicked || image == null
-                          ? Row(
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Padding(
                                   padding: EdgeInsets.only(right: 5.0),
@@ -157,8 +157,9 @@ class _SalonInformationState extends State<SalonInformation> {
                                         TextStyle(color: AppColors.appViolet),
                                   ),
                                 ),
+                                const SizedBox(height: 5),
                                 SizedBox(
-                                  width: SizeConfig.screenWidth! * 0.3,
+                                  width: SizeConfig.screenWidth! * 0.4,
                                   child: CustomButton(
                                     onPressed: () async {
                                       final pickedImage =
@@ -176,7 +177,7 @@ class _SalonInformationState extends State<SalonInformation> {
                                     textStyle: const TextStyle(fontSize: 10),
                                     iconAtFront: true,
                                     icon: const Padding(
-                                      padding: EdgeInsets.only(right: 8.0),
+                                      padding: EdgeInsets.only(right: 2),
                                       child: Icon(
                                         Icons.image_outlined,
                                         size: 20,
@@ -184,11 +185,12 @@ class _SalonInformationState extends State<SalonInformation> {
                                     ),
                                   ),
                                 ),
+                                const SizedBox(width: 15),
                                 const Text(
                                   " (Maximum File Size: 2 MB)",
                                   style: TextStyle(
                                       color: AppColors.black,
-                                      fontSize: 6,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w900),
                                 ),
                               ],
@@ -200,9 +202,9 @@ class _SalonInformationState extends State<SalonInformation> {
                                   const Text(
                                     "Listing Logo",
                                     style:
-                                        TextStyle(color: AppColors.appViolet),
+                                        TextStyle(color: AppColors.appViolet,fontWeight: FontWeight.bold ,fontSize: 18),
                                   ),
-                                  const SizedBox(height: 5),
+                                  const SizedBox(height: 8),
                                   GestureDetector(
                                     onTap: () async {
                                       final pickedImage =
@@ -220,8 +222,8 @@ class _SalonInformationState extends State<SalonInformation> {
                                       child: Image.file(
                                         image!,
                                         fit: BoxFit.fill,
-                                        width: 100,
-                                        height: 100,
+                                        width: 120,
+                                        height: 120,
                                       ),
                                     ),
                                   ),
@@ -229,7 +231,7 @@ class _SalonInformationState extends State<SalonInformation> {
                               ),
                             ),
                       const SizedBox(
-                        height: 30,
+                        height: 40,
                       ),
                       // const SizedBox(height: 10),
                       Center(
@@ -238,7 +240,7 @@ class _SalonInformationState extends State<SalonInformation> {
                             _formKey.currentState!.validate();
                             if (mounted) {
                               Navigator.of(context)
-                                  .pushNamed(PageRoutes.salonInformation);
+                                  .pushNamed(PageRoutes.workingHours);
                             }
                           },
                           style: ElevatedButton.styleFrom(

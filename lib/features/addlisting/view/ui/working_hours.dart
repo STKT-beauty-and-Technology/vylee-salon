@@ -49,7 +49,7 @@ class _WorkingHoursState extends State<WorkingHours> {
         child: Column(
           children: [
             const SizedBox(
-              height: 15,
+              height: 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -74,7 +74,7 @@ class _WorkingHoursState extends State<WorkingHours> {
               ],
             ),
             const SizedBox(
-              height: 35,
+              height: 20,
             ),
             SizedBox(
                 width: SizeConfig.screenWidth! * 0.65,
@@ -87,7 +87,7 @@ class _WorkingHoursState extends State<WorkingHours> {
                       workingHoursData[workingHoursData.keys.toList()[index]]
                           ?[1];
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 25.0),
+                    padding: const EdgeInsets.only(bottom: 20.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -96,6 +96,7 @@ class _WorkingHoursState extends State<WorkingHours> {
                           height: 90,
                           width: 90,
                         ),
+                        const SizedBox(width: 12),
                         Column(
                           children: [
                             GestureDetector(

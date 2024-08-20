@@ -48,7 +48,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           child: Column(
             children: [
               const SizedBox(
-                height: 15,
+                height: 5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -84,7 +84,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
                       const Text(
                         "Enter Your Address",
