@@ -11,6 +11,7 @@ import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
 import '../../../../core/responsive/size_config.dart';
+import '../../../../navigation/page_routes.dart';
 import '../../../../themes/app_colors.dart';
 
 class SalonInformation extends StatefulWidget {
@@ -77,9 +78,9 @@ class _SalonInformationState extends State<SalonInformation> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 35,
-              ),
+              // const SizedBox(
+              //   height: 35,
+              // ),
               SizedBox(
                 width: SizeConfig.screenWidth! * 0.7,
                 child: Form(
@@ -111,9 +112,9 @@ class _SalonInformationState extends State<SalonInformation> {
                             width: double.infinity,
                             controller: descriptionController),
                       ),
-                      const SizedBox(
-                        height: 12,
-                      ),
+                      // const SizedBox(
+                      //   height: 12,
+                      // ),
                       const Text(
                         "Company Website",
                         style: TextStyle(
@@ -127,9 +128,9 @@ class _SalonInformationState extends State<SalonInformation> {
                           height: 60,
                           width: double.infinity,
                           controller: websiteController),
-                      const SizedBox(
-                        height: 12,
-                      ),
+                      // const SizedBox(
+                      //   height: 12,
+                      // ),
                       const Text(
                         "Whatsapp Number",
                         style: TextStyle(
@@ -184,7 +185,7 @@ class _SalonInformationState extends State<SalonInformation> {
                                   ),
                                 ),
                                 const Text(
-                                  " (Maximum File Size: 2 mB)",
+                                  " (Maximum File Size: 2 MB)",
                                   style: TextStyle(
                                       color: AppColors.black,
                                       fontSize: 6,
@@ -230,36 +231,61 @@ class _SalonInformationState extends State<SalonInformation> {
                       const SizedBox(
                         height: 30,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomButton(
-                            text: "BACK",
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
-                            borderRadius: 1,
-                            onPressed: () {
-                              if (mounted) {
-                                Navigator.of(context).pop();
-                              }
-                            },
-                          ),
-                          CustomButton(
-                            text: "NEXT",
-                            borderRadius: 1,
-                            textStyle: const TextStyle(
-                              fontWeight: FontWeight.w500,
-                            ),
-                            onPressed: () {
-                              if (mounted) {
-                                Navigator.of(context)
-                                    .pushNamed("working-hours");
-                              }
-                            },
-                          )
-                        ],
+                      // const SizedBox(height: 10),
+                      Center(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            _formKey.currentState!.validate();
+                            if (mounted) {
+                              Navigator.of(context)
+                                  .pushNamed(PageRoutes.salonInformation);
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.appViolet,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8)),
+                              elevation: 0),
+                          child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12.0, vertical: 10.0),
+                              child: Text(
+                                "CONTINUE",
+                                style: TextStyle(
+                                    color: AppColors.white, fontSize: 22),
+                              )),
+                        ),
                       )
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     // CustomButton(
+                      //     //   text: "BACK",
+                      //     //   textStyle: const TextStyle(
+                      //     //     fontWeight: FontWeight.w500,
+                      //     //   ),
+                      //     //   borderRadius: 1,
+                      //     //   onPressed: () {
+                      //     //     if (mounted) {
+                      //     //       Navigator.of(context).pop();
+                      //     //     }
+                      //     //   },
+                      //     // ),
+                      //     // CustomButton(
+                      //     //   text: "NEXT",
+                      //     //   borderRadius: 1,
+                      //     //   textStyle: const TextStyle(
+                      //     //     fontWeight: FontWeight.w500,
+                      //     //   ),
+                      //     //   onPressed: () {
+                      //     //     if (mounted) {
+                      //     //       Navigator.of(context)
+                      //     //           .pushNamed("working-hours");
+                      //     //     }
+                      //     //   },
+                      //     // )
+                      //   ],
+                      // )
                     ],
                   ),
                 ),

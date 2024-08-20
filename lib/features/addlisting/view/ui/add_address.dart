@@ -72,9 +72,9 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 35,
-              ),
+              // const SizedBox(
+              //   height: 15,
+              // ),
               SizedBox(
                 width: SizeConfig.screenWidth! * 0.7,
                 child: Form(
@@ -106,18 +106,18 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             width: double.infinity,
                             controller: addressController),
                       ),
-                      const Text(
-                        "State & City:",
-                        style: TextStyle(
-                            color: AppColors.appViolet,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      // const Text(
+                      //   "Country:",
+                      //   style: TextStyle(
+                      //       color: AppColors.appViolet,
+                      //       fontWeight: FontWeight.w400,
+                      //       fontSize: 15),
+                      // ),
+                      // const SizedBox(
+                      //   height: 10,
+                      // ),
                       CSCPicker(
-                        disableCountry: true,
+                        disableCountry: false,
                         dropdownDecoration: BoxDecoration(
                             border: Border.all(
                                 color: AppColors.appViolet, width: 2),
