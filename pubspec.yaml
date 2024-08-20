@@ -77,6 +77,8 @@ flutter:
   assets:
      - asset/images/
      - asset/images/working_hours_calender/
+     - asset/images/service_categories/
+     - asset/images/service_categories/female/
      - asset/lotties/
      - asset/videos/
 

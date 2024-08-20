@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/female_service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/gallery_page.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/salon_information.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/working_hours.dart';
 import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
@@ -59,6 +61,22 @@ class Navigation {
       case PageRoutes.galleryPage:
         return MaterialPageRoute(
             settings: routeSettings, builder: (context) => const GalleryPage());
+      case PageRoutes.serviceCategories:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const ServiceCategory());
+      case PageRoutes.femaleCategory:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const FemaleServiceCategory());
+      case PageRoutes.maleCategory:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const ServiceCategory());
+      case PageRoutes.othersCategory:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const ServiceCategory());
     }
     return null;
     }

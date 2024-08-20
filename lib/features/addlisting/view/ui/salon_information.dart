@@ -238,7 +238,7 @@ class _SalonInformationState extends State<SalonInformation> {
                             _formKey.currentState!.validate();
                             if (mounted) {
                               Navigator.of(context)
-                                  .pushNamed(PageRoutes.salonInformation);
+                                  .pushNamed(PageRoutes.workingHours);
                             }
                           },
                           style: ElevatedButton.styleFrom(
