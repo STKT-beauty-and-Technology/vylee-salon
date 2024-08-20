@@ -9,4 +9,8 @@ class PageRoutes {
   static const String salonInformation = "salon-information";
   static const String workingHours = "working-hours";
   static const String galleryPage = "gallery-page";
+  static const String serviceCategories = "service-categories";
+  static const String femaleCategory = "female-category";
+  static const String maleCategory = "female-category";
+  static const String othersCategory = "others-category";
 }

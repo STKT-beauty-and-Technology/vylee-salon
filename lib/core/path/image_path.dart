@@ -14,6 +14,7 @@ class ImagePath {
   static const arrowRight = "asset/images/arrow_right_circle.png";
   static const arrowUpDown =
       "asset/images/working_hours_calender/arrow_up_down.svg";
-
-
+  static const serviceCategory = "asset/images/service_categories/";
+  static const femaleServiceCategory =
+      "asset/images/service_categories/female/";
 }

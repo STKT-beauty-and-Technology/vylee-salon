@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
@@ -195,7 +196,12 @@ class _GalleryPageState extends State<GalleryPage> {
                   borderColor: AppColors.appBorderPurple,
                   textStyle: GoogleFonts.lateef(
                       fontWeight: FontWeight.w400, fontSize: 26),
-                  onPressed: () {},
+                  onPressed: () {
+                    if (mounted) {
+                      Navigator.of(context)
+                          .pushNamed(PageRoutes.serviceCategories);
+                    }
+                  },
                 ),
               ),
             ),
