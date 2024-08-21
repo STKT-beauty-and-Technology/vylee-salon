@@ -14,7 +14,11 @@ class CustomFormField extends StatelessWidget {
       this.inputFormatters,
       this.isMultiline,
       this.keyboardType,
-      this.label});
+      this.label,
+      this.prefixText,
+      this.prefixTextStyle,
+      this.hintTextStyle,
+      this.borderSide});
   final bool isEnabled;
   final TextEditingController controller;
   final String? text;
@@ -27,6 +31,10 @@ class CustomFormField extends StatelessWidget {
   final bool? isMultiline;
   final TextInputType? keyboardType;
   final String? label;
+  final String? prefixText;
+  final TextStyle? prefixTextStyle;
+  final TextStyle? hintTextStyle;
+  final BorderSide? borderSide;
 
   @override
   Widget build(BuildContext context) {
@@ -49,14 +57,17 @@ class CustomFormField extends StatelessWidget {
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-            borderSide: const BorderSide(color: AppColors.appViolet),
+            borderSide:
+                borderSide ?? const BorderSide(color: AppColors.appViolet),
           ),
+          prefixText: prefixText,
+          prefixStyle: prefixTextStyle ?? hintTextStyle,
           hintText: text != null
               ? text?.toLowerCase() == "otp" && !isEnabled
                   ? "Enter number above to get otp"
                   : text
               : null,
-          hintStyle: isEnabled ? null : const TextStyle(color: Colors.white),
+          hintStyle: hintTextStyle,
           labelStyle: isEnabled ? null : const TextStyle(color: Colors.white),
           label: label != null
               ? Align(
@@ -80,6 +91,7 @@ class CustomFormField extends StatelessWidget {
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderSide:
+                 borderSide ??
                 const BorderSide(color: AppColors.appViolet, width: 2.5),
             borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
           ),

@@ -1,18 +1,16 @@
 import 'dart:io';
 
-import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
-
-import '../../../../common/common widgets/custom_appbar.dart';
-import '../../../../core/load_image/image_loader.dart';
-import '../../../../core/path/image_path.dart';
-import '../../../../core/responsive/size_config.dart';
-import '../../../../navigation/page_routes.dart';
-import '../../../../themes/app_colors.dart';
+import 'package:vylee_partner/core/load_image/image_loader.dart';
+import 'package:vylee_partner/core/path/image_path.dart';
+import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
+import 'package:vylee_partner/themes/app_colors.dart';
 
 class SalonInformation extends StatefulWidget {
   const SalonInformation({super.key});
