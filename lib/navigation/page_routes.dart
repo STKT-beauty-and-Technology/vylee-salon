@@ -13,4 +13,5 @@ class PageRoutes {
   static const String femaleCategory = "female-category";
   static const String maleCategory = "female-category";
   static const String othersCategory = "others-category";
+  static const String uploadDocument = "upload-document";
 }

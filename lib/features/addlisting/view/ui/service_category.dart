@@ -29,7 +29,7 @@ class _ServiceCategoryState extends State<ServiceCategory> {
             fit: BoxFit.contain,
           ),
         ),
-        height: 100,
+        height: 80,
         backgroundColor: AppColors.appViolet,
         leadingWidth: 100,
       ),

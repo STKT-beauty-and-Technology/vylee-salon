@@ -47,7 +47,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           height: SizeConfig.screenHeight! * 0.9,
           child: Column(
             children: [
-              const SizedBox(
+               const SizedBox(
                 height: 5,
               ),
               Row(

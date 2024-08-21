@@ -52,60 +52,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 })
               : Container(),
         )
-
-        // Stack(
-        //   alignment: Alignment.center,
-        //   clipBehavior: Clip.none,
-        //   children: [
-        //     Positioned(
-        //       top: 80,
-        //       child: Transform.scale(
-        //         scale: 2,
-        //         child: Container(
-        //           width: sz.width,
-        //           height: sz.width,
-        //           decoration: BoxDecoration(
-        //               color: AppColors.splashBgColor,
-        //               borderRadius: BorderRadius.circular(200)),
-        //         ),
-        //       ),
-        //     ),
-        //     Positioned.fill(
-        //         child: Align(
-        //           alignment: Alignment.center,
-        //           child: Column(
-        //             mainAxisSize: MainAxisSize.min,
-        //             mainAxisAlignment: MainAxisAlignment.center,
-        //             children: [
-        //               ImageLoader.asset(
-        //                 ImagePath.vyleeLogo,
-        //                 height: 140,
-        //                 width: 140,
-        //                 fit: BoxFit.contain,
-        //               ),
-        //               ImageLoader.asset(
-        //                 ImagePath.vyleeTextLogo,
-        //                height: 100 ,
-        //                 width: 180 ,
-        //               )
-        //             ],
-        //           ),
-        //         )).animate().fadeIn(
-        //         begin: 0,
-        //         curve: Curves.easeInOut,
-        //         delay: animationDuration - 400.milliseconds),
-        //     Positioned(
-        //       bottom: 0,
-        //       child: ImageLoader.asset(
-        //         ImagePath.vyleeSplashBottom,
-        //       ),
-        //     ).animate().moveY(
-        //         begin: 300,
-        //         end: 0,
-        //         duration: animationDuration,
-        //         curve: Curves.easeInOut),
-        //   ],
-        // ),
         );
   }
 }
