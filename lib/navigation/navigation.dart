@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/available_slots.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_custom_service.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/gallery_page.dart';
@@ -87,6 +88,10 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const UploadDocuments());
+      case PageRoutes.availableSlots:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const AvailableSlots());
     }
     return null;
     }
