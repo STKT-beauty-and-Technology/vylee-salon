@@ -117,7 +117,7 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                     );
                   }),
                   const SizedBox(
-                    height: 100,
+                    height: 50,
                   ),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.8,
@@ -163,8 +163,12 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                           ),
                         ],
                       ),
+                      
                     ),
-                  )
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
                 ],
               )
             ],
