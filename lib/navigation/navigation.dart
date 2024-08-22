@@ -6,6 +6,7 @@ import 'package:vylee_partner/features/addlisting/view/ui/service_categories/fem
 import 'package:vylee_partner/features/addlisting/view/ui/gallery_page.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/salon_information.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/service_category.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/upload_documents.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/working_hours.dart';
 import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
@@ -82,6 +83,10 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const FemaleCustomService());
+      case PageRoutes.uploadDocuments:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const UploadDocuments());
     }
     return null;
     }
