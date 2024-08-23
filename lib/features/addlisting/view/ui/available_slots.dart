@@ -11,6 +11,8 @@ import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/features/addlisting/view/helpers/available_slot_card.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
+import '../../../../navigation/page_routes.dart';
+
 class AvailableSlots extends StatefulWidget {
   const AvailableSlots({super.key});
 
@@ -43,6 +45,7 @@ class _AvailableSlotsState extends State<AvailableSlots> {
     "Saturday",
     "Sunday",
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,7 +141,8 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                               borderColor: AppColors.appViolet,
                               onPressed: () {
                                 if (mounted) {
-                                  Navigator.of(context).pop();
+                                  Navigator.of(context)
+                                      .pushNamed(PageRoutes.galleryPage);
                                 }
                               },
                             ),
@@ -156,14 +160,14 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                               borderColor: AppColors.appViolet,
                               onPressed: () {
                                 if (mounted) {
-                                  Navigator.of(context).pop();
+                                  Navigator.of(context)
+                                      .pushNamed(PageRoutes.galleryPage);
                                 }
                               },
                             ),
                           ),
                         ],
                       ),
-                      
                     ),
                   ),
                   const SizedBox(

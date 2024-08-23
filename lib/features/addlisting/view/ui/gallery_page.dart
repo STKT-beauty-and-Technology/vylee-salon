@@ -68,7 +68,7 @@ class _GalleryPageState extends State<GalleryPage> {
                 ),
                 const SizedBox(width: 8),
                 const Text(
-                  "Gallery",
+                  "GALLERY",
                   style: TextStyle(
                       color: AppColors.appViolet,
                       fontWeight: FontWeight.w400,

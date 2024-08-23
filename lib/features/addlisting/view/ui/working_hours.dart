@@ -202,7 +202,7 @@ class _WorkingHoursState extends State<WorkingHours> {
                       fontWeight: FontWeight.w400, fontSize: 26),
                   onPressed: () {
                     if (mounted) {
-                      Navigator.of(context).pushNamed(PageRoutes.galleryPage);
+                      Navigator.of(context).pushNamed(PageRoutes.availableSlots);
                     }
                   },
                 ),
