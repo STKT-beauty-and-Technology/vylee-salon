@@ -100,13 +100,12 @@ class WelcomeScreen extends StatelessWidget {
                           }
                         },
                         fgcolor: AppColors.black,
+                        trailingIconSpacing: 15,
                         elevation: 10,
-                        backIcon: const Padding(
-                            padding: EdgeInsets.only(left: 8.0),
-                            child: Icon(
-                              Icons.arrow_circle_right_outlined,
-                              size: 30,
-                            )),
+                        backIcon: const Icon(
+                          Icons.arrow_circle_right_outlined,
+                          size: 20,
+                        ),
                       ),
                     ),
                     const Spacer()

@@ -22,4 +22,6 @@ class ImagePath {
   static const bankDetailsIcon = "asset/images/account_information/museum.png";
   static const termsAndConditions =
       "asset/images/account_information/terms_and_conditions.png";
+  static const rateUsStarIcon = "asset/images/account_information/star.png";
+  static const aboutUsIcon = "asset/images/account_information/about_us.png";
 }

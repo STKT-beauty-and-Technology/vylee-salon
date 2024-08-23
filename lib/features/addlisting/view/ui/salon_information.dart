@@ -173,7 +173,7 @@ class _SalonInformationState extends State<SalonInformation> {
                                     text: "Upload File",
                                     textStyle: const TextStyle(fontSize: 10),
                                     frontIcon: const Padding(
-                                      padding: EdgeInsets.only(right: 8.0),
+                                      padding: EdgeInsets.only(right: 2),
                                       child: Icon(
                                         Icons.image_outlined,
                                         size: 20,
