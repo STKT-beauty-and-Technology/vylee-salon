@@ -6,25 +6,31 @@ class CustomButton extends StatelessWidget {
     super.key,
     this.onPressed,
     this.text,
-    this.icon,
+    this.frontIcon,
+    this.backIcon,
     this.bgcolor,
     this.fgcolor,
     this.elevation,
     this.borderColor,
     this.textStyle,
-      this.iconAtFront,
-      this.borderRadius
+    this.borderRadius,
+    this.frontIconSpacing,
+    this.trailingIconSpacing,
+    this.child,
   });
   final Function? onPressed;
   final String? text;
-  final Widget? icon;
+  final Widget? frontIcon;
+  final Widget? backIcon;
   final Color? bgcolor;
   final Color? fgcolor;
   final double? elevation;
   final Color? borderColor;
   final double? borderRadius;
   final TextStyle? textStyle;
-  final bool? iconAtFront;
+  final Widget? child;
+  final double? frontIconSpacing;
+  final double? trailingIconSpacing;
 
   @override
   Widget build(BuildContext context) {
@@ -44,29 +50,42 @@ class CustomButton extends StatelessWidget {
                 ? BorderSide(color: borderColor!, width: 2)
                 : BorderSide.none),
       ),
-      child: icon != null && text != null
+      child: (frontIcon != null || backIcon != null) &&
+              (text != null || child != null)
           ? SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Visibility(visible: iconAtFront == true, child: icon!),
-                  Text(
-                    text ?? "",
-                    style: textStyle,
+                  Visibility(
+                      visible: frontIcon != null,
+                      child: frontIcon ?? const SizedBox()),
+                  SizedBox(width: frontIconSpacing),
+                  Visibility(
+                    visible: child == null,
+                    replacement: child ?? const SizedBox(),
+                    child: Text(
+                      text ?? "",
+                      style: textStyle,
+                    ),
                   ),
-                  Visibility(visible: iconAtFront != true, child: icon!),
-
+                  SizedBox(width: trailingIconSpacing),
+                  Visibility(
+                      visible: backIcon != null,
+                      child: backIcon ?? const SizedBox()),
                 ],
               ),
             )
           : Padding(
               padding: const EdgeInsets.symmetric(vertical: 4.0),
-              child: icon ??
-                  Text(
-                    text ?? "",
-                    textAlign: TextAlign.center,
-                    style: textStyle,
+              child: frontIcon ??
+                  Visibility(
+                    visible: child == null,
+                    replacement: child ?? const SizedBox(),
+                    child: Text(
+                      text ?? "",
+                      style: textStyle,
+                    ),
                   ),
             ),
     );

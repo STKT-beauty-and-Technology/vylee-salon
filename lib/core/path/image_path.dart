@@ -17,4 +17,9 @@ class ImagePath {
   static const serviceCategory = "asset/images/service_categories/";
   static const femaleServiceCategory =
       "asset/images/service_categories/female/";
+  static const businessVerification =
+      "asset/images/account_information/business_verification.png";
+  static const bankDetailsIcon = "asset/images/account_information/museum.png";
+  static const termsAndConditions =
+      "asset/images/account_information/terms_and_conditions.png";
 }

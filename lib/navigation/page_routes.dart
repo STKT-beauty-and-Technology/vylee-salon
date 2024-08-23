@@ -16,6 +16,7 @@ class PageRoutes {
   static const String femaleCustomService = "female-custom-service";
   static const String uploadDocuments = "upload-documents";
   static const String availableSlots = "available-slots";
+  static const String accountInformation = "account-information";
   static const String allServices = "all-Services";
   static const String addBankAccount = "add-Bank-Account";
 }

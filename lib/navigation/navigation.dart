@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/account_information.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_bank_account.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/all_services.dart';
@@ -95,6 +96,10 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const AvailableSlots());
+      case PageRoutes.accountInformation:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const AccountInformation());
       case PageRoutes.allServices:
         return MaterialPageRoute(
             settings: routeSettings,

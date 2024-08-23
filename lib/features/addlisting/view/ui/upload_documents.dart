@@ -9,6 +9,7 @@ import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 class UploadDocuments extends StatefulWidget {
@@ -346,7 +347,8 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                             borderColor: AppColors.appViolet,
                             onPressed: () {
                               if (mounted) {
-                                Navigator.of(context).pop();
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.availableSlots);
                               }
                             },
                           ),
