@@ -9,6 +9,7 @@ import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/features/addlisting/view/helpers/available_slot_card.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 class AvailableSlots extends StatefulWidget {
@@ -156,7 +157,8 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                               borderColor: AppColors.appViolet,
                               onPressed: () {
                                 if (mounted) {
-                                  Navigator.of(context).pop();
+                                  Navigator.of(context)
+                                      .pushNamed(PageRoutes.accountInformation);
                                 }
                               },
                             ),

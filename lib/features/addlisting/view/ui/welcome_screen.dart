@@ -101,7 +101,7 @@ class WelcomeScreen extends StatelessWidget {
                         },
                         fgcolor: AppColors.black,
                         elevation: 10,
-                        icon: const Padding(
+                        backIcon: const Padding(
                             padding: EdgeInsets.only(left: 8.0),
                             child: Icon(
                               Icons.arrow_circle_right_outlined,

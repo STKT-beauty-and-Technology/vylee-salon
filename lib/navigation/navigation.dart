@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/account_information.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/available_slots.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_custom_service.dart';
@@ -92,6 +93,10 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const AvailableSlots());
+      case PageRoutes.accountInformation:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const AccountInformation());
     }
     return null;
     }
