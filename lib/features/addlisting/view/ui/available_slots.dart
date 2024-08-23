@@ -139,7 +139,8 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                               borderColor: AppColors.appViolet,
                               onPressed: () {
                                 if (mounted) {
-                                  Navigator.of(context).pop();
+                                  Navigator.of(context)
+                                      .pushNamed(PageRoutes.galleryPage);
                                 }
                               },
                             ),
@@ -158,7 +159,7 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                               onPressed: () {
                                 if (mounted) {
                                   Navigator.of(context)
-                                      .pushNamed(PageRoutes.accountInformation);
+                                      .pushNamed(PageRoutes.galleryPage);
                                 }
                               },
                             ),

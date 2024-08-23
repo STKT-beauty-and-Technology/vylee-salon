@@ -5,7 +5,7 @@
     <application
         android:label="Vylee Partner"
         android:name="${applicationName}"
-        android:icon="@mipmap/app_icon">
+        android:icon="@mipmap/splash_logo">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -2,11 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/account_information.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/add_bank_account.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/all_services.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/available_slots.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_custom_service.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/gallery_page.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/salon_information.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/upload_document.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/upload_documents.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
@@ -97,6 +100,14 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const AccountInformation());
+      case PageRoutes.allServices:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const AllServices());
+      case PageRoutes.addBankAccount:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const AddBankAccount());
     }
     return null;
     }

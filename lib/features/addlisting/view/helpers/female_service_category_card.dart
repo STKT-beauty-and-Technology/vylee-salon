@@ -62,7 +62,7 @@ class FemaleServiceCategoryCard extends StatelessWidget {
                 onPressed: () {
                   if (context.mounted) {
                     Navigator.of(context)
-                        .pushNamed(PageRoutes.femaleCustomService);
+                        .pushNamed(PageRoutes.allServices);
                   }
                 },
                 text: type,

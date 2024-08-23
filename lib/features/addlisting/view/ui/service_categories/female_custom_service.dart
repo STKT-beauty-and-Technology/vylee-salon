@@ -152,14 +152,14 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                               itemList:
                                   List.generate(12, (i) => (i + 1).toString()),
                               controller: hourController,
-                              width: SizeConfig.screenWidth! * 0.25,
+                              width: SizeConfig.screenWidth! * 0.30,
                               height: 40),
                           CustomDropdown(
                               hintText: "Minutes",
                               itemList:
                                   List.generate(59, (i) => (i + 1).toString()),
                               controller: hourController,
-                              width: SizeConfig.screenWidth! * 0.3,
+                              width: SizeConfig.screenWidth! * 0.35,
                               height: 40),
                         ],
                       ),
@@ -267,7 +267,7 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                           hintTextStyle: const TextStyle(
                               color: AppColors.appViolet, fontSize: 15),
                           height: SizeConfig.screenHeight! * 0.06,
-                          keyboardType: const TextInputType.numberWithOptions(),
+                          // keyboardType: const TextInputType.numberWithOptions(),
                           width: double.infinity,
                           controller: descriptionController),
                       const SizedBox(height: 30),

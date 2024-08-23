@@ -47,7 +47,7 @@ class _GalleryPageState extends State<GalleryPage> {
         child: Column(
           children: [
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +68,7 @@ class _GalleryPageState extends State<GalleryPage> {
                 ),
                 const SizedBox(width: 8),
                 const Text(
-                  "Gallery",
+                  "GALLERY",
                   style: TextStyle(
                       color: AppColors.appViolet,
                       fontWeight: FontWeight.w400,
@@ -77,7 +77,7 @@ class _GalleryPageState extends State<GalleryPage> {
               ],
             ),
             const SizedBox(
-              height: 35,
+              height: 30,
             ),
             Column(
               children: [
@@ -116,7 +116,7 @@ class _GalleryPageState extends State<GalleryPage> {
                               )
                             : Image.file(
                                 selectedImage!,
-                                fit: BoxFit.contain,
+                                fit: BoxFit.fill,
                               )),
                   ),
                 ),
@@ -168,7 +168,7 @@ class _GalleryPageState extends State<GalleryPage> {
                                   children: [
                                     Image.file(
                                       selectedVideoThumbnail!,
-                                      fit: BoxFit.contain,
+                                      fit: BoxFit.fill,
                                     ),
                                     Positioned(
                                         top: SizeConfig.screenHeight! * 0.1,

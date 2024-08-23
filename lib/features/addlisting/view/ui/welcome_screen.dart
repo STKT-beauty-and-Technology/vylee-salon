@@ -62,8 +62,8 @@ class WelcomeScreen extends StatelessWidget {
                 ],
               ),
               Container(
-                height: SizeConfig.screenHeight! * 0.60,
-                width: SizeConfig.screenWidth! * 0.65,
+                height: SizeConfig.screenHeight! * 0.70,
+                width: SizeConfig.screenWidth! * 0.85,
                 margin: const EdgeInsets.only(top: 20),
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -90,7 +90,7 @@ class WelcomeScreen extends StatelessWidget {
                         text: "ADD LISTINGS",
                         textStyle: GoogleFonts.jomolhari(
                             color: AppColors.black,
-                            fontSize: 12,
+                            fontSize: 11,
                             fontWeight: FontWeight.w400),
                         bgcolor: AppColors.white,
                         onPressed: () {
