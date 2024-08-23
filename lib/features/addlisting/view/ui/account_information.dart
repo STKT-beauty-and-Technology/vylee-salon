@@ -88,7 +88,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.uploadDocuments);
+                              }
+                            },
                             frontIconSpacing: 10,
                             trailingIconSpacing: 20,
                             bgcolor: const Color(0xffF6EAF9),
@@ -138,7 +143,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.bankAccounts);
+                              }
+                            },
                             frontIconSpacing: 10,
                             trailingIconSpacing: 20,
                             bgcolor: const Color(0xffF6EAF9),

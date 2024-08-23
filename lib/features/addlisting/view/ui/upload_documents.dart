@@ -347,8 +347,8 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                             borderColor: AppColors.appViolet,
                             onPressed: () {
                               if (mounted) {
-                                Navigator.of(context)
-                                    .pushNamed(PageRoutes.availableSlots);
+                                //save details first
+                                Navigator.of(context).pop();
                               }
                             },
                           ),

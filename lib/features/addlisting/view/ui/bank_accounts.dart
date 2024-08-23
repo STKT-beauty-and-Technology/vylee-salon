@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
@@ -20,6 +22,19 @@ class _BankAccountsState extends State<BankAccounts> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
+      floatingActionButton: CustomButton(
+        onPressed: () async {
+          if (mounted) {
+            Navigator.of(context).pushNamed(PageRoutes.addBankAccount);
+          }
+        },
+        borderColor: AppColors.appViolet,
+        bgcolor: AppColors.white,
+        frontIcon: const Icon(Icons.add),
+        frontIconSpacing: 10,
+        fgcolor: AppColors.appViolet,
+        text: "Add Bank Account",
+      ),
       appBar: CustomAppBar(
         leadingWidget: Padding(
           padding: const EdgeInsets.only(left: 8.0),
@@ -65,6 +80,14 @@ class _BankAccountsState extends State<BankAccounts> {
                   ),
                 ],
               ),
+              const SizedBox(height: 20),
+              Text(
+                "No Data Found",
+                style: GoogleFonts.inter(
+                  color: AppColors.appViolet,
+                  fontWeight: FontWeight.w500,
+                ),
+              )
             ],
           ),
         ),

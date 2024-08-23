@@ -276,15 +276,16 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                           height: SizeConfig.screenHeight! * 0.055,
                           width: SizeConfig.screenWidth! * 0.42,
                           child: CustomButton(
-                            text: "CONTINUE",
+                            text: "SUBMIT",
                             borderColor: AppColors.appBorderPurple,
                             textStyle: GoogleFonts.lateef(
                                 fontWeight: FontWeight.w400, fontSize: 26),
                             onPressed: () {
                               if (mounted) {
                                 print(hourController.text);
-                                Navigator.of(context)
-                                    .pushNamed(PageRoutes.uploadDocuments);
+                                Navigator.of(context).popUntil(
+                                    ModalRoute.withName(
+                                        PageRoutes.welcomeScreen));
                               }
                             },
                           ),

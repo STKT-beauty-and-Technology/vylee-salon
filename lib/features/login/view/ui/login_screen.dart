@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Mobile Number or Email",
+                            "Email",
                             style: GoogleFonts.frankRuhlLibre(
                               textStyle:
                                   const TextStyle(color: AppColors.white),
@@ -76,8 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: TextField(
                             maxLines: 5,
                             controller: phoneController,
-                            keyboardType:
-                                const TextInputType.numberWithOptions(),
+                            // keyboardType:
+                            //     const TextInputType.numberWithOptions(),
                             decoration: const InputDecoration(
                                 filled: true,
                                 border: OutlineInputBorder(

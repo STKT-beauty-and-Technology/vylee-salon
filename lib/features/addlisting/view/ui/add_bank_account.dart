@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
+import 'package:vylee_partner/navigation/page_routes.dart';
 
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
@@ -36,7 +39,6 @@ class _AddBankAccountState extends State<AddBankAccount> {
       body: SingleChildScrollView(
         child: SizedBox(
           width: SizeConfig.screenWidth,
-          height: SizeConfig.screenHeight! * 0.9,
           child: Column(
             children: [
               const SizedBox(
@@ -64,7 +66,7 @@ class _AddBankAccountState extends State<AddBankAccount> {
                   ),
                 ],
               ),
-               SizedBox(height: 15),
+              const SizedBox(height: 15),
                Padding(
                  padding: const EdgeInsets.symmetric(horizontal: 20),
                  child: Column(
@@ -87,7 +89,7 @@ class _AddBankAccountState extends State<AddBankAccount> {
                             fillColor: AppColors.textFieldColor),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     const Text("Bank Account Number",style: TextStyle(color: AppColors.appViolet)),
                     const SizedBox(height: 5,),
                     SizedBox(
@@ -104,7 +106,7 @@ class _AddBankAccountState extends State<AddBankAccount> {
                             fillColor: AppColors.textFieldColor),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     const Text("Re-Enter Bank Account Number",style: TextStyle(color: AppColors.appViolet)),
                     const SizedBox(height: 5,),
                     SizedBox(
@@ -121,7 +123,7 @@ class _AddBankAccountState extends State<AddBankAccount> {
                             fillColor: AppColors.textFieldColor),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     const Text("Bank name",style: TextStyle(color: AppColors.appViolet)),
                     const SizedBox(height: 5,),
                     SizedBox(
@@ -170,7 +172,7 @@ class _AddBankAccountState extends State<AddBankAccount> {
                             fillColor: AppColors.textFieldColor),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     const Text("Mobile Number",style: TextStyle(color: AppColors.appViolet)),
                     const SizedBox(height: 5,),
                     SizedBox(
@@ -187,7 +189,7 @@ class _AddBankAccountState extends State<AddBankAccount> {
                             fillColor: AppColors.textFieldColor),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     const Text("address( house, flat, block no.)",style: TextStyle(color: AppColors.appViolet)),
                     const SizedBox(height: 5,),
                     SizedBox(
@@ -257,7 +259,27 @@ class _AddBankAccountState extends State<AddBankAccount> {
                     ),
                   ],
                                ),
-               )
+              ),
+              const SizedBox(height: 30),
+              Center(
+                child: SizedBox(
+                  height: SizeConfig.screenHeight! * 0.055,
+                  width: SizeConfig.screenWidth! * 0.42,
+                  child: CustomButton(
+                    text: "SAVE",
+                    borderColor: AppColors.appBorderPurple,
+                    textStyle: GoogleFonts.lateef(
+                        fontWeight: FontWeight.w400, fontSize: 26),
+                    onPressed: () {
+                      if (mounted) {
+                        Navigator.of(context).pop();
+                      }
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+
             ],
           ),
         ),
