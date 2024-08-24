@@ -76,7 +76,9 @@ class Navigation {
       case PageRoutes.femaleCategory:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const FemaleServiceCategory());
+            builder: (context) => FemaleServiceCategory(
+                  gender: (arguments as Map<String, dynamic>)["gender"],
+                ));
       case PageRoutes.maleCategory:
         return MaterialPageRoute(
             settings: routeSettings,

@@ -12,7 +12,7 @@ class PageRoutes {
   static const String serviceCategories = "service-categories";
   static const String femaleCategory = "female-category";
   static const String maleCategory = "female-category";
-  static const String othersCategory = "others-category";
+  static const String othersCategory = "female-category";
   static const String femaleCustomService = "female-custom-service";
   static const String uploadDocuments = "upload-documents";
   static const String availableSlots = "available-slots";

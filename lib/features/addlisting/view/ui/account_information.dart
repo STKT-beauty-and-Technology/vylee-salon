@@ -7,6 +7,7 @@ import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/features/splash/view/ui/splash_screen.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
@@ -437,7 +438,12 @@ class _AccountInformationState extends State<AccountInformation> {
                             fontWeight: FontWeight.w400, fontSize: 26),
                         onPressed: () {
                           if (mounted) {
-                            Navigator.of(context).pushNamed(PageRoutes.splash);
+                            Navigator.of(context).pushAndRemoveUntil<void>(
+                              MaterialPageRoute<void>(
+                                  builder: (BuildContext context) =>
+                                      const SplashScreen()),
+                              ModalRoute.withName(PageRoutes.splash),
+                            );
                           }
                         },
                       ),

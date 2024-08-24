@@ -14,13 +14,16 @@ class ServiceCategoryCard extends StatelessWidget {
       onTap: () {
         switch (category.toLowerCase()) {
           case "female":
-            Navigator.of(context).pushNamed(PageRoutes.femaleCategory);
+            Navigator.of(context).pushNamed(PageRoutes.femaleCategory,
+                arguments: {"gender": category});
             break;
           case "male":
-            Navigator.of(context).pushNamed(PageRoutes.maleCategory);
+            Navigator.of(context).pushNamed(PageRoutes.maleCategory,
+                arguments: {"gender": category});
             break;
           case "others":
-            Navigator.of(context).pushNamed(PageRoutes.othersCategory);
+            Navigator.of(context).pushNamed(PageRoutes.othersCategory,
+                arguments: {"gender": category});
             break;
           default:
         }
