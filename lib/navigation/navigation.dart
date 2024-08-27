@@ -5,6 +5,7 @@ import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_bank_account.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/all_services.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/available_slots.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/bank_accounts.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_custom_service.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/gallery_page.dart';
@@ -75,7 +76,9 @@ class Navigation {
       case PageRoutes.femaleCategory:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const FemaleServiceCategory());
+            builder: (context) => FemaleServiceCategory(
+                  gender: (arguments as Map<String, dynamic>)["gender"],
+                ));
       case PageRoutes.maleCategory:
         return MaterialPageRoute(
             settings: routeSettings,
@@ -104,6 +107,10 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const AllServices());
+      case PageRoutes.bankAccounts:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const BankAccounts());
       case PageRoutes.addBankAccount:
         return MaterialPageRoute(
             settings: routeSettings,

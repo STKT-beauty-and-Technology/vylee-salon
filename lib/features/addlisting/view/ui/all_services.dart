@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
@@ -63,7 +65,7 @@ class _AllServicesState extends State<AllServices> {
                         fontWeight: FontWeight.w400,
                         fontSize: 16),
                   ),
-                  SizedBox(width: 14),
+                  const SizedBox(width: 14),
                   Row(
                     children: [
                       IconButton(
@@ -88,6 +90,25 @@ class _AllServicesState extends State<AllServices> {
                   )
 
                 ],
+              ),
+              const SizedBox(height: 60),
+              Center(
+                child: SizedBox(
+                  height: SizeConfig.screenHeight! * 0.055,
+                  width: SizeConfig.screenWidth! * 0.42,
+                  child: CustomButton(
+                    text: "SAVE",
+                    borderColor: AppColors.appBorderPurple,
+                    textStyle: GoogleFonts.lateef(
+                        fontWeight: FontWeight.w400, fontSize: 26),
+                    onPressed: () {
+                      if (mounted) {
+                        Navigator.of(context)
+                            .pushNamed(PageRoutes.femaleCustomService);
+                      }
+                    },
+                  ),
+                ),
               ),
             ],
           ),

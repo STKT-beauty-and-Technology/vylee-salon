@@ -1,11 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/features/splash/view/ui/splash_screen.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
@@ -19,6 +21,7 @@ class AccountInformation extends StatefulWidget {
 class _AccountInformationState extends State<AccountInformation> {
   File? image;
   bool imagePicked = false;
+  final picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -86,7 +89,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.uploadDocuments);
+                              }
+                            },
                             frontIconSpacing: 10,
                             trailingIconSpacing: 20,
                             bgcolor: const Color(0xffF6EAF9),
@@ -136,7 +144,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.bankAccounts);
+                              }
+                            },
                             frontIconSpacing: 10,
                             trailingIconSpacing: 20,
                             bgcolor: const Color(0xffF6EAF9),
@@ -244,16 +257,11 @@ class _AccountInformationState extends State<AccountInformation> {
                           child: CustomButton(
                             onPressed: () {},
                             frontIconSpacing: 20,
-                            trailingIconSpacing: 95,
+                            trailingIconSpacing: 110,
                             bgcolor: const Color(0xffF6EAF9),
                             frontIcon: const CircleAvatar(
                               backgroundColor: AppColors.white,
                               child: Icon(Icons.person),
-                            ),
-                            backIcon: const Icon(
-                              Icons.arrow_right,
-                              size: 30,
-                              color: AppColors.black,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -285,14 +293,46 @@ class _AccountInformationState extends State<AccountInformation> {
                           child: CustomButton(
                             onPressed: () {},
                             frontIconSpacing: 20,
-                            trailingIconSpacing: 25,
+                            trailingIconSpacing: 35,
                             bgcolor: const Color(0xffF6EAF9),
                             frontIcon: Image.asset(
                               ImagePath.termsAndConditions,
                               width: 30,
                             ),
-                            backIcon: const Icon(
-                              Icons.arrow_right,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Terms and Conditions",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.appViolet,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                            const TextStyle(fontSize: 15))),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  SizedBox(
+                    width: SizeConfig.screenWidth! * 0.7,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: SizeConfig.screenWidth! * 0.9,
+                          height: 70,
+                          child: CustomButton(
+                            onPressed: () {},
+                            frontIconSpacing: 20,
+                            trailingIconSpacing: 70,
+                            bgcolor: const Color(0xffF6EAF9),
+                            frontIcon: const Icon(
+                              Icons.headset_mic_outlined,
                               size: 30,
                               color: AppColors.black,
                             ),
@@ -300,7 +340,79 @@ class _AccountInformationState extends State<AccountInformation> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Terms and Conditions",
+                                Text("Help & Support",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.appViolet,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                            const TextStyle(fontSize: 15))),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  SizedBox(
+                    width: SizeConfig.screenWidth! * 0.7,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: SizeConfig.screenWidth! * 0.9,
+                          height: 70,
+                          child: CustomButton(
+                            onPressed: () {},
+                            frontIconSpacing: 20,
+                            trailingIconSpacing: 120,
+                            bgcolor: const Color(0xffF6EAF9),
+                            frontIcon: Image.asset(
+                              ImagePath.rateUsStarIcon,
+                              width: 30,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Rate Us",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.appViolet,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                            const TextStyle(fontSize: 15))),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  SizedBox(
+                    width: SizeConfig.screenWidth! * 0.7,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: SizeConfig.screenWidth! * 0.9,
+                          height: 70,
+                          child: CustomButton(
+                            onPressed: () {},
+                            frontIconSpacing: 20,
+                            trailingIconSpacing: 80,
+                            bgcolor: const Color(0xffF6EAF9),
+                            frontIcon: Image.asset(
+                              ImagePath.aboutUsIcon,
+                              width: 30,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("About VYLEE",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.appViolet,
@@ -326,7 +438,12 @@ class _AccountInformationState extends State<AccountInformation> {
                             fontWeight: FontWeight.w400, fontSize: 26),
                         onPressed: () {
                           if (mounted) {
-                            Navigator.of(context).pushNamed(PageRoutes.splash);
+                            Navigator.of(context).pushAndRemoveUntil<void>(
+                              MaterialPageRoute<void>(
+                                  builder: (BuildContext context) =>
+                                      const SplashScreen()),
+                              ModalRoute.withName(PageRoutes.splash),
+                            );
                           }
                         },
                       ),
@@ -340,14 +457,36 @@ class _AccountInformationState extends State<AccountInformation> {
         Positioned(
             top: SizeConfig.screenHeight! * 0.08,
             left: SizeConfig.screenWidth! * 0.36,
-            child: CircleAvatar(
-              backgroundColor: AppColors.white,
-              radius: 60,
-              child: Text(
-                "ADD LOGO",
-                style: GoogleFonts.frankRuhlLibre(
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.appViolet,
+            child: GestureDetector(
+              onTap: () async {
+                final xfile =
+                    await picker.pickImage(source: ImageSource.gallery);
+                if (xfile != null) {
+                  setState(() {
+                    image = File(xfile.path);
+                  });
+                }
+              },
+              child: CircleAvatar(
+                backgroundColor: AppColors.white,
+                radius: 60,
+                foregroundImage: image != null ? AssetImage(image!.path) : null,
+                child: image != null
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.file(
+                            image!,
+                          ),
+                        ),
+                      )
+                    : Text(
+                        "ADD LOGO",
+                        style: GoogleFonts.frankRuhlLibre(
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.appViolet,
+                        ),
                 ),
               ),
             )),

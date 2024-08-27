@@ -81,6 +81,7 @@ flutter:
      - asset/images/service_categories/
      - asset/images/service_categories/female/
      - asset/images/account_information/
+     - asset/images/welcome_page/
      - asset/lotties/
      - asset/videos/
 

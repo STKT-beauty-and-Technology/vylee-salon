@@ -70,7 +70,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           ),
                           const SizedBox(height: 10),
                           Text(
-                            "Enter the OTP sent to +91-${widget.mobileNumber}",
+                            "Enter the OTP sent to ${widget.mobileNumber}",
                             style: GoogleFonts.frankRuhlLibre(
                                 textStyle:
                                     const TextStyle(color: AppColors.white),

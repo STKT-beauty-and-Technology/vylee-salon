@@ -99,7 +99,9 @@ class _State extends State<RegisterScreen> {
                             if (mounted) {
                               Navigator.of(context).pushNamed(
                                   PageRoutes.welcomeScreen,
-                                  arguments: {"name": nameController.text});
+                                  arguments: {
+                                    "name": salonNameController.text
+                                  });
                             }
                           },
                           style: ElevatedButton.styleFrom(

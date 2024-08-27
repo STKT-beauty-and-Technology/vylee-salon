@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
+import 'package:vylee_partner/core/load_image/image_loader.dart';
+import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/features/addlisting/view/helpers/female_service_category_card.dart';
-import '../../../../../common/common widgets/custom_appbar.dart';
-import '../../../../../core/load_image/image_loader.dart';
-import '../../../../../core/path/image_path.dart';
-import '../../../../../themes/app_colors.dart';
+import 'package:vylee_partner/themes/app_colors.dart';
+
 
 class FemaleServiceCategory extends StatefulWidget {
-  const FemaleServiceCategory({super.key});
+  const FemaleServiceCategory({super.key, required this.gender});
+  final String gender;
 
   @override
   State<FemaleServiceCategory> createState() => _FemaleServiceCategoryState();
@@ -63,10 +65,11 @@ class _FemaleServiceCategoryState extends State<FemaleServiceCategory> {
                       size: 25,
                       weight: 100,
                       color: AppColors.appViolet,
-                    )),
-                const Text(
-                  "FEMALE",
-                  style: TextStyle(
+                  ),
+                ),
+                Text(
+                  widget.gender.toUpperCase(),
+                  style: const TextStyle(
                       color: AppColors.appViolet,
                       fontWeight: FontWeight.w400,
                       fontSize: 20),

@@ -9,7 +9,6 @@ class ImagePath {
   static const splashVideo = "asset/videos/splash.mp4";
   static const loginBackground = "asset/images/login_background.png";
   static const avatarIcon = "asset/images/avatar_icon.svg";
-  static const welcomeBg = "asset/images/welcome_bg.png";
   static const listingAvatar = "asset/images/listing_avatar.png";
   static const arrowRight = "asset/images/arrow_right_circle.png";
   static const arrowUpDown =
@@ -22,4 +21,12 @@ class ImagePath {
   static const bankDetailsIcon = "asset/images/account_information/museum.png";
   static const termsAndConditions =
       "asset/images/account_information/terms_and_conditions.png";
+  static const rateUsStarIcon = "asset/images/account_information/star.png";
+  static const aboutUsIcon = "asset/images/account_information/about_us.png";
+  static const welcomeBg = "asset/images/welcome_page/welcome_bg.png";
+  static const profileIcon = "asset/images/welcome_page/profile_icon.png";
+  static const addListingIcon =
+      "asset/images/welcome_page/add_listing_icon.png";
+  static const bookingsIcon = "asset/images/welcome_page/bookings_icon.png";
+
 }
