@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
@@ -8,6 +7,7 @@ import 'package:vylee_partner/themes/app_colors.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key, required this.name});
+
   final String name;
 
   @override
@@ -193,7 +193,6 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               const Spacer(flex: 1),
-
             ],
           ),
         ),

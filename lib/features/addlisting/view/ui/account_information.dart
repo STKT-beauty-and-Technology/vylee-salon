@@ -44,21 +44,23 @@ class _AccountInformationState extends State<AccountInformation> {
           ),
           body: SingleChildScrollView(
             child: Container(
-              padding: const EdgeInsets.all(50),
+              padding: const EdgeInsets.all(30),
               width: SizeConfig.screenWidth,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
                     height: 15,
                   ),
-                  Text(
-                    "SALON NAME",
-                    style: GoogleFonts.frankRuhlLibre(
-                      textStyle: const TextStyle(fontSize: 15),
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.black,
+                  Center(
+                    child: Text(
+                      "SALON NAME",
+                      style: GoogleFonts.frankRuhlLibre(
+                        textStyle: const TextStyle(fontSize: 15),
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.black,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -67,7 +69,7 @@ class _AccountInformationState extends State<AccountInformation> {
                   const Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20.0),
+                      padding: EdgeInsets.only(left: 10.0),
                       child: Text(
                         "ACCOUNT INFORMATION",
                         style: TextStyle(
@@ -81,7 +83,7 @@ class _AccountInformationState extends State<AccountInformation> {
                     height: 15,
                   ),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -134,9 +136,9 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -190,9 +192,9 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -245,9 +247,9 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -281,9 +283,9 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -317,9 +319,9 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -354,9 +356,9 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -390,9 +392,9 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
