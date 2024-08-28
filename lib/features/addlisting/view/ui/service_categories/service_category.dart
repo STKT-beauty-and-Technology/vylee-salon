@@ -8,7 +8,9 @@ import '../../../../../core/responsive/size_config.dart';
 import '../../../../../themes/app_colors.dart';
 
 class ServiceCategory extends StatefulWidget {
-  const ServiceCategory({super.key});
+  const ServiceCategory({super.key, this.isEdit});
+  final bool? isEdit;
+
 
   @override
   State<ServiceCategory> createState() => _ServiceCategoryState();

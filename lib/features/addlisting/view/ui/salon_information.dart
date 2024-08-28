@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
@@ -13,7 +12,8 @@ import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 class SalonInformation extends StatefulWidget {
-  const SalonInformation({super.key});
+  const SalonInformation({super.key, this.isEdit});
+  final bool? isEdit;
 
   @override
   State<SalonInformation> createState() => _SalonInformationState();
@@ -238,9 +238,11 @@ class _SalonInformationState extends State<SalonInformation> {
                         child: ElevatedButton(
                           onPressed: () {
                             _formKey.currentState!.validate();
-                            if (mounted) {
+                            if (widget.isEdit != true) {
                               Navigator.of(context)
                                   .pushNamed(PageRoutes.workingHours);
+                            } else {
+                              Navigator.of(context).pop();
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -248,12 +250,12 @@ class _SalonInformationState extends State<SalonInformation> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8)),
                               elevation: 0),
-                          child: const Padding(
-                              padding: EdgeInsets.symmetric(
+                          child: Padding(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 12.0, vertical: 10.0),
                               child: Text(
-                                "CONTINUE",
-                                style: TextStyle(
+                                widget.isEdit == true ? "Save" : "CONTINUE",
+                                style: const TextStyle(
                                     color: AppColors.white, fontSize: 22),
                               )),
                         ),

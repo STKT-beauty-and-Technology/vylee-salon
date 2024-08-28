@@ -200,7 +200,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.transactions);
+                              }
+                            },
                             frontIconSpacing: 20,
                             trailingIconSpacing: 60,
                             bgcolor: const Color(0xffF6EAF9),
@@ -255,7 +260,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.editProfile);
+                              }
+                            },
                             frontIconSpacing: 20,
                             trailingIconSpacing: 110,
                             bgcolor: const Color(0xffF6EAF9),
@@ -487,7 +497,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           fontWeight: FontWeight.w400,
                           color: AppColors.appViolet,
                         ),
-                ),
+                      ),
               ),
             )),
       ],

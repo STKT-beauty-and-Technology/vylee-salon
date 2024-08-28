@@ -13,7 +13,9 @@ import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 class AvailableSlots extends StatefulWidget {
-  const AvailableSlots({super.key});
+  const AvailableSlots({super.key, this.isEdit});
+  final bool? isEdit;
+  
 
   @override
   State<AvailableSlots> createState() => _AvailableSlotsState();
@@ -138,9 +140,11 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                               fgcolor: AppColors.black,
                               borderColor: AppColors.appViolet,
                               onPressed: () {
-                                if (mounted) {
+                                if (widget.isEdit != true) {
                                   Navigator.of(context)
                                       .pushNamed(PageRoutes.galleryPage);
+                                } else {
+                                  Navigator.of(context).pop();
                                 }
                               },
                             ),
@@ -148,7 +152,7 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                           SizedBox(
                             width: 125,
                             child: CustomButton(
-                              text: "CONTINUE",
+                              text: widget.isEdit == true ? "SAVE" : "CONTINUE",
                               textStyle: const TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -158,8 +162,12 @@ class _AvailableSlotsState extends State<AvailableSlots> {
                               borderColor: AppColors.appViolet,
                               onPressed: () {
                                 if (mounted) {
-                                  Navigator.of(context)
-                                      .pushNamed(PageRoutes.galleryPage);
+                                  if (widget.isEdit != true) {
+                                    Navigator.of(context)
+                                        .pushNamed(PageRoutes.workingHours);
+                                  } else {
+                                    Navigator.of(context).pop();
+                                  }
                                 }
                               },
                             ),
