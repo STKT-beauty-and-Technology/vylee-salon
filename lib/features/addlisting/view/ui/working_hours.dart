@@ -10,7 +10,9 @@ import '../../../../core/responsive/size_config.dart';
 import '../../../../themes/app_colors.dart';
 
 class WorkingHours extends StatefulWidget {
-  const WorkingHours({super.key});
+  const WorkingHours({super.key, this.isEdit});
+  final bool? isEdit;
+
 
   @override
   State<WorkingHours> createState() => _WorkingHoursState();
@@ -196,13 +198,15 @@ class _WorkingHoursState extends State<WorkingHours> {
                 height: SizeConfig.screenHeight! * 0.055,
                 width: SizeConfig.screenWidth! * 0.42,
                 child: CustomButton(
-                  text: "CONTINUE",
+                  text: widget.isEdit == true ? "SAVE" : "CONTINUE",
                   borderColor: AppColors.appBorderPurple,
                   textStyle: GoogleFonts.lateef(
                       fontWeight: FontWeight.w400, fontSize: 26),
                   onPressed: () {
-                    if (mounted) {
-                      Navigator.of(context).pushNamed(PageRoutes.availableSlots);
+                    if (widget.isEdit != true) {
+                      Navigator.of(context).pushNamed(PageRoutes.galleryPage);
+                    } else {
+                      Navigator.of(context).pop();
                     }
                   },
                 ),

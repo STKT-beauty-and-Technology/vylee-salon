@@ -20,4 +20,6 @@ class PageRoutes {
   static const String allServices = "all-Services";
   static const String addBankAccount = "add-Bank-Account";
   static const String bankAccounts = "bank-accounts";
+  static const String transactions = "transactions";
+  static const String editProfile = "edit-profile";
 }

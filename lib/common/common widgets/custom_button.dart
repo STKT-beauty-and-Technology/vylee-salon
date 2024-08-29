@@ -17,6 +17,7 @@ class CustomButton extends StatelessWidget {
     this.frontIconSpacing,
     this.trailingIconSpacing,
     this.child,
+    this.showIconAtEnd,
   });
   final Function? onPressed;
   final String? text;
@@ -31,6 +32,7 @@ class CustomButton extends StatelessWidget {
   final Widget? child;
   final double? frontIconSpacing;
   final double? trailingIconSpacing;
+  final bool? showIconAtEnd;
 
   @override
   Widget build(BuildContext context) {
@@ -54,25 +56,34 @@ class CustomButton extends StatelessWidget {
               (text != null || child != null)
           ? SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Stack(
                 children: [
-                  Visibility(
-                      visible: frontIcon != null,
-                      child: frontIcon ?? const SizedBox()),
-                  SizedBox(width: frontIconSpacing),
-                  Visibility(
-                    visible: child == null,
-                    replacement: child ?? const SizedBox(),
-                    child: Text(
-                      text ?? "",
-                      style: textStyle,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Visibility(
+                          visible: frontIcon != null,
+                          child: frontIcon ?? const SizedBox()),
+                      SizedBox(width: frontIconSpacing),
+                      Visibility(
+                        visible: child == null,
+                        replacement: child ?? const SizedBox(),
+                        child: Text(
+                          text ?? "",
+                          style: textStyle,
+                        ),
+                      ),
+                      SizedBox(width: trailingIconSpacing),
+                      Visibility(
+                          visible: backIcon != null && showIconAtEnd != true,
+                          child: backIcon ?? const SizedBox()),
+                    ],
                   ),
-                  SizedBox(width: trailingIconSpacing),
                   Visibility(
-                      visible: backIcon != null,
-                      child: backIcon ?? const SizedBox()),
+                    visible: showIconAtEnd == true,
+                    child: Positioned(
+                        right: 0, child: backIcon ?? const SizedBox()),
+                  )
                 ],
               ),
             )

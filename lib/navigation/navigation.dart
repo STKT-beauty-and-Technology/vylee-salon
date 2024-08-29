@@ -6,10 +6,12 @@ import 'package:vylee_partner/features/addlisting/view/ui/add_bank_account.dart'
 import 'package:vylee_partner/features/addlisting/view/ui/all_services.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/available_slots.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/bank_accounts.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/edit_profile.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_custom_service.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/female_service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/gallery_page.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/salon_information.dart';
+import 'package:vylee_partner/features/addlisting/view/ui/transactions.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/upload_document.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/upload_documents.dart';
@@ -52,27 +54,38 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => WelcomeScreen(
-                  name: (arguments as Map<String, dynamic>)["name"],
+                  name: (arguments as Map<String, dynamic>?)?["name"],
                 ));
       case PageRoutes.addAddress:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const AddAddressScreen());
+            builder: (context) => AddAddressScreen(
+                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                ));
       case PageRoutes.salonInformation:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const SalonInformation());
+            builder: (context) => SalonInformation(
+                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                ));
       case PageRoutes.workingHours:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const WorkingHours());
+            builder: (context) => WorkingHours(
+                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                ));
       case PageRoutes.galleryPage:
         return MaterialPageRoute(
-            settings: routeSettings, builder: (context) => const GalleryPage());
+            settings: routeSettings,
+            builder: (context) => GalleryPage(
+                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                ));
       case PageRoutes.serviceCategories:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const ServiceCategory());
+            builder: (context) => ServiceCategory(
+                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                ));
       case PageRoutes.femaleCategory:
         return MaterialPageRoute(
             settings: routeSettings,
@@ -98,7 +111,9 @@ class Navigation {
       case PageRoutes.availableSlots:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const AvailableSlots());
+            builder: (context) => AvailableSlots(
+                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                ));
       case PageRoutes.accountInformation:
         return MaterialPageRoute(
             settings: routeSettings,
@@ -115,6 +130,13 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const AddBankAccount());
+      case PageRoutes.transactions:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const Transactions());
+      case PageRoutes.editProfile:
+        return MaterialPageRoute(
+            settings: routeSettings, builder: (context) => const EditProfile());
     }
     return null;
     }

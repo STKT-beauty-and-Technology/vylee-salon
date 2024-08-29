@@ -11,7 +11,9 @@ import '../../../../core/responsive/size_config.dart';
 import '../../../../themes/app_colors.dart';
 
 class AddAddressScreen extends StatefulWidget {
-  const AddAddressScreen({super.key});
+  const AddAddressScreen({super.key, this.isEdit});
+  final bool? isEdit;
+
 
   @override
   State<AddAddressScreen> createState() => _AddAddressScreenState();
@@ -47,7 +49,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
           height: SizeConfig.screenHeight! * 0.9,
           child: Column(
             children: [
-               const SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
@@ -163,9 +165,11 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             _formKey.currentState!.validate();
-                            if (mounted) {
+                            if (widget.isEdit != true) {
                               Navigator.of(context)
-                                  .pushNamed(PageRoutes.salonInformation);
+                                  .pushNamed(PageRoutes.workingHours);
+                            } else {
+                              Navigator.of(context).pop();
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -173,12 +177,12 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8)),
                               elevation: 0),
-                          child: const Padding(
-                              padding: EdgeInsets.symmetric(
+                          child: Padding(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 12.0, vertical: 10.0),
                               child: Text(
-                                "CONTINUE",
-                                style: TextStyle(
+                                widget.isEdit == true ? "SAVE" : "CONTINUE",
+                                style: const TextStyle(
                                     color: AppColors.white, fontSize: 22),
                               )),
                         ),

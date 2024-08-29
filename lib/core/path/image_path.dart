@@ -28,5 +28,6 @@ class ImagePath {
   static const addListingIcon =
       "asset/images/welcome_page/add_listing_icon.png";
   static const bookingsIcon = "asset/images/welcome_page/bookings_icon.png";
+  static const editProfile = "asset/images/edit_profile/";
 
 }
