@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
@@ -12,6 +11,7 @@ class AvailableSlotCard extends StatefulWidget {
     required this.day,
     required this.isAdded,
   });
+
   final Function onAddPressed;
   final String day;
   final bool isAdded;

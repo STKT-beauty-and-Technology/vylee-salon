@@ -10,6 +10,7 @@ import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
+import 'package:vylee_partner/utilities/string.dart';
 
 class FemaleCustomService extends StatefulWidget {
   const FemaleCustomService({super.key});
@@ -71,9 +72,9 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                         weight: 100,
                         color: AppColors.appViolet,
                       )),
-                  const Text(
-                    "ADD FEMALE SERVICE",
-                    style: TextStyle(
+                   Text(
+                    Constant.allFemaleService,
+                    style: const TextStyle(
                         color: AppColors.appViolet,
                         fontWeight: FontWeight.w400,
                         fontSize: 16),
