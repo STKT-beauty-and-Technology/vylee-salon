@@ -6,6 +6,7 @@ import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/features/register/view/helpers/register_title_field.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
+import 'package:vylee_partner/utilities/string.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -47,9 +48,9 @@ class _State extends State<RegisterScreen> {
               const SizedBox(
                 height: 15,
               ),
-              const Text(
-                "VENDOR REGISTRATION",
-                style: TextStyle(
+               Text(
+                Constant.vendorRegister,
+                style: const TextStyle(
                     color: AppColors.appViolet,
                     fontWeight: FontWeight.w400,
                     fontSize: 28),
@@ -65,30 +66,30 @@ class _State extends State<RegisterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Row(
+                       Row(
                         children: [
                           Text(
-                            "Fields marked with",
+                            Constant.fieldsMarked,
                           ),
-                          Text(" * ", style: TextStyle(color: AppColors.red)),
-                          Text("are Mandatory"),
+                          const Text(" * ", style: TextStyle(color: AppColors.red)),
+                          Text(Constant.areMandatory),
                         ],
                       ),
                       RegisterTitleField(
                         controller: nameController,
-                        title: "Full Name",
+                        title: Constant.fullName,
                       ),
                       RegisterTitleField(
                         controller: salonNameController,
-                        title: "Salon Name",
+                        title: Constant.salonName,
                       ),
                       RegisterTitleField(
                         controller: emailController,
-                        title: "Email Address",
+                        title: Constant.email,
                       ),
                       RegisterTitleField(
                         controller: phoneController,
-                        title: "Phone Number",
+                        title: Constant.phone,
                         inputType: const TextInputType.numberWithOptions(),
                       ),
                       const SizedBox(height: 30),
@@ -100,7 +101,7 @@ class _State extends State<RegisterScreen> {
                               Navigator.of(context).pushNamed(
                                   PageRoutes.welcomeScreen,
                                   arguments: {
-                                    "name": salonNameController.text
+                                    Constant.name: salonNameController.text
                                   });
                             }
                           },
@@ -109,12 +110,12 @@ class _State extends State<RegisterScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8)),
                               elevation: 0),
-                          child: const Padding(
-                              padding: EdgeInsets.symmetric(
+                          child:  Padding(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 12.0, vertical: 10.0),
-                              child: Text(
-                                "SIGN UP",
-                                style: TextStyle(
+                              child:Text(
+                                Constant.signUp,
+                                style: const TextStyle(
                                     color: AppColors.white, fontSize: 22),
                               )),
                         ),

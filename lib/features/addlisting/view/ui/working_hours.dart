@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
+import 'package:vylee_partner/utilities/string.dart';
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
@@ -66,9 +67,9 @@ class _WorkingHoursState extends State<WorkingHours> {
                       weight: 100,
                       color: AppColors.appViolet,
                     )),
-                const Text(
-                  "WORKING HOURS",
-                  style: TextStyle(
+                 Text(
+                  Constant.workingHours,
+                  style: const TextStyle(
                       color: AppColors.appViolet,
                       fontWeight: FontWeight.w400,
                       fontSize: 16),
@@ -129,7 +130,7 @@ class _WorkingHoursState extends State<WorkingHours> {
                                       ot != null
                                           ? DateFormat.jm().format(DateTime(
                                               2024, 1, 1, ot.hour, ot.minute))
-                                          : "Opening Time",
+                                          : Constant.openingHours,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13,
@@ -172,7 +173,7 @@ class _WorkingHoursState extends State<WorkingHours> {
                                       ct != null
                                           ? DateFormat.jm().format(DateTime(
                                               2024, 1, 1, ct.hour, ct.minute))
-                                          : "Closing Time",
+                                          : Constant.closingHours,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13,
@@ -198,7 +199,7 @@ class _WorkingHoursState extends State<WorkingHours> {
                 height: SizeConfig.screenHeight! * 0.055,
                 width: SizeConfig.screenWidth! * 0.42,
                 child: CustomButton(
-                  text: widget.isEdit == true ? "SAVE" : "CONTINUE",
+                  text: widget.isEdit == true ? Constant.save : Constant.cont,
                   borderColor: AppColors.appBorderPurple,
                   textStyle: GoogleFonts.lateef(
                       fontWeight: FontWeight.w400, fontSize: 26),

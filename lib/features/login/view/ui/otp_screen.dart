@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
+import 'package:vylee_partner/utilities/string.dart';
 
 import '../../../../core/path/image_path.dart';
 import '../../../../navigation/page_routes.dart';
@@ -61,7 +62,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           SvgPicture.asset(ImagePath.avatarIcon),
                           const SizedBox(height: 10),
                           Text(
-                            "OTP VERIFICATION",
+                            Constant.otpVerify,
                             style: GoogleFonts.frankRuhlLibre(
                                 textStyle:
                                     const TextStyle(color: AppColors.white),
@@ -112,12 +113,12 @@ class _OtpScreenState extends State<OtpScreen> {
                                           side: const BorderSide(
                                               color: AppColors.white)),
                                       elevation: 0),
-                                  child: const Padding(
-                                      padding: EdgeInsets.symmetric(
+                                  child:  Padding(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 8.0, vertical: 10.0),
                                       child: Text(
-                                        "SUBMIT",
-                                        style: TextStyle(
+                                        Constant.submit,
+                                        style: const TextStyle(
                                           color: AppColors.white,
                                           fontSize: 24,
                                         ),
