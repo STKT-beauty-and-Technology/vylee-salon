@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
@@ -73,7 +71,7 @@ class _EditProfileState extends State<EditProfile> {
                   ),
                 ],
               ),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               ...List.generate(options.length, (index) {
                 return Container(
                   width: SizeConfig.screenWidth! * 0.8,

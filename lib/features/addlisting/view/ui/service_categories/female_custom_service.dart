@@ -73,7 +73,7 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                         color: AppColors.appViolet,
                       )),
                    Text(
-                    Constant.allFemaleService,
+                    Constant.addFemaleService,
                     style: const TextStyle(
                         color: AppColors.appViolet,
                         fontWeight: FontWeight.w400,
