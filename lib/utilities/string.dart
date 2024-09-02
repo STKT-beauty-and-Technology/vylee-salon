@@ -1,7 +1,16 @@
 class Constant {
   static String appName = "Vylee\nsalon";
+  //login page:
+  static String enterMobileNumber = "Enter Mobile Number";
+  static String byContinuing = "By Continuing, you agree to our";
+  static String termsPrivacy = "Terms of Services, Privacy & Content Policy.";
+  static String getOtp = "Get OTP";
+  //OTP page:
+  static String codeNotReceived = "Didn’t receive code?";
+  static String resendCode = "Resend code";
+  static String verifyCode = "Verify Code";
+  //
   static String beautyExcellence = "Connecting You to Beauty Excellence";
-  static String byClickingAccept = "By Clicking Accept the Terms & Conditions";
   static String addFemaleService = "ADD FEMALE SERVICE";
   static String workingHours= "WORKING HOURS";
   static String openingHours=  "Opening Time";

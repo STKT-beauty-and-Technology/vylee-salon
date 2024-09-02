@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,18 +26,29 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
           width: SizeConfig.screenWidth,
           height: SizeConfig.screenHeight,
-          color: AppColors.appViolet,
+          color: AppColors.appPurple,
           child: Stack(
             children: [
               Positioned(
                 left: SizeConfig.widthMultiplier! * 10,
-                top: SizeConfig.screenHeight! * 0.3,
-                child: Image.asset(
-                  ImagePath.loginBackground,
-                  width: SizeConfig.screenWidth! * 0.95,
-                  height: SizeConfig.screenHeight! * 0.68,
-                  fit: BoxFit.fill,
+                top: SizeConfig.screenHeight! * 0.25,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    ImagePath.loginBackground,
+                    width: SizeConfig.screenWidth! * 0.95,
+                    height: SizeConfig.screenHeight! * 0.72,
+                    fit: BoxFit.fill,
+                    colorBlendMode: BlendMode.color,
+                    color: AppColors.appViolet,
+                  ),
                 ),
+              ),
+              Container(
+                color: AppColors.appGray.withOpacity(0.6),
+                width: SizeConfig.screenWidth,
+                height: SizeConfig.screenHeight,
+                
               ),
               Center(
                 child: UnconstrainedBox(
@@ -55,89 +65,119 @@ class _LoginScreenState extends State<LoginScreen> {
                             fit: BoxFit.contain,
                           ),
                         ),
+                        const SizedBox(height: 60),
                         SvgPicture.asset(ImagePath.avatarIcon),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            Constant.mail,
-                            style: GoogleFonts.frankRuhlLibre(
-                              textStyle:
-                                  const TextStyle(color: AppColors.white),
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
                         const SizedBox(
-                          height: 10,
+                          height: 50,
                         ),
-                        SizedBox(
-                          height: SizeConfig.heightMultiplier! * 42,
-                          child: TextField(
-                            maxLines: 5,
-                            controller: phoneController,
-                            // keyboardType:
-                            //     const TextInputType.numberWithOptions(),
-                            decoration: const InputDecoration(
-                                filled: true,
-                                border: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10))),
-                                fillColor: AppColors.textFieldColor),
-                          ),
-                        ),
-                        Row(
+                        Stack(
                           children: [
-                            Checkbox(
-                                value: termsAccepted,
-                                activeColor: AppColors.white,
-                                tristate: false,
-                                fillColor: const WidgetStatePropertyAll(
-                                    AppColors.white),
-                                checkColor: AppColors.black,
-                                onChanged: (value) {
-                                  setState(() {
-                                    print(value);
-                                    termsAccepted = value ?? false;
-                                  });
-                                }),
-                            Text(
-                              Constant.byClickingAccept,
-                              style: const TextStyle(
-                                  color: AppColors.white, fontSize: 10),
+                            Container(
+                              width: SizeConfig.screenWidth! * 0.7,
+                              height: 55,
+                              alignment: Alignment.center,
+                              padding:
+                                  const EdgeInsets.only(left: 60, bottom: 8),
+                              decoration: BoxDecoration(
+                                color: AppColors.white,
+                                border: Border.all(
+                                    color: AppColors.gray600, width: 3),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: TextFormField(
+                                controller: phoneController,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    hintText: Constant.enterMobileNumber,
+                                    fillColor: AppColors.white,
+                                    hintStyle: GoogleFonts.inter(
+                                        color: AppColors.black, fontSize: 15),
+                                    border: InputBorder.none),
+                              ),
+                            ),
+                            Positioned(
+                              top: 16,
+                              left: 10,
+                              child: Text(
+                                "+ 91  ",
+                                style: GoogleFonts.inter(
+                                    color: AppColors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400),
+                              ),
                             )
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 15),
+                          padding: const EdgeInsets.only(top: 25),
                           child: Center(
-                            child: SizedBox(
-                              width: SizeConfig.screenWidth! * 0.6,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(
-                                      context,
-                                    PageRoutes.otpScreen,
-                                      arguments: {
-                                        Constant.mobileNumber: phoneController.text
-                                      });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.white,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8)),
-                                    elevation: 0),
-                                child:  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0, vertical: 10.0),
-                                    child: Text(
-                                      Constant.continu,
-                                      style: const TextStyle(color: AppColors.black),
-                                    )),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18),
+                                  border: Border.all(
+                                      color: AppColors.gray600, width: 5)),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 4, right: 4, top: 3, bottom: 3),
+                                child: SizedBox(
+                                  width: SizeConfig.screenWidth! * 0.7,
+                                  height: 50,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, PageRoutes.otpScreen,
+                                          arguments: {
+                                            Constant.mobileNumber:
+                                                phoneController.text
+                                          });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColors.white,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        elevation: 0),
+                                    child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0, vertical: 10.0),
+                                        child: Text(
+                                          Constant.getOtp,
+                                          style: GoogleFonts.inter(
+                                            color: AppColors.black,
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16,
+                                          ),
+                                        )),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        )
+                        ),
+                        const SizedBox(height: 100),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              Constant.byContinuing,
+                              style: GoogleFonts.inter(
+                                  decoration: TextDecoration.underline,
+                                  color: AppColors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 10),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              Constant.termsPrivacy,
+                              style: GoogleFonts.inter(
+                                  decoration: TextDecoration.underline,
+                                  color: AppColors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 10),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
