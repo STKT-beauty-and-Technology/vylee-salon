@@ -119,7 +119,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                       //   height: 10,
                       // ),
                       CSCPicker(
-                        disableCountry: false,
+                        disableCountry: true,
                         dropdownDecoration: BoxDecoration(
                             border: Border.all(
                                 color: AppColors.appViolet, width: 2),
@@ -129,7 +129,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                         defaultCountry: CscCountry.India,
                         showStates: true,
                         onCountryChanged: (value) {},
-                        showCities: true,
+                        showCities: false,
                         currentState: stateController.text,
                         currentCity: cityController.text,
                         onStateChanged: (value) {
@@ -151,15 +151,17 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                         style: TextStyle(
                             color: AppColors.appViolet,
                             fontWeight: FontWeight.w400,
-                            fontSize: 15),
+                            fontSize: 15,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       CustomFormField(
                           isEnabled: true,
                           height: 60,
-                          keyboardType: const TextInputType.numberWithOptions(),
+                          isMultiline: false,
+                          keyboardType: TextInputType.number,
                           width: double.infinity,
-                          controller: addressController),
+                          controller: TextEditingController()),
                       const SizedBox(height: 30),
                       Center(
                         child: ElevatedButton(

@@ -6,7 +6,7 @@ class ImagePath {
   static const curveAsset = "asset/images/curve_asset.svg";
   static const girlSkin = "asset/images/girl_image.jpg";
   static const lottieSplash = "asset/lotties/splash.json";
-  static const splashVideo = "asset/videos/splash.mp4";
+  static const splashVideo = "asset/videos/splash2.mp4";
   static const loginBackground = "asset/images/login_background.png";
   static const avatarIcon = "asset/images/avatar_icon.svg";
   static const listingAvatar = "asset/images/listing_avatar.png";
