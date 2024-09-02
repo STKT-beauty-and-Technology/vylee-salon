@@ -59,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Email",
+                            Constant.mail,
                             style: GoogleFonts.frankRuhlLibre(
                               textStyle:
                                   const TextStyle(color: AppColors.white),
@@ -119,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       context,
                                     PageRoutes.otpScreen,
                                       arguments: {
-                                        "mobileNumber": phoneController.text
+                                        Constant.mobileNumber: phoneController.text
                                       });
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -127,12 +127,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8)),
                                     elevation: 0),
-                                child: const Padding(
-                                    padding: EdgeInsets.symmetric(
+                                child:  Padding(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 8.0, vertical: 10.0),
                                     child: Text(
-                                      "CONTINUE",
-                                      style: TextStyle(color: AppColors.black),
+                                      Constant.continu,
+                                      style: const TextStyle(color: AppColors.black),
                                     )),
                               ),
                             ),

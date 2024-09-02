@@ -4,6 +4,7 @@ import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 import '../../navigation/page_routes.dart';
+import '../../utilities/string.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
@@ -15,6 +16,7 @@ class GetStarted extends StatefulWidget {
 class _GetStartedState extends State<GetStarted> {
   final animationDuration = 1.seconds;
 
+  @override
   void initState() {
     super.initState();
     Future.delayed(animationDuration + 500.milliseconds).then((value) => {});
@@ -48,12 +50,12 @@ class _GetStartedState extends State<GetStarted> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
                     elevation: 0),
-                child: const Padding(
+                child:  Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+                        const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
                     child: Text(
-                      "GET STARTED",
-                      style: TextStyle(color: AppColors.white),
+                      Constant.getStarted,
+                      style: const TextStyle(color: AppColors.white),
                     )),
               ),
             )
