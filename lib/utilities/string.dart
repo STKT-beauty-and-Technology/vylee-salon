@@ -12,8 +12,10 @@ class Constant {
   //
   static String beautyExcellence = "Connecting You to Beauty Excellence";
   static String addFemaleService = "ADD FEMALE SERVICE";
+  //working hours:
   static String workingHours= "WORKING HOURS";
   static String openingHours=  "Opening Time";
+  static String hhMM = "HH:MM";
   static String closingHours=  "Closing Time";
   static String save=  "SAVE";
   static String cont=  "CONTINUE";
