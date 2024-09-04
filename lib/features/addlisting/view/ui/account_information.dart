@@ -298,7 +298,9 @@ class _AccountInformationState extends State<AccountInformation> {
                             onPressed: () {
                               if (mounted) {
                                 Navigator.of(context)
-                                    .pushNamed(PageRoutes.galleryPage);
+                                    .pushNamed(
+                                    PageRoutes.galleryPage,
+                                    arguments: {"edit": true});
                               }
                             },
                             frontIconSpacing: 20,
@@ -347,7 +349,9 @@ class _AccountInformationState extends State<AccountInformation> {
                             onPressed: () {
                               if (mounted) {
                                 Navigator.of(context)
-                                    .pushNamed(PageRoutes.salonInformation);
+                                    .pushNamed(
+                                    PageRoutes.salonInformation,
+                                    arguments: {"edit": true});
                               }
                             },
                             frontIconSpacing: 20,
@@ -396,7 +400,9 @@ class _AccountInformationState extends State<AccountInformation> {
                             onPressed: () {
                               if (mounted) {
                                 Navigator.of(context)
-                                    .pushNamed(PageRoutes.workingHours);
+                                    .pushNamed(
+                                    PageRoutes.workingHours,
+                                    arguments: {"edit": true});
                               }
                             },
                             frontIconSpacing: 20,
@@ -445,7 +451,9 @@ class _AccountInformationState extends State<AccountInformation> {
                             onPressed: () {
                               if (mounted) {
                                 Navigator.of(context)
-                                    .pushNamed(PageRoutes.addAddress);
+                                    .pushNamed(
+                                    PageRoutes.addAddress,
+                                    arguments: {"edit": true});
                               }
                             },
                             frontIconSpacing: 20,

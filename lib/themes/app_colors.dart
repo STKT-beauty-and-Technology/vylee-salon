@@ -13,8 +13,8 @@ class AppColors {
   static const Color neutral14 = Color(0xFF9DAAAF);
   static const themeColorPink = Color(0XFFAA24B2);
   static const Color white = Colors.white;
-  // static const Color appViolet = Color(0XFFD899FF);
-  static const Color appViolet = Color(0xff791DAE);
+  static const Color appViolet = Color(0XFFD899FF);
+  // static const Color appViolet = Color(0xff791DAE);
   static const Color appPurple = Color(0xff9636D1);
   static const Color appPurple2 = Color(0xff791DAE);
   static const Color appBorderPurple = Color(0XFFF0C1F3);

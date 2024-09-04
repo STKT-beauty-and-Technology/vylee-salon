@@ -95,7 +95,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         fit: BoxFit.cover,
                         image: AssetImage(ImagePath.welcomeBg),
                         colorFilter: ColorFilter.mode(
-                            AppColors.appViolet, BlendMode.screen))),
+                            AppColors.appPurple2, BlendMode.screen))),
                 alignment: Alignment.center,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

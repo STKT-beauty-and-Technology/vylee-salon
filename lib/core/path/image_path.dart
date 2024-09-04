@@ -4,7 +4,7 @@ class ImagePath {
   static const vyleeName = "asset/images/vylee_name_svg.svg";
   static const girlTouchSkin = "asset/images/girl_touch_skin.png";
   static const curveAsset = "asset/images/curve_asset.svg";
-  static const girlSkin = "asset/images/girl_image.jpg";
+  static const girlSkin = "asset/images/girl_image.jpeg";
   static const editIcon = "asset/images/edit_icon.png";
   static const lottieSplash = "asset/lotties/splash.json";
   static const splashVideo = "asset/videos/splash2.mp4";

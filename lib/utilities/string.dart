@@ -61,4 +61,8 @@ class Constant {
   static String getBookings = "Details To Get Bookings";
   static String add = "add";
 
+  //salon information
+  static String verifyEmail = "Verify Email";
+  static String verified = "Verified";
+
 }

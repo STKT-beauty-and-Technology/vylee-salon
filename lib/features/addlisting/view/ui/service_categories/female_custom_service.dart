@@ -286,7 +286,7 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                                 print(hourController.text);
                                 Navigator.of(context).popUntil(
                                     ModalRoute.withName(
-                                        PageRoutes.welcomeScreen));
+                                        PageRoutes.homeScreen));
                               }
                             },
                           ),
