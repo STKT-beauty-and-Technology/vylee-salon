@@ -140,7 +140,6 @@ class _OtpScreenState extends State<OtpScreen> {
                             padding: const EdgeInsets.only(top: 25),
                             child: Center(
                               child: SizedBox(
-                                width: SizeConfig.screenWidth! * 0.5,
                                 child: ElevatedButton(
                                   onPressed: () {
                                     Navigator.pushNamed(
@@ -160,7 +159,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 8.0, vertical: 10.0),
                                       child: Text(
-                                        Constant.verifyCode,
+                                        "SUBMIT",
                                         style: GoogleFonts.inter(
                                           color: AppColors.black,
                                           fontWeight: FontWeight.w600,

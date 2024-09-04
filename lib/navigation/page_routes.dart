@@ -22,4 +22,7 @@ class PageRoutes {
   static const String bankAccounts = "bank-accounts";
   static const String transactions = "transactions";
   static const String editProfile = "edit-profile";
+  static const String aboutUs = "about-us";
+  static const String termsConditions = "terms-conditions";
+  static const String helpAndSupport = "help-and-support";
 }

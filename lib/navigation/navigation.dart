@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vylee_partner/features/about/view/about_vylee.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/account_information.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_address.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/add_bank_account.dart';
@@ -17,10 +18,12 @@ import 'package:vylee_partner/features/addlisting/view/ui/service_categories/ser
 import 'package:vylee_partner/features/addlisting/view/ui/upload_documents.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/working_hours.dart';
+import 'package:vylee_partner/features/helpandsupport/view/help_and_support.dart';
 import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
 import 'package:vylee_partner/features/login/view/ui/otp_screen.dart';
 import 'package:vylee_partner/features/register/view/ui/register_screen.dart';
 import 'package:vylee_partner/features/started/get_start_screen.dart';
+import 'package:vylee_partner/features/terms/view/terms_and_conditions.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 
 import '../features/splash/view/ui/splash_screen.dart';
@@ -137,6 +140,18 @@ class Navigation {
       case PageRoutes.editProfile:
         return MaterialPageRoute(
             settings: routeSettings, builder: (context) => const EditProfile());
+      case PageRoutes.aboutUs:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const AboutVylee());
+      case PageRoutes.termsConditions:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const TermsAndConditions());
+      case PageRoutes.helpAndSupport:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => const HelpAndSupport());
     }
     return null;
     }

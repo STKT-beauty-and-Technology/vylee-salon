@@ -116,12 +116,23 @@ class _AccountInformationState extends State<AccountInformation> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("Business Verification",
-                                      style: GoogleFonts.inter(
-                                          color: AppColors.appViolet,
-                                          fontWeight: FontWeight.w500,
-                                          textStyle:
+                                  Row(
+                                    children: [
+                                      Text("Business Verification",
+                                          style: GoogleFonts.inter(
+                                              color: AppColors.appViolet,
+                                              fontWeight: FontWeight.w500,
+                                              textStyle:
+                                                  const TextStyle(fontSize: 15))),
+                                      Text("*",
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.inter(
+                                              color: AppColors.red,
+                                              fontWeight: FontWeight.w500,
+                                              textStyle:
                                               const TextStyle(fontSize: 15))),
+                                    ],
+                                  ),
                                   Text("Complete your kYC to start earn money.",
                                       style: GoogleFonts.inter(
                                           color: AppColors.black,
@@ -171,12 +182,23 @@ class _AccountInformationState extends State<AccountInformation> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text("Bank Details",
-                                      style: GoogleFonts.inter(
-                                          color: AppColors.appViolet,
-                                          fontWeight: FontWeight.w500,
-                                          textStyle:
+                                  Row(
+                                    children: [
+                                      Text("Bank Details",
+                                          style: GoogleFonts.inter(
+                                              color: AppColors.appViolet,
+                                              fontWeight: FontWeight.w500,
+                                              textStyle:
+                                                  const TextStyle(fontSize: 15))),
+                                      Text("*",
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.inter(
+                                              color: AppColors.red,
+                                              fontWeight: FontWeight.w500,
+                                              textStyle:
                                               const TextStyle(fontSize: 15))),
+                                    ],
+                                  ),
                                   Text(
                                       "this account  is used to Facilitate all your",
                                       style: GoogleFonts.inter(
@@ -238,13 +260,24 @@ class _AccountInformationState extends State<AccountInformation> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Payment History",
-                                    textAlign: TextAlign.start,
-                                    style: GoogleFonts.inter(
-                                        color: AppColors.appViolet,
-                                        fontWeight: FontWeight.w500,
-                                        textStyle:
+                                Row(
+                                  children: [
+                                    Text("Payment History",
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.inter(
+                                            color: AppColors.appViolet,
+                                            fontWeight: FontWeight.w500,
+                                            textStyle:
+                                                const TextStyle(fontSize: 15))),
+                                    Text("*",
+                                        textAlign: TextAlign.start,
+                                        style: GoogleFonts.inter(
+                                            color: AppColors.red,
+                                            fontWeight: FontWeight.w500,
+                                            textStyle:
                                             const TextStyle(fontSize: 15))),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -265,27 +298,35 @@ class _AccountInformationState extends State<AccountInformation> {
                             onPressed: () {
                               if (mounted) {
                                 Navigator.of(context)
-                                    .pushNamed(PageRoutes.editProfile);
+                                    .pushNamed(PageRoutes.galleryPage);
                               }
                             },
                             frontIconSpacing: 20,
-                            trailingIconSpacing: 110,
+                            trailingIconSpacing: 70,
                             bgcolor: const Color(0xffF6EAF9),
-                            frontIcon: const CircleAvatar(
-                              backgroundColor: AppColors.white,
-                              child: Icon(Icons.person),
+                            frontIcon: const Icon(
+                              Icons.image,
+                              size: 30,
+                              color: AppColors.black,
                             ),
-                            child: Column(
+                            child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Edit Profile",
+                                Text("Edit shop photo and video",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.appViolet,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                            const TextStyle(fontSize: 15))),
+                                        const TextStyle(fontSize: 15))),
+                                Text("*",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.red,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                        const TextStyle(fontSize: 15))),
                               ],
                             ),
                           ),
@@ -303,7 +344,159 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.salonInformation);
+                              }
+                            },
+                            frontIconSpacing: 20,
+                            trailingIconSpacing: 70,
+                            bgcolor: const Color(0xffF6EAF9),
+                            frontIcon: const Icon(
+                              Icons.info_outline,
+                              size: 30,
+                              color: AppColors.black,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Saloon Details",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.appViolet,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                        const TextStyle(fontSize: 15))),
+                                Text("*",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.red,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                        const TextStyle(fontSize: 15))),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    width: SizeConfig.screenWidth! * 0.9,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: SizeConfig.screenWidth! * 0.9,
+                          height: 70,
+                          child: CustomButton(
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.workingHours);
+                              }
+                            },
+                            frontIconSpacing: 20,
+                            trailingIconSpacing: 70,
+                            bgcolor: const Color(0xffF6EAF9),
+                            frontIcon: const Icon(
+                              Icons.watch_later_outlined,
+                              size: 30,
+                              color: AppColors.black,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Working Hours",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.appViolet,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                        const TextStyle(fontSize: 15))),
+                                Text("*",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.red,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                        const TextStyle(fontSize: 15))),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    width: SizeConfig.screenWidth! * 0.9,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: SizeConfig.screenWidth! * 0.9,
+                          height: 70,
+                          child: CustomButton(
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.addAddress);
+                              }
+                            },
+                            frontIconSpacing: 20,
+                            trailingIconSpacing: 70,
+                            bgcolor: const Color(0xffF6EAF9),
+                            frontIcon: const Icon(
+                              Icons.pin_drop_outlined,
+                              size: 30,
+                              color: AppColors.black,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Saloon Address",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.appViolet,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                        const TextStyle(fontSize: 15))),
+                                Text("*",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.inter(
+                                        color: AppColors.red,
+                                        fontWeight: FontWeight.w500,
+                                        textStyle:
+                                        const TextStyle(fontSize: 15))),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  SizedBox(
+                    width: SizeConfig.screenWidth! * 0.9,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: SizeConfig.screenWidth! * 0.9,
+                          height: 70,
+                          child: CustomButton(
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.termsConditions);
+                              }
+                            },
                             frontIconSpacing: 20,
                             trailingIconSpacing: 35,
                             bgcolor: const Color(0xffF6EAF9),
@@ -339,7 +532,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.helpAndSupport);
+                              }
+                            },
                             frontIconSpacing: 20,
                             trailingIconSpacing: 70,
                             bgcolor: const Color(0xffF6EAF9),
@@ -412,7 +610,12 @@ class _AccountInformationState extends State<AccountInformation> {
                           width: SizeConfig.screenWidth! * 0.9,
                           height: 70,
                           child: CustomButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.aboutUs);
+                              }
+                            },
                             frontIconSpacing: 20,
                             trailingIconSpacing: 80,
                             bgcolor: const Color(0xffF6EAF9),

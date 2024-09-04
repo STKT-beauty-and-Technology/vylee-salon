@@ -33,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
               break;
             case 1:
               //navigate to add listings
-              Navigator.of(context).pushNamed(PageRoutes.addAddress);
+              Navigator.of(context).pushNamed(PageRoutes.serviceCategories);
               break;
             case 2:
               //navigate to profile
@@ -70,7 +70,7 @@ class WelcomeScreen extends StatelessWidget {
                   height: 30,
                 ),
               ),
-              label: "Add Listings"),
+              label: "manage Services"),
           BottomNavigationBarItem(
               icon: Container(
                 width: 50,

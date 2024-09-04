@@ -30,5 +30,7 @@ class ImagePath {
       "asset/images/welcome_page/add_listing_icon.png";
   static const bookingsIcon = "asset/images/welcome_page/bookings_icon.png";
   static const editProfile = "asset/images/edit_profile/";
+  static const atSymbol = "asset/images/at_symbol2.svg/";
+  static const callSymbol = "asset/images/call_symbol.svg/";
 
 }
