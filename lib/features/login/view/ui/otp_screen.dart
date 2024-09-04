@@ -161,7 +161,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 8.0, vertical: 10.0),
                                       child: Text(
-                                        "SUBMIT",
+                                        Constant.submit,
                                         style: GoogleFonts.inter(
                                           color: AppColors.black,
                                           fontWeight: FontWeight.w600,
