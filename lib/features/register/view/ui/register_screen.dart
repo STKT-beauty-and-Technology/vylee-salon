@@ -9,7 +9,8 @@ import 'package:vylee_partner/themes/app_colors.dart';
 import 'package:vylee_partner/utilities/string.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+  const RegisterScreen({super.key, this.mobileNumber});
+  final String? mobileNumber;
 
   @override
   State<RegisterScreen> createState() => _State();
@@ -21,6 +22,15 @@ class _State extends State<RegisterScreen> {
   final TextEditingController salonNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+
+  @override
+  void initState() {
+    setState(() {
+      phoneController.text = widget.mobileNumber ?? "";
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +58,7 @@ class _State extends State<RegisterScreen> {
               const SizedBox(
                 height: 15,
               ),
-               Text(
+              Text(
                 Constant.vendorRegister,
                 style: const TextStyle(
                     color: AppColors.appViolet,
@@ -66,31 +76,38 @@ class _State extends State<RegisterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       Row(
+                      Row(
                         children: [
                           Text(
                             Constant.fieldsMarked,
                           ),
-                          const Text(" * ", style: TextStyle(color: AppColors.red)),
+                          const Text(" * ",
+                              style: TextStyle(color: AppColors.red)),
                           Text(Constant.areMandatory),
                         ],
                       ),
                       RegisterTitleField(
                         controller: nameController,
                         title: Constant.fullName,
+                        isMandatory: true,
                       ),
                       RegisterTitleField(
                         controller: salonNameController,
                         title: Constant.salonName,
+                        isMandatory: true,
                       ),
-                      RegisterTitleField(
-                        controller: emailController,
-                        title: Constant.email,
-                      ),
+
                       RegisterTitleField(
                         controller: phoneController,
                         title: Constant.phone,
+                        isMandatory: true,
                         inputType: const TextInputType.numberWithOptions(),
+                      ),
+                      RegisterTitleField(
+                        controller: emailController,
+                        title: Constant.mail,
+                        isMandatory: false,
+                        inputType: TextInputType.emailAddress,
                       ),
                       const SizedBox(height: 30),
                       Center(
@@ -99,7 +116,7 @@ class _State extends State<RegisterScreen> {
                             _formKey.currentState!.validate();
                             if (mounted) {
                               Navigator.of(context).pushNamed(
-                                  PageRoutes.welcomeScreen,
+                                  PageRoutes.homeScreen,
                                   arguments: {
                                     Constant.name: salonNameController.text
                                   });
@@ -110,11 +127,11 @@ class _State extends State<RegisterScreen> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8)),
                               elevation: 0),
-                          child:  Padding(
+                          child: Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 12.0, vertical: 10.0),
-                              child:Text(
-                                Constant.signUp,
+                              child: Text(
+                                Constant.submit,
                                 style: const TextStyle(
                                     color: AppColors.white, fontSize: 22),
                               )),

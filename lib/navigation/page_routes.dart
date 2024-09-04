@@ -4,6 +4,7 @@ class PageRoutes {
   static const String getStarted = "getStarted";
   static const String otpScreen = "otp-screen";
   static const String registrationScreen = "registration-screen";
+  static const String homeScreen = "home-screen";
   static const String welcomeScreen = "welcome-screen";
   static const String addAddress = "add-address";
   static const String salonInformation = "salon-information";

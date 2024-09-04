@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -146,6 +145,9 @@ class _OtpScreenState extends State<OtpScreen> {
                                     Navigator.pushNamed(
                                       context,
                                       PageRoutes.registrationScreen,
+                                        arguments: {
+                                          "mobileNumber": widget.mobileNumber
+                                        }
                                     );
                                   },
                                   style: ElevatedButton.styleFrom(

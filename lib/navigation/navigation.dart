@@ -17,6 +17,7 @@ import 'package:vylee_partner/features/addlisting/view/ui/service_categories/ser
 import 'package:vylee_partner/features/addlisting/view/ui/upload_documents.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/working_hours.dart';
+import 'package:vylee_partner/features/home/view/ui/home_page.dart';
 import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
 import 'package:vylee_partner/features/login/view/ui/otp_screen.dart';
 import 'package:vylee_partner/features/register/view/ui/register_screen.dart';
@@ -49,11 +50,13 @@ class Navigation {
       case PageRoutes.registrationScreen:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => const RegisterScreen());
-      case PageRoutes.welcomeScreen:
+            builder: (context) => RegisterScreen(
+                mobileNumber:
+                    (arguments as Map<String, dynamic>)["mobileNumber"]));
+      case PageRoutes.homeScreen:
         return MaterialPageRoute(
             settings: routeSettings,
-            builder: (context) => WelcomeScreen(
+            builder: (context) => HomePage(
                   name: (arguments as Map<String, dynamic>?)?["name"],
                 ));
       case PageRoutes.addAddress:

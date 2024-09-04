@@ -7,11 +7,13 @@ class RegisterTitleField extends StatelessWidget {
       {super.key,
       required this.controller,
       required this.title,
+      required this.isMandatory,
       this.inputType});
 
   final TextEditingController controller;
   final String title;
   final TextInputType? inputType;
+  final bool isMandatory;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,10 @@ class RegisterTitleField extends StatelessWidget {
                   color: AppColors.black,
                   fontWeight: FontWeight.w400,
                   fontSize: 15),
-              children: const [
-                TextSpan(text: " *", style: TextStyle(color: AppColors.red))
+              children: [
+                TextSpan(
+                    text: isMandatory ? " *" : "",
+                    style: const TextStyle(color: AppColors.red))
               ]),
         ),
         const SizedBox(

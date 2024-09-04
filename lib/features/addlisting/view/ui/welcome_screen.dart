@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
+import 'package:vylee_partner/utilities/string.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key, required this.name});
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen(
+      {super.key, required this.name, required this.addOnPressed});
 
   final String name;
+  final Function addOnPressed;
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  int pageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,105 +29,42 @@ class WelcomeScreen extends StatelessWidget {
           icon: const Icon(
             Icons.circle_notifications_outlined,
             fill: 0.1,
-            weight: 0.1,
+            weight: 0.01,
+            color: Color.fromARGB(255, 144, 140, 140),
             size: 40,
           )),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: AppColors.black,
-        selectedItemColor: AppColors.black,
-        backgroundColor: Colors.grey.shade300,
-        onTap: (value) {
-          switch (value) {
-            case 0:
-              //navigate to bookings
-              break;
-            case 1:
-              //navigate to add listings
-              Navigator.of(context).pushNamed(PageRoutes.addAddress);
-              break;
-            case 2:
-              //navigate to profile
-              Navigator.of(context).pushNamed(PageRoutes.accountInformation);
-              break;
-            default:
-          }
-        },
-        items: [
-          BottomNavigationBarItem(
-              icon: Container(
-                width: 50,
-                margin: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Image.asset(
-                  ImagePath.bookingsIcon,
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              label: "Bookings"),
-          BottomNavigationBarItem(
-              icon: Container(
-                width: 50,
-                margin: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Image.asset(
-                  ImagePath.addListingIcon,
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              label: "Add Listings"),
-          BottomNavigationBarItem(
-              icon: Container(
-                width: 50,
-                margin: const EdgeInsets.all(6),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Image.asset(
-                  ImagePath.profileIcon,
-                  width: 30,
-                  height: 30,
-                ),
-              ),
-              label: "Profile"),
-        ],
-      ),
       body: SizedBox(
         width: SizeConfig.screenWidth,
         height: SizeConfig.screenHeight,
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const Spacer(flex: 2),
-              const Text(
-                "WELCOME",
-                style: TextStyle(
-                  color: AppColors.appViolet,
-                  fontSize: 40,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
+              // const Spacer(flex: 2),
+              // const Text(
+              //   "WELCOME",
+              //   style: TextStyle(
+              //     color: AppColors.appViolet,
+              //     fontSize: 40,
+              //     fontWeight: FontWeight.w400,
+              //   ),
+              // ),
+              const SizedBox(height: 60),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(right: 10),
-                    padding: const EdgeInsets.only(top: 10),
-                    width: 40,
-                    child: const Divider(
-                      color: AppColors.appViolet,
-                      thickness: 2,
-                    ),
-                  ),
+                  // Container(
+                  //   margin: const EdgeInsets.only(right: 10),
+                  //   padding: const EdgeInsets.only(top: 10),
+                  //   width: 40,
+                  //   child: const Divider(
+                  //     color: AppColors.appViolet,
+                  //     thickness: 2,
+                  //   ),
+                  // ),
                   Text(
-                    name.toUpperCase(),
+                    widget.name.toUpperCase(),
                     style: GoogleFonts.inter(
                         textStyle: const TextStyle(
                           color: AppColors.appViolet,
@@ -192,7 +140,33 @@ class WelcomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
+              Text(Constant.addDetails.toUpperCase(),
+                  style: const TextStyle(
+                      color: AppColors.appPurple2,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)),
+              Text(Constant.getBookings.toUpperCase(),
+                  style: const TextStyle(
+                      color: AppColors.appPurple2,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500)),
               const Spacer(flex: 1),
+              SizedBox(
+                width: SizeConfig.screenWidth! * 0.45,
+                height: 55,
+                child: CustomButton(
+                  bgcolor: AppColors.appPurple,
+                  text: Constant.add.toUpperCase(),
+                  borderRadius: 0,
+                  textStyle: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.w400),
+                  onPressed: () {
+                    widget.addOnPressed();
+                  },
+                ),
+              ),
+              const Spacer(flex: 2),
             ],
           ),
         ),

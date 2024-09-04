@@ -19,6 +19,7 @@ class Constant {
   static String closingHours=  "Closing Time";
   static String save=  "SAVE";
   static String cont=  "CONTINUE";
+  //registration:
   static String vendorRegister=  "VENDOR REGISTRATION";
   static String fieldsMarked=  "Fields marked with";
   static String areMandatory=  "are Mandatory";
@@ -26,13 +27,17 @@ class Constant {
   static String salonName=  "Salon Name";
   static String email=  "Email Address";
   static String phone=  "Phone Number";
-  static String name=  "name";
-  static String signUp=  "SIGN UP";
+  static String name = "name";
   static String otpVerify=  "OTP VERIFICATION";
   static String submit=  "SUBMIT";
   static String mail=  "Email";
   static String mobileNumber=  "mobileNumber";
   static String continu=  "CONTINUE";
   static String getStarted=  "GET STARTED";
+
+  //welcome:
+  static String addDetails = "Add Bank, Services, and Business";
+  static String getBookings = "Details To Get Bookings";
+  static String add = "add";
 
 }
