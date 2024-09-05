@@ -311,7 +311,7 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                       ),
                     ),
                     const SizedBox(
-                      height: 100,
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

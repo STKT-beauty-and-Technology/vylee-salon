@@ -147,7 +147,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -214,7 +214,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -285,7 +285,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -336,7 +336,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -366,7 +366,7 @@ class _AccountInformationState extends State<AccountInformation> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Saloon Details",
+                                Text("Salon Details",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.appViolet,
@@ -387,7 +387,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -438,7 +438,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -489,7 +489,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -530,7 +530,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -572,7 +572,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -608,7 +608,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: SizeConfig.screenWidth! * 0.9,
                     child: Column(
@@ -649,7 +649,7 @@ class _AccountInformationState extends State<AccountInformation> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 30),
                   Center(
                     child: SizedBox(
                       height: SizeConfig.screenHeight! * 0.055,

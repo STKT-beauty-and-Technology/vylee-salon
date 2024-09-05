@@ -106,7 +106,7 @@ class _State extends State<RegisterScreen> {
                       RegisterTitleField(
                         controller: emailController,
                         title: Constant.mail,
-                        isMandatory: false,
+                        isMandatory: true,
                         inputType: TextInputType.emailAddress,
                       ),
                       const SizedBox(height: 30),

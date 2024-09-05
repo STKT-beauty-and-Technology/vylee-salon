@@ -35,11 +35,13 @@ class Constant {
   static String continu=  "CONTINUE";
   static String getStarted=  "GET STARTED";
   static String aboutVylee=  "ABOUT VYLEE";
+  //About us
   static String aboutUs1=  "Our platform serves as a sophisticated bridge, connecting top-tier salons with customers who seek unparalleled quality and luxurious experiences.";
   static String aboutUs2=  "At VYLEE, we understand that the essence of a luxury salon experience lies in the details. That's why we've built a platform that not only highlights the unique offerings of each salon but also makes it effortless for clients to discover, book, and enjoy these exclusive services.";
   static String aboutUs3=  "For clients, VYLEE offers an opportunity to showcase their exquisite services to a broader audience, attracting customers who appreciate and seek the highest standards of beauty care. Our platform provides a seamless interface for salons to manage appointments, promote special offers, and engage with a clientele that values luxury and refinement.";
   static String aboutUs4=  "For customers, VYLEE is the ultimate destination to explore a curated selection of luxury salons renowned for their vibrant, youthful, luminous, elegant, and exotic beauty services. Whether preparing for a special event or indulging in routine self-care, clients can trust that every salon featured on VYLEE meets our rigorous standards of excellence. ";
   static String termsAndConditions=  "TERMS & CONDITIONS";
+  //Terms and conditions
   static String terms1=  "VYLEE Salon operates an online platform that connects customers with salons for booking appointments. VYLEE Salon will provide the Salon with customers who book appointments through the VYLEE Salon app and website.";
   static String terms2=  "The Salon must meet VYLEE Salon’s standards for quality and reputation. VYLEE Salon reserves the right to reject or remove any Salon from its platform that does not meet these standards";
   static String terms3=  "VYLEE Salon will transfer payments to the Salon for services booked through the VYLEE Salon website once a week, on one certain day. VYLEE Salon will retain a certain commission of the total amount paid by the customer for services rendered by the Salon through VYLEE Salon's platform.";

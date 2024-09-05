@@ -63,13 +63,13 @@ class _GetStartedState extends State<GetStarted> {
                     child: Center(
                         child: Image.asset(
                       ImagePath.vyleeTextLogo,
-                      height: 80,
-                      width: SizeConfig.screenWidth! * 0.7,
+                      height: 50,
+                      width: SizeConfig.screenWidth! * 0.55,
                       fit: BoxFit.fill,
                     )),
                   ),
                   SizedBox(
-                    width: SizeConfig.screenWidth! * 0.4,
+                    width: SizeConfig.screenWidth! * 0.5,
                     height: 50,
                     child: CustomButton(
                       text: Constant.getStarted,
