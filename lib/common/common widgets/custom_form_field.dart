@@ -11,6 +11,7 @@ class CustomFormField extends StatelessWidget {
       required this.width,
       required this.controller,
       this.onChanged,
+      this.validator,
       this.inputFormatters,
       this.isMultiline,
       this.keyboardType,
@@ -18,6 +19,7 @@ class CustomFormField extends StatelessWidget {
       this.prefixText,
       this.prefixTextStyle,
       this.hintTextStyle,
+      this.isRequired,
       this.borderSide});
   final bool isEnabled;
   final TextEditingController controller;
@@ -27,6 +29,7 @@ class CustomFormField extends StatelessWidget {
   final double borderRadius = 10;
   final double contentPadding = 10;
   final Function? onChanged;
+  final Function? validator;
   final List<TextInputFormatter>? inputFormatters;
   final bool? isMultiline;
   final TextInputType? keyboardType;
@@ -35,6 +38,7 @@ class CustomFormField extends StatelessWidget {
   final TextStyle? prefixTextStyle;
   final TextStyle? hintTextStyle;
   final BorderSide? borderSide;
+  final bool? isRequired;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +48,19 @@ class CustomFormField extends StatelessWidget {
       child: TextFormField(
         autocorrect: true,
         controller: controller,
+        validator: validator != null
+            ? (value) {
+                validator!();
+                return null;
+              }
+            : (isRequired == true
+                ? (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'This field is required';
+                    }
+                    return null;
+                  }
+                : null),
         textAlign: TextAlign.start,
         textInputAction: isMultiline == true ? null : TextInputAction.next,
         inputFormatters: inputFormatters,
@@ -90,8 +107,7 @@ class CustomFormField extends StatelessWidget {
           fillColor: isEnabled ? AppColors.white : AppColors.gray600,
           filled: true,
           enabledBorder: OutlineInputBorder(
-            borderSide:
-                 borderSide ??
+            borderSide: borderSide ??
                 const BorderSide(color: AppColors.appViolet, width: 2.5),
             borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
           ),

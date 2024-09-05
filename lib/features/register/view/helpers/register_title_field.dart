@@ -42,6 +42,7 @@ class RegisterTitleField extends StatelessWidget {
         CustomFormField(
             isEnabled: true,
             height: 60,
+            isRequired: isMandatory,
             keyboardType: inputType,
             width: double.infinity,
             controller: controller),
