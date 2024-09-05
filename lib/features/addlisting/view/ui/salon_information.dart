@@ -9,7 +9,7 @@ import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
-import 'package:vylee_partner/features/addlisting/view%20model/helpers/listing_view_model.dart';
+import 'package:vylee_partner/features/addlisting/view%20model/listing_view_model.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 import 'package:vylee_partner/utilities/string.dart';

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/features/register/view%20model/register_view_model.dart';
 import 'package:vylee_partner/features/register/view/helpers/register_title_field.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
@@ -16,7 +18,7 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _State();
 }
 
-class _State extends State<RegisterScreen> {
+class _State extends State<RegisterScreen> with RegisterViewModel {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController salonNameController = TextEditingController();
@@ -112,15 +114,27 @@ class _State extends State<RegisterScreen> {
                       const SizedBox(height: 30),
                       Center(
                         child: ElevatedButton(
-                          onPressed: () {
-                            _formKey.currentState!.validate();
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              final isSuccess = await registerVendor(
+                                  fullName: nameController.text,
+                                  salonName: salonNameController.text,
+                                  phoneNumber: int.parse(phoneController.text),
+                                  email: emailController.text);
+
+                              Fluttertoast.showToast(
+                                  msg: isSuccess
+                                      ? "Register Success."
+                                      : "Register Failed");
                             if (mounted) {
-                              Navigator.of(context).pushNamed(
-                                  PageRoutes.homeScreen,
-                                  arguments: {
-                                    Constant.name: salonNameController.text
-                                  });
+                                Navigator.of(context).pushNamed(
+                                    PageRoutes.homeScreen,
+                                    arguments: {
+                                      Constant.name: salonNameController.text
+                                    });
                             }
+                            }
+                          
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.appViolet,

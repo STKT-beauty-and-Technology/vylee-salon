@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/account_information.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/service_category.dart';
-import 'package:vylee_partner/features/home/view%20model/helpers/home_view_model.dart';
+import 'package:vylee_partner/features/home/view%20model/home_view_model.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 class HomePage extends StatefulWidget {
