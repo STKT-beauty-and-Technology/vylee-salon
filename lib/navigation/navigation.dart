@@ -16,6 +16,8 @@ import 'package:vylee_partner/features/addlisting/view/ui/transactions.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/service_categories/service_category.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/upload_documents.dart';
 import 'package:vylee_partner/features/addlisting/view/ui/working_hours.dart';
+import 'package:vylee_partner/features/bookings/view/ui/booking_details.dart';
+import 'package:vylee_partner/features/bookings/view/ui/free_slots.dart';
 import 'package:vylee_partner/features/home/view/ui/home_page.dart';
 import 'package:vylee_partner/features/helpandsupport/view/help_and_support.dart';
 import 'package:vylee_partner/features/login/view/ui/login_screen.dart';
@@ -59,6 +61,18 @@ class Navigation {
             settings: routeSettings,
             builder: (context) => HomePage(
                   name: (arguments as Map<String, dynamic>?)?["name"],
+                ));
+      case PageRoutes.freeSlots:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => FreeSlots(
+                  date: (arguments as Map<String, dynamic>?)?["date"],
+                ));
+      case PageRoutes.bookingDetails:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (context) => BookingDetails(
+                  bookingId: (arguments as Map<String, dynamic>?)?["bookingId"],
                 ));
       case PageRoutes.addAddress:
         return MaterialPageRoute(

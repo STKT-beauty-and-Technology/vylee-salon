@@ -26,4 +26,6 @@ class PageRoutes {
   static const String aboutUs = "about-us";
   static const String termsConditions = "terms-conditions";
   static const String helpAndSupport = "help-and-support";
+  static const String freeSlots = "free-slots";
+  static const String bookingDetails = "booking-details";
 }
