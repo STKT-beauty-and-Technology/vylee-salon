@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/common/utitlties/common_utilities.dart';
-import 'package:vylee_partner/features/addlisting/model/address_request.dart';
-import 'package:vylee_partner/features/addlisting/view%20model/cubits/address_cubit.dart';
-import 'package:vylee_partner/features/addlisting/view%20model/cubits/address_state.dart';
+import 'package:vylee_partner/features/salon_details/model/address_request.dart';
+import 'package:vylee_partner/features/salon_details/view_model/cubits/address_cubit.dart';
+import 'package:vylee_partner/features/salon_details/view_model/cubits/address_state.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 
 import '../../../../common/common widgets/custom_appbar.dart';
@@ -209,7 +209,6 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                           ),
                                         );
                                   }
-                               
                                 },
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.appViolet,

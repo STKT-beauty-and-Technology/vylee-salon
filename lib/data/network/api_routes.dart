@@ -8,8 +8,8 @@ class ApiRoutes {
   static const register = "vendor/new/registration";
   static const updateAddress = "vendor/update/address";
   static String checkMobileNumber(data) => "validate/mobile/$data";
-  static const shopGalleryImages = "shop/gallery/upload/images";
-  static const shopGalleryVideos = "shop/gallery/upload/videos";
+  static const addGalleryImages = "shop/gallery/upload/images";
+  static const addGalleryVideos = "shop/gallery/upload/videos";
   static const addCategory = "listing-service/add/category";
   static String addServiceToCategory(data) =>
       "listing-service/add-service/$data";

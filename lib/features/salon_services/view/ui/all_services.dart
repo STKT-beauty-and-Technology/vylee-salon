@@ -88,7 +88,6 @@ class _AllServicesState extends State<AllServices> {
                       ),
                     ],
                   )
-
                 ],
               ),
               const SizedBox(height: 60),

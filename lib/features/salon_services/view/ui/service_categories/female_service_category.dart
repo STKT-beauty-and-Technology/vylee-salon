@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
-import 'package:vylee_partner/features/addlisting/view/helpers/female_service_category_card.dart';
+import 'package:vylee_partner/features/salon_services/view/helpers/female_service_category_card.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
-
 
 class FemaleServiceCategory extends StatefulWidget {
   const FemaleServiceCategory({super.key, required this.gender});
@@ -57,14 +56,14 @@ class _FemaleServiceCategoryState extends State<FemaleServiceCategory> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back_ios_rounded,
-                      size: 25,
-                      weight: 100,
-                      color: AppColors.appViolet,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios_rounded,
+                    size: 25,
+                    weight: 100,
+                    color: AppColors.appViolet,
                   ),
                 ),
                 Text(

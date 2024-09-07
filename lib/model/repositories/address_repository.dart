@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:vylee_partner/data/network/api_routes.dart';
 import 'package:vylee_partner/data/network/api_service.dart';
-import 'package:vylee_partner/features/addlisting/model/address_request.dart';
-import 'package:vylee_partner/features/addlisting/model/address_response.dart';
+import 'package:vylee_partner/features/salon_details/model/address_request.dart';
+import 'package:vylee_partner/features/salon_details/model/address_response.dart';
 
 class AddressRepository {
   final ApiService apiService = ApiService();

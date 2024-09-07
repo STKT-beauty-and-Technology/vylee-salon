@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:vylee_partner/features/addlisting/model/address_request.dart';
-import 'package:vylee_partner/features/addlisting/view%20model/cubits/address_state.dart';
+import 'package:vylee_partner/features/salon_details/model/address_request.dart';
+import 'package:vylee_partner/features/salon_details/view_model/cubits/address_state.dart';
 import 'package:vylee_partner/model/repositories/address_repository.dart';
 
 class AddressCubit extends Cubit<AddressState> {
