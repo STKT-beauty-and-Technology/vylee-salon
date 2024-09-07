@@ -1,5 +1,6 @@
 class Constant {
   static String appName = "Vylee\nsalon";
+  static String tokenName = "jwt-partner";
   //login page:
   static String enterMobileNumber = "Enter Mobile Number";
   static String byContinuing = "By Continuing, you agree to our";
