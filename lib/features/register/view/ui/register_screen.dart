@@ -29,6 +29,7 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
   final TextEditingController salonNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -115,8 +116,20 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                         RegisterTitleField(
                           controller: emailController,
                           title: Constant.mail,
-                          isMandatory: false,
+                          isMandatory: true,
                           inputType: TextInputType.emailAddress,
+                        ),
+                        RegisterTitleField(
+                          controller: passwordController,
+                          title: Constant.password,
+                          isMandatory: true,
+                          inputType: TextInputType.visiblePassword,
+                        ),
+                        RegisterTitleField(
+                          controller: emailController,
+                          title: Constant.confirmPassword,
+                          isMandatory: true,
+                          inputType: TextInputType.visiblePassword,
                         ),
                         const SizedBox(height: 30),
                         Center(

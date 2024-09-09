@@ -1,5 +1,5 @@
 class ApiRoutes {
-  static const String devUrl = "http://54.172.41.93:9090/";
+  static const String devUrl = "http://54.224.210.106:9090/";
   static const String preprodUrl = "";
   static const String prodUrl = "";
 

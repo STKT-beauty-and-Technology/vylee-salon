@@ -2,10 +2,13 @@ class Constant {
   static String appName = "Vylee\nsalon";
   static String tokenName = "jwt-partner";
   //login page:
-  static String enterMobileNumber = "Enter Mobile Number";
+  static String enterUsername = "Enter Username";
   static String byContinuing = "By Continuing, you agree to our";
   static String termsPrivacy = "Terms of Services, Privacy & Content Policy.";
-  static String getOtp = "Get OTP";
+  static String login = "LOGIN";
+  static String dontHaveAccount = "Don't have an Account?";
+  static String signUp = "Click Here";
+  static String enterPassword = "Enter Password";
   //OTP page:
   static String codeNotReceived = "Didn’t receive code?";
   static String resendCode = "Resend code";
@@ -35,6 +38,9 @@ class Constant {
   static String mobileNumber = "mobileNumber";
   static String continu = "CONTINUE";
   static String getStarted = "GET STARTED";
+  static String password = "Enter Password";
+  static String confirmPassword = "Confirm Password";
+  //About Us
   static String aboutVylee = "ABOUT VYLEE";
   static String aboutUs1 =
       "Our platform serves as a sophisticated bridge, connecting top-tier salons with customers who seek unparalleled quality and luxurious experiences.";

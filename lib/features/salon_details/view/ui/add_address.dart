@@ -200,6 +200,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                                         .read<AddressCubit>()
                                         .saveAddress(
                                           AddressRequest(
+                                            vendorId: 8,
                                             vendorAddress:
                                                 addressController.text,
                                             pincode: int.tryParse(

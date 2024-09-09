@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             fit: BoxFit.contain,
                           ),
                         ),
-                        const SizedBox(height: 60),
+                        const SizedBox(height: 45),
                         SvgPicture.asset(ImagePath.avatarIcon),
                         const SizedBox(
                           height: 50,
@@ -88,24 +88,36 @@ class _LoginScreenState extends State<LoginScreen> {
                                 controller: phoneController,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
-                                    hintText: Constant.enterMobileNumber,
+                                    hintText: Constant.enterUsername,
                                     fillColor: AppColors.white,
                                     hintStyle: GoogleFonts.inter(
                                         color: AppColors.black, fontSize: 15),
                                     border: InputBorder.none),
                               ),
                             ),
-                            Positioned(
-                              top: 16,
-                              left: 10,
-                              child: Text(
-                                "+ 91  ",
-                                style: GoogleFonts.inter(
-                                    color: AppColors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400),
+                            Container(
+                              width: SizeConfig.screenWidth! * 0.7,
+                              height: 55,
+                              alignment: Alignment.center,
+                              padding:
+                              const EdgeInsets.only(left: 60, bottom: 8),
+                              decoration: BoxDecoration(
+                                color: AppColors.white,
+                                border: Border.all(
+                                    color: AppColors.gray600, width: 3),
+                                borderRadius: BorderRadius.circular(15),
                               ),
-                            )
+                              child: TextFormField(
+                                controller: phoneController,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                    hintText: Constant.enterUsername,
+                                    fillColor: AppColors.white,
+                                    hintStyle: GoogleFonts.inter(
+                                        color: AppColors.black, fontSize: 15),
+                                    border: InputBorder.none),
+                              ),
+                            ),
                           ],
                         ),
                         Padding(
@@ -125,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.pushNamed(
-                                          context, PageRoutes.otpScreen,
+                                          context, PageRoutes.bookingDetails,
                                           arguments: {
                                             Constant.mobileNumber:
                                                 phoneController.text
@@ -141,7 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8.0, vertical: 10.0),
                                         child: Text(
-                                          Constant.getOtp,
+                                          Constant.login,
                                           style: GoogleFonts.inter(
                                             color: AppColors.black,
                                             fontWeight: FontWeight.w700,
@@ -154,7 +166,40 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 100),
+                        const SizedBox(height: 15),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              Constant.dontHaveAccount,
+                              style: GoogleFonts.inter(
+                                  color: AppColors.black,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14),
+                            ),
+                            const SizedBox(height: 10),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, PageRoutes.registrationScreen,
+                                    arguments: {
+                                      Constant.mobileNumber:
+                                      phoneController.text
+                                    });
+                              },
+                              child: Text(
+                                Constant.signUp,
+                                style: GoogleFonts.inter(
+                                    decoration: TextDecoration.underline,
+                                    color: AppColors.black,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 80),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
