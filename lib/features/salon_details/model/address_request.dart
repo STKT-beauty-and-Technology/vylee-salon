@@ -10,7 +10,6 @@ AddressRequest addressRequestFromJson(String str) =>
 String addressRequestToJson(AddressRequest data) => json.encode(data.toJson());
 
 class AddressRequest {
-  final int? vendorId;
   final String? fullName;
   final String? salonName;
   final String? vendorEmail;
@@ -22,7 +21,6 @@ class AddressRequest {
   final String? vensorCity;
 
   AddressRequest({
-    this.vendorId,
     this.fullName,
     this.salonName,
     this.vendorEmail,
@@ -35,7 +33,6 @@ class AddressRequest {
   });
 
   factory AddressRequest.fromJson(Map<String, dynamic> json) => AddressRequest(
-        vendorId: json["vendorId"],
         vendorAddress: json["vendorAddress"],
         vendorCountry: json["vendorCountry"],
         vendorState: json["vendorState"],
@@ -44,7 +41,6 @@ class AddressRequest {
       );
 
   Map<String, dynamic> toJson() => {
-        "vendorId": vendorId,
         "vendorAddress": vendorAddress,
         "vendorCountry": vendorCountry,
         "vendorState": vendorState,

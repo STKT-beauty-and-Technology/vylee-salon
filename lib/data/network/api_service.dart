@@ -38,13 +38,15 @@ class ApiService {
               options.method.toLowerCase() != "get") {
             int? vendorId = await VendorIdProvider.getVendorId();
             options.data[Constant.vendorId] = vendorId;
-            _logger.i("Request : ${options.data}");
+            _logger.i("Request : ");
+            _logger.i(options.data);
             return handler.next(options);
           }
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          _logger.i("Response : ${response.data}");
+          _logger.i("Response : ");
+          _logger.i(response.data);
         },
       ))
       ..add(PrettyDioLogger(
