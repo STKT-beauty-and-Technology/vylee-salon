@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vylee_partner/features/addlisting/view/ui/welcome_screen.dart';
+import 'package:vylee_partner/features/home/view/ui/welcome_screen.dart';
 import 'package:vylee_partner/features/bookings/view/ui/bookings_page.dart';
 
 mixin HomeViewModel {

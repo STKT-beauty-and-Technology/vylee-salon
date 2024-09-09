@@ -1,23 +1,28 @@
-import 'package:vylee_partner/data/remote/remote_data_provider.dart';
+import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
+import 'package:vylee_partner/data/network/api_routes.dart';
+import 'package:vylee_partner/data/network/api_service.dart';
+import 'package:vylee_partner/features/register/model/registration_request.dart';
+import 'package:vylee_partner/features/register/model/register_response.dart';
 
 class RegisterRepository {
-  Future<bool> registerVendor(
-      {required String fullName,
-      required String salonName,
-      required int phoneNumber,
-      String email = ""}) async {
-    final response = await DataProvider.postData("new/registration", {
-      "fullName": fullName,
-      "salonName": salonName,
-      "vendorEmail": email,
-      "mobileNumber": phoneNumber,
-    });
+  final ApiService apiService = ApiService();
+  final logger = Logger();
 
-    print("Registration status code: ${response.statusCode}");
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      return true;
+  Future<RegistrationResponse> registerVendor(
+      RegistrationRequest request) async {
+    try {
+      final response = await apiService.sendRequest
+          .post(ApiRoutes.register, data: request.toJson());
+
+      return RegistrationResponse.fromDioResponse(response);
+    } on DioException catch (e) {
+      logger.e(e);
+      return RegistrationResponse(
+          message: "Connection to Server failed", success: false);
+    } catch (e) {
+      logger.e(e);
+      return RegistrationResponse(message: "Error ocurred in Registration $e");
     }
-    print(response.body);
-    return false;
   }
 }

@@ -9,7 +9,7 @@ import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
-import 'package:vylee_partner/features/addlisting/view%20model/listing_view_model.dart';
+import 'package:vylee_partner/features/profile/view_model/listing_view_model.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 import 'package:vylee_partner/utilities/string.dart';
@@ -343,13 +343,12 @@ class _SalonInformationState extends State<SalonInformation>
 
                             if (checkValidation()) {
                               if (widget.isEdit != true) {
-                              Navigator.of(context)
-                                  .pushNamed(PageRoutes.workingHours);
-                            } else {
-                              Navigator.of(context).pop();
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.workingHours);
+                              } else {
+                                Navigator.of(context).pop();
+                              }
                             }
-                            }
-                           
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.appViolet,
