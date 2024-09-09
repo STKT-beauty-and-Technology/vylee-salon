@@ -1,6 +1,7 @@
 import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/common/utitlties/common_utilities.dart';
@@ -168,6 +169,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             height: 60,
                             isMultiline: false,
                             isRequired: true,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(6)
+                            ],
                             keyboardType: TextInputType.number,
                             width: double.infinity,
                             controller: pincodeController),

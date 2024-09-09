@@ -26,6 +26,7 @@ import 'package:vylee_partner/features/register/view/ui/register_screen.dart';
 import 'package:vylee_partner/features/started/get_start_screen.dart';
 import 'package:vylee_partner/features/terms/view/terms_and_conditions.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
+import 'package:vylee_partner/utilities/string.dart';
 
 import '../features/splash/view/ui/splash_screen.dart';
 
@@ -49,66 +50,68 @@ class Navigation {
             settings: routeSettings,
             builder: (context) => OtpScreen(
                 mobileNumber:
-                    (arguments as Map<String, dynamic>)["mobileNumber"]));
+                    (arguments
+                    as Map<String, dynamic>)[Constant.mobileNumber]));
       case PageRoutes.registrationScreen:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => RegisterScreen(
-                mobileNumber:
-                    (arguments as Map<String, dynamic>)["mobileNumber"]));
+                userName:
+                    (arguments as Map<String, dynamic>)[Constant.userName]));
       case PageRoutes.homeScreen:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => HomePage(
-                  name: (arguments as Map<String, dynamic>?)?["name"],
+                  name: (arguments as Map<String, dynamic>?)?[Constant.name],
                 ));
       case PageRoutes.freeSlots:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => FreeSlots(
-                  date: (arguments as Map<String, dynamic>?)?["date"],
+                  date: (arguments as Map<String, dynamic>?)?[Constant.date],
                 ));
       case PageRoutes.bookingDetails:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => BookingDetails(
-                  bookingId: (arguments as Map<String, dynamic>?)?["bookingId"],
+                  bookingId:
+                      (arguments as Map<String, dynamic>?)?[Constant.bookingId],
                 ));
       case PageRoutes.addAddress:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => AddAddressScreen(
-                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                  isEdit: (arguments as Map<String, dynamic>?)?[Constant.edit],
                 ));
       case PageRoutes.salonInformation:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => SalonInformation(
-                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                  isEdit: (arguments as Map<String, dynamic>?)?[Constant.edit],
                 ));
       case PageRoutes.workingHours:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => WorkingHours(
-                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                  isEdit: (arguments as Map<String, dynamic>?)?[Constant.edit],
                 ));
       case PageRoutes.galleryPage:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => GalleryPage(
-                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                  isEdit: (arguments as Map<String, dynamic>?)?[Constant.edit],
                 ));
       case PageRoutes.serviceCategories:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => ServiceCategory(
-                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                  isEdit: (arguments as Map<String, dynamic>?)?[Constant.edit],
                 ));
       case PageRoutes.femaleCategory:
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => FemaleServiceCategory(
-                  gender: (arguments as Map<String, dynamic>)["gender"],
+                  gender: (arguments as Map<String, dynamic>)[Constant.gender],
                 ));
       case PageRoutes.maleCategory:
         return MaterialPageRoute(
@@ -130,7 +133,7 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => AvailableSlots(
-                  isEdit: (arguments as Map<String, dynamic>?)?["edit"],
+                  isEdit: (arguments as Map<String, dynamic>?)?[Constant.edit],
                 ));
       case PageRoutes.accountInformation:
         return MaterialPageRoute(

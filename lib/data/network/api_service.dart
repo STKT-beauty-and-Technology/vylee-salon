@@ -2,12 +2,15 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:vylee_partner/data/local/jwt_provider.dart';
+import 'package:vylee_partner/data/local/vendorId_provider.dart';
 import 'package:vylee_partner/data/network/api_routes.dart';
+import 'package:vylee_partner/utilities/string.dart';
 
 class ApiService {
   final Dio _dio = Dio();
+  final _logger = Logger();
 
   ApiService._privateConstructor() {
     initApiService();
@@ -25,13 +28,23 @@ class ApiService {
     _dio.interceptors
       ..add(InterceptorsWrapper(
         onRequest: (options, handler) async {
-          String? token = await JwtProvider.getJwt();
+          // String? token = await JwtProvider.getJwt();
 
-          if (token != null) {
-            log('token $token');
-            options.headers['Authorization'] = 'Bearer $token';
+          // if (token != null) {
+          //   log('token $token');
+          //   options.headers['Authorization'] = 'Bearer $token';
+          // }
+          if (!options.path.contains("otp") &&
+              options.method.toLowerCase() != "get") {
+            int? vendorId = await VendorIdProvider.getVendorId();
+            options.data[Constant.vendorId] = vendorId;
+            _logger.i("Request : ${options.data}");
+            return handler.next(options);
           }
           return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          _logger.i("Response : ${response.data}");
         },
       ))
       ..add(PrettyDioLogger(

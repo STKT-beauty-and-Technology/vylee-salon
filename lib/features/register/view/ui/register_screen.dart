@@ -16,8 +16,8 @@ import 'package:vylee_partner/themes/app_colors.dart';
 import 'package:vylee_partner/utilities/string.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key, this.mobileNumber});
-  final String? mobileNumber;
+  const RegisterScreen({super.key, this.userName});
+  final String? userName;
 
   @override
   State<RegisterScreen> createState() => _State();
@@ -30,11 +30,13 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   void initState() {
     setState(() {
-      phoneController.text = widget.mobileNumber ?? "";
+      emailController.text = widget.userName ?? "";
     });
     super.initState();
   }
@@ -110,6 +112,7 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                         RegisterTitleField(
                           controller: phoneController,
                           title: Constant.phone,
+                          isMobile: true,
                           isMandatory: true,
                           inputType: const TextInputType.numberWithOptions(),
                         ),
@@ -122,12 +125,14 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                         RegisterTitleField(
                           controller: passwordController,
                           title: Constant.password,
+                          isMobile: true,
                           isMandatory: true,
                           inputType: TextInputType.visiblePassword,
                         ),
                         RegisterTitleField(
-                          controller: emailController,
+                          controller: confirmPasswordController,
                           title: Constant.confirmPassword,
+                          isMobile: true,
                           isMandatory: true,
                           inputType: TextInputType.visiblePassword,
                         ),
@@ -154,6 +159,12 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                               }
                               return ElevatedButton(
                                 onPressed: () async {
+                                  if (confirmPasswordController.text !=
+                                      passwordController.text) {
+                                    showToast(
+                                        "confirm password and password should be same.");
+                                    return;
+                                  }
                                   if (_formKey.currentState!.validate()) {
                                     await context
                                         .read<RegisterCubit>()
@@ -164,7 +175,6 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                                           salonName: salonNameController.text,
                                           vendorEmail: emailController.text,
                                         ));
-
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(

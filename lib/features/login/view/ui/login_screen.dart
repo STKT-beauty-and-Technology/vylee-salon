@@ -18,7 +18,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool termsAccepted = false;
-  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,8 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: TextFormField(
-                                controller: phoneController,
-                                keyboardType: TextInputType.number,
+                                controller: userNameController,
+                                keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                     hintText: Constant.enterUsername,
                                     fillColor: AppColors.white,
@@ -95,12 +96,18 @@ class _LoginScreenState extends State<LoginScreen> {
                                     border: InputBorder.none),
                               ),
                             ),
+                            
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Stack(
+                          children: [
                             Container(
                               width: SizeConfig.screenWidth! * 0.7,
                               height: 55,
                               alignment: Alignment.center,
                               padding:
-                              const EdgeInsets.only(left: 60, bottom: 8),
+                                  const EdgeInsets.only(left: 60, bottom: 8),
                               decoration: BoxDecoration(
                                 color: AppColors.white,
                                 border: Border.all(
@@ -108,16 +115,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: TextFormField(
-                                controller: phoneController,
-                                keyboardType: TextInputType.number,
+                                controller: passwordController,
+                                keyboardType: TextInputType.visiblePassword,
                                 decoration: InputDecoration(
-                                    hintText: Constant.enterUsername,
+                                    hintText: Constant.enterPassword,
                                     fillColor: AppColors.white,
                                     hintStyle: GoogleFonts.inter(
                                         color: AppColors.black, fontSize: 15),
                                     border: InputBorder.none),
                               ),
                             ),
+                            
                           ],
                         ),
                         Padding(
@@ -137,10 +145,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.pushNamed(
-                                          context, PageRoutes.bookingDetails,
+                                          context,
+                                          PageRoutes.registrationScreen,
                                           arguments: {
-                                            Constant.mobileNumber:
-                                                phoneController.text
+                                            Constant.userName:
+                                                userNameController.text
                                           });
                                     },
                                     style: ElevatedButton.styleFrom(
@@ -185,7 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     context, PageRoutes.registrationScreen,
                                     arguments: {
                                       Constant.mobileNumber:
-                                      phoneController.text
+                                          userNameController.text
                                     });
                               },
                               child: Text(

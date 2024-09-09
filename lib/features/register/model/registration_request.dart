@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+
 RegistrationRequest registrationRequestFromJson(String str) =>
     RegistrationRequest.fromJson(json.decode(str));
 
@@ -11,7 +12,6 @@ String registrationRequestToJson(RegistrationRequest data) =>
     json.encode(data.toJson());
 
 class RegistrationRequest {
-  final int? vendorId;
   final String? fullName;
   final String? salonName;
   final String? vendorEmail;
@@ -23,7 +23,6 @@ class RegistrationRequest {
   final String? vensorCity;
 
   RegistrationRequest({
-    this.vendorId,
     this.fullName,
     this.salonName,
     this.vendorEmail,
@@ -37,7 +36,6 @@ class RegistrationRequest {
 
   factory RegistrationRequest.fromJson(Map<String, dynamic> json) =>
       RegistrationRequest(
-        vendorId: json["vendorId"],
         fullName: json["fullName"],
         salonName: json["salonName"],
         vendorEmail: json["vendorEmail"],

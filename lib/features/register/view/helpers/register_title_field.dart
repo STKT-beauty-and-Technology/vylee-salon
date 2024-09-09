@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
@@ -8,12 +9,14 @@ class RegisterTitleField extends StatelessWidget {
       required this.controller,
       required this.title,
       required this.isMandatory,
+      this.isMobile,
       this.inputType});
 
   final TextEditingController controller;
   final String title;
   final TextInputType? inputType;
   final bool isMandatory;
+  final bool? isMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,12 @@ class RegisterTitleField extends StatelessWidget {
         CustomFormField(
             isEnabled: true,
             height: 60,
+            inputFormatters: isMobile == true
+                ? [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(10)
+                  ]
+                : [],
             isRequired: isMandatory,
             keyboardType: inputType,
             width: double.infinity,

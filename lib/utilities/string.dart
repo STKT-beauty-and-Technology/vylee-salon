@@ -1,6 +1,17 @@
 class Constant {
   static String appName = "Vylee\nsalon";
   static String tokenName = "jwt-partner";
+  static String vendorId = "vendorRegistrationId";
+
+//navigation parameters :
+  static String mobileNumber = "mobileNumber";
+  static String userName = "userName";
+  static String name = "name";
+  static String date = "date";
+  static String bookingId = "bookingId";
+  static String edit = "edit";
+  static String gender = "gender";
+
   //login page:
   static String enterUsername = "Enter Username";
   static String byContinuing = "By Continuing, you agree to our";
@@ -31,11 +42,9 @@ class Constant {
   static String salonName = "Salon Name";
   static String email = "Email Address";
   static String phone = "Phone Number";
-  static String name = "name";
   static String otpVerify = "OTP VERIFICATION";
   static String submit = "SUBMIT";
   static String mail = "Email";
-  static String mobileNumber = "mobileNumber";
   static String continu = "CONTINUE";
   static String getStarted = "GET STARTED";
   static String password = "Enter Password";
