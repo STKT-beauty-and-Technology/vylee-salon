@@ -64,7 +64,7 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
         body: SingleChildScrollView(
           child: SizedBox(
             width: SizeConfig.screenWidth,
-            height: SizeConfig.screenHeight! * 0.9,
+            // height: SizeConfig.screenHeight! * 0.9,
             child: Column(
               children: [
                 const SizedBox(
@@ -193,7 +193,8 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                               );
                             },
                           ),
-                        )
+                        ),
+                        const SizedBox(height: 30),
                         // Center(
                         //   child: SizedBox(
                         //    height: 40 * SizeConfig.screenHeight!,
