@@ -125,14 +125,14 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                         RegisterTitleField(
                           controller: passwordController,
                           title: Constant.password,
-                          isMobile: true,
+                          isMobile: false,
                           isMandatory: true,
                           inputType: TextInputType.visiblePassword,
                         ),
                         RegisterTitleField(
                           controller: confirmPasswordController,
                           title: Constant.confirmPassword,
-                          isMobile: true,
+                          isMobile: false,
                           isMandatory: true,
                           inputType: TextInputType.visiblePassword,
                         ),

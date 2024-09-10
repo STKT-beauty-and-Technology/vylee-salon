@@ -20,6 +20,7 @@ class Constant {
   static String dontHaveAccount = "Don't have an Account?";
   static String signUp = "Click Here";
   static String enterPassword = "Enter Password";
+  static String forgotPassword = "Forgot Password";
   //OTP page:
   static String codeNotReceived = "Didn’t receive code?";
   static String resendCode = "Resend code";

@@ -66,10 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             fit: BoxFit.contain,
                           ),
                         ),
-                        const SizedBox(height: 45),
+                        const SizedBox(height: 20),
                         SvgPicture.asset(ImagePath.avatarIcon),
                         const SizedBox(
-                          height: 50,
+                          height: 20,
                         ),
                         Stack(
                           children: [
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             
                           ],
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 10),
                         Stack(
                           children: [
                             Container(
@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 25),
+                          padding: const EdgeInsets.only(top: 15),
                           child: Center(
                             child: DecoratedBox(
                               decoration: BoxDecoration(
@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 7),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -208,7 +208,25 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 80),
+                        GestureDetector(
+                          onTap: () {
+                            // Navigator.pushNamed(
+                            //     context, PageRoutes.registrationScreen,
+                            //     arguments: {
+                            //       Constant.mobileNumber:
+                            //       userNameController.text
+                            //     });
+                          },
+                          child: Text(
+                            Constant.forgotPassword,
+                            style: GoogleFonts.inter(
+                                decoration: TextDecoration.underline,
+                                color: AppColors.black,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14),
+                          ),
+                        ),
+                        const SizedBox(height: 65),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
