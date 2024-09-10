@@ -1,16 +1,22 @@
+import 'package:dio/dio.dart';
+import 'package:vylee_partner/utilities/string.dart';
+
 class LoginResponse {
   LoginResponse({
-    required this.message,
-    required this.vendorRegistrationId,
+    this.message,
+    this.vendorRegistrationId,
+    this.success,
   });
 
   final String? message;
   final int? vendorRegistrationId;
+  final bool? success;
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json){
+  factory LoginResponse.fromDioResponse(Response res) {
     return LoginResponse(
-      message: json["message"],
-      vendorRegistrationId: json["vendorRegistrationId"],
+      message: res.data["message"],
+      vendorRegistrationId: res.data[Constant.vendorId],
+      success: res.statusCode == 200 || res.statusCode == 201,
     );
   }
 }

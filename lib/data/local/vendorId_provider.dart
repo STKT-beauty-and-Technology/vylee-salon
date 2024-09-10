@@ -12,7 +12,7 @@ class VendorIdProvider {
     final SharedPreferences prefInstance = await getPref();
     // ignore: await_only_futures
     int? vendorId = await prefInstance.getInt(Constant.vendorId);
-    return vendorId ?? '';
+    return vendorId;
   }
 
   static removeVendorId() async {

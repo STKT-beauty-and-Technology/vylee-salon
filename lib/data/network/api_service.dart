@@ -34,19 +34,21 @@ class ApiService {
           //   log('token $token');
           //   options.headers['Authorization'] = 'Bearer $token';
           // }
-          if (!options.path.contains("otp") &&
+          if ((!options.path.toLowerCase().contains("otp") &&
+                  !options.path.contains("login") &&
+                  !options.path.contains("registration")) &&
               options.method.toLowerCase() != "get") {
             int? vendorId = await VendorIdProvider.getVendorId();
             options.data[Constant.vendorId] = vendorId;
-            _logger.i("Request : ");
-            _logger.i(options.data);
+            _logger.i("Request : ${options.data}");
             return handler.next(options);
           }
+          _logger.i("Request : ${options.path}");
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          _logger.i("Response : ");
-          _logger.i(response.data);
+          _logger.i("Response : ${response.data}");
+          return handler.resolve(response);
         },
       ))
       ..add(PrettyDioLogger(
@@ -57,12 +59,12 @@ class ApiService {
           responseHeader: false,
           responseBody: true,
           logPrint: (Object object) {
-            if (object.toString().contains('uri') ||
-                object.toString().contains('message')) {
-              if (kDebugMode) {
-                log(object.toString());
-              }
-            }
+            // if (object.toString().contains('uri') ||
+            //     object.toString().contains('message')) {
+            //   if (kDebugMode) {
+            //     log(object.toString());
+            //   }
+            // }
           }));
   }
 

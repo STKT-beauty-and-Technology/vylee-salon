@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/features/login/view_model/cubits/otp_cubit.dart';
 import 'package:vylee_partner/features/salon_details/view_model/cubits/gallery_cubit.dart';
 import 'navigation/navigation.dart';
 import 'navigation/page_routes.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
             providers: [
               BlocProvider(
                 create: (context) => GalleryCubit(),
+              ),
+              BlocProvider(
+                create: (context) => OtpCubit(),
               ),
             ],
             child: MaterialApp(

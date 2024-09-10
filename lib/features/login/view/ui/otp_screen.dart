@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vylee_partner/common/common%20widgets/custom_textfield.dart';
+import 'package:vylee_partner/common/utitlties/common_utilities.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/features/login/model/otp_request.dart';
+import 'package:vylee_partner/features/login/model/validate_otp_request.dart';
+import 'package:vylee_partner/features/login/view_model/cubits/otp_cubit.dart';
+import 'package:vylee_partner/features/login/view_model/cubits/otp_state.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 import 'package:vylee_partner/utilities/string.dart';
 
@@ -21,6 +27,15 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> {
   bool termsAccepted = false;
+  final TextEditingController passwordController = TextEditingController();
+  String otp = "";
+
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<OtpCubit>(context)
+        .sendOtp(OtpRequest(email: widget.mobileNumber));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +89,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Enter the OTP sent to +91-${widget.mobileNumber}",
+                                "Enter the OTP sent to ${widget.mobileNumber}",
                                 style: GoogleFonts.frankRuhlLibre(
                                     textStyle:
                                         const TextStyle(color: AppColors.black),
@@ -101,8 +116,13 @@ class _OtpScreenState extends State<OtpScreen> {
                             showFieldAsBox: true,
                             onCodeChanged: (String code) {
                               //handle validation or checks here
+                           
                             },
-                            onSubmit: (String verificationCode) {},
+                            onSubmit: (String verificationCode) {
+                              setState(() {
+                                otp = verificationCode;
+                              });
+                            },
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 25.0),
@@ -120,7 +140,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                   style: TextButton.styleFrom(
                                       padding: const EdgeInsets.all(4)),
                                   onPressed: () async {
-                                    Fluttertoast.showToast(msg: "OTP Resent");
+                                    await context.read<OtpCubit>().sendOtp(
+                                        OtpRequest(email: widget.mobileNumber));
                                   },
                                   child: Text(
                                     Constant.resendCode,
@@ -134,40 +155,78 @@ class _OtpScreenState extends State<OtpScreen> {
                               ],
                             ),
                           ),
+                          const SizedBox(height: 30),
+                          Text(
+                            "New Password",
+                            style: GoogleFonts.frankRuhlLibre(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                          CustomTextField(
+                              isEnabled: true,
+                              height: 60,
+                              width: SizeConfig.screenWidth! * 0.7,
+                              controller: passwordController),
                           const SizedBox(height: 20),
                           Padding(
                             padding: const EdgeInsets.only(top: 25),
                             child: Center(
                               child: SizedBox(
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      PageRoutes.registrationScreen,
-                                        arguments: {
-                                          "mobileNumber": widget.mobileNumber
+                                child: BlocConsumer<OtpCubit, OtpState>(
+                                  listener: (context, state) {
+                                    if (state is OtpFailureState) {
+                                      showToast(state.error);
+                                    } else if (state is OtpSuccessState) {
+                                      Navigator.pushNamed(
+                                          context, PageRoutes.homeScreen,
+                                          arguments: {
+                                            Constant.name: "API integrate"
+                                          });
+                                    }
+                                  },
+                                  builder: (context, state) {
+                                    if (state is OtpLoadingState) {
+                                      return const Center(
+                                          child: CircularProgressIndicator());
+                                    }
+                                    return ElevatedButton(
+                                      onPressed: () async {
+                                        if (otp.isEmpty) {
+                                          showToast("Enter OTP");
+                                          return;
+                                        } else if (passwordController
+                                            .text.isEmpty) {
+                                          showToast("Enter New Password");
+                                          return;
                                         }
+                                        await context
+                                            .read<OtpCubit>()
+                                            .validateOtp(ValidateOtpRequest(
+                                                email: widget.mobileNumber,
+                                                password:
+                                                    passwordController.text,
+                                                otp: otp));
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: AppColors.white,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              side: const BorderSide(
+                                                  color: AppColors.white)),
+                                          elevation: 0),
+                                      child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8.0, vertical: 10.0),
+                                          child: Text(
+                                            Constant.submit,
+                                            style: GoogleFonts.inter(
+                                              color: AppColors.black,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 24,
+                                            ),
+                                          )),
                                     );
                                   },
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          side: const BorderSide(
-                                              color: AppColors.white)),
-                                      elevation: 0),
-                                  child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0, vertical: 10.0),
-                                      child: Text(
-                                        Constant.submit,
-                                        style: GoogleFonts.inter(
-                                          color: AppColors.black,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 24,
-                                        ),
-                                      )),
                                 ),
                               ),
                             ),

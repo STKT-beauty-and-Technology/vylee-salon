@@ -3,8 +3,9 @@ class ApiRoutes {
   static const String preprodUrl = "";
   static const String prodUrl = "";
 
-  static String sendOtp(data) => "vendor/send/otp/$data";
-  static const validateOtp = "vendor/send/otp/";
+  static String sendOtp(data) => "vendor/send/reset-otp/$data";
+  static String validateOtp(email, otp, password) =>
+      "vendor/validate/OTP/$email/$otp/$password";
   static const register = "vendor/new/registration";
   static const updateAddress = "vendor/update/address";
   static String checkMobileNumber(data) => "validate/mobile/$data";
@@ -16,5 +17,6 @@ class ApiRoutes {
   static String addSubServiceToServiceInCategory(data) =>
       "listing-service/add-sub/category/$data";
   static String showDataOfCategory(data) => "listing-service/category/$data";
-  static String vendorLogin (data)  => "vendor/login/withEmailAndPassword/$data/$data";
+  static String vendorLogin(email, password) =>
+      "vendor/login/withEmailAndPassword/$email/$password";
 }
