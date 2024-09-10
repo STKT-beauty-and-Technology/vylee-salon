@@ -15,12 +15,13 @@ class RegistrationRequest {
   final String? fullName;
   final String? salonName;
   final String? vendorEmail;
-  final int? mobileNumber;
+  final String? mobileNumber;
   final String? vendorAddress;
   final String? vendorCountry;
   final String? vendorState;
   final int? pincode;
   final String? vensorCity;
+  final String? password;
 
   RegistrationRequest({
     this.fullName,
@@ -32,6 +33,7 @@ class RegistrationRequest {
     this.vendorState,
     this.pincode,
     this.vensorCity,
+    this.password,
   });
 
   factory RegistrationRequest.fromJson(Map<String, dynamic> json) =>
@@ -40,6 +42,7 @@ class RegistrationRequest {
         salonName: json["salonName"],
         vendorEmail: json["vendorEmail"],
         mobileNumber: json["mobileNumber"],
+        password: json["password"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -47,5 +50,6 @@ class RegistrationRequest {
         "salonName": salonName,
         "vendorEmail": vendorEmail,
         "mobileNumber": mobileNumber,
+        "password": password,
       };
 }

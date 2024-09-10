@@ -16,4 +16,5 @@ class ApiRoutes {
   static String addSubServiceToServiceInCategory(data) =>
       "listing-service/add-sub/category/$data";
   static String showDataOfCategory(data) => "listing-service/category/$data";
+  static String vendorLogin (data)  => "vendor/login/withEmailAndPassword/$data/$data";
 }

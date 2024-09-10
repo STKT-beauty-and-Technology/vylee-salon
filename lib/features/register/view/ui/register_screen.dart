@@ -81,7 +81,7 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                   height: 35,
                 ),
                 SizedBox(
-                  width: SizeConfig.screenWidth! * 0.7,
+                  width: SizeConfig.screenWidth! * 0.8,
                   child: Form(
                     key: _formKey,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -138,8 +138,7 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                         ),
                         const SizedBox(height: 30),
                         Center(
-                          child: BlocConsumer<RegisterCubit, RegisterState>(
-                            listener: (context, state) {
+                          child: BlocConsumer<RegisterCubit, RegisterState>(listener: (context, state) {
                               if (state is RegisterFailureState) {
                                 Fluttertoast.showToast(msg: (state).error);
                               } else if (state is RegisterSuccessState) {
@@ -170,10 +169,10 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                                         .read<RegisterCubit>()
                                         .registerVendor(RegistrationRequest(
                                           fullName: nameController.text,
-                                          mobileNumber: int.tryParse(
-                                              phoneController.text),
+                                          mobileNumber: phoneController.text,
                                           salonName: salonNameController.text,
                                           vendorEmail: emailController.text,
+                                          password: passwordController.text
                                         ));
                                   }
                                 },

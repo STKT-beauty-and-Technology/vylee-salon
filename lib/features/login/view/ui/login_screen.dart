@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
@@ -129,6 +130,30 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                         Padding(
+                          padding: const EdgeInsets.only(right: 30,top: 5),
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: GestureDetector(
+                              onTap: () {
+                                // Navigator.pushNamed(
+                                //     context, PageRoutes.registrationScreen,
+                                //     arguments: {
+                                //       Constant.mobileNumber:
+                                //       userNameController.text
+                                //     });
+                              },
+                              child: Text(
+                                Constant.forgotPassword,
+                                style: GoogleFonts.inter(
+                                    decoration: TextDecoration.underline,
+                                    color: AppColors.black,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 10),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Center(
                             child: DecoratedBox(
@@ -153,7 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppColors.white,
+                                        backgroundColor: AppColors.appViolet,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(15)),
@@ -207,24 +232,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ],
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            // Navigator.pushNamed(
-                            //     context, PageRoutes.registrationScreen,
-                            //     arguments: {
-                            //       Constant.mobileNumber:
-                            //       userNameController.text
-                            //     });
-                          },
-                          child: Text(
-                            Constant.forgotPassword,
-                            style: GoogleFonts.inter(
-                                decoration: TextDecoration.underline,
-                                color: AppColors.black,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14),
-                          ),
                         ),
                         const SizedBox(height: 65),
                         Column(
