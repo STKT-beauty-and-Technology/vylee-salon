@@ -143,14 +143,15 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                                 Fluttertoast.showToast(msg: (state).error);
                               } else if (state is RegisterSuccessState) {
                                 showToast("Registration Success");
-                              }
-                              if (mounted) {
+                                if (mounted) {
                                 Navigator.of(context).pushNamed(
                                     PageRoutes.homeScreen,
                                     arguments: {
                                       Constant.name: salonNameController.text
                                     });
                               }
+                              }
+                             
                             },
                             builder: (context, state) {
                               if (state is RegisterLoadingState) {
