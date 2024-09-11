@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/data/local/vendorId_provider.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 import '../../navigation/page_routes.dart';
@@ -18,6 +19,7 @@ class GetStarted extends StatefulWidget {
 
 class _GetStartedState extends State<GetStarted> {
   final animationDuration = 1.seconds;
+  int? id;
 
   @override
   void initState() {
@@ -76,11 +78,17 @@ class _GetStartedState extends State<GetStarted> {
                       bgcolor: AppColors.white,
                       textStyle: GoogleFonts.libreBodoni(
                           color: AppColors.black, fontWeight: FontWeight.w400),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          PageRoutes.login,
-                        );
+                      onPressed: () async {
+                        id = await VendorIdProvider.getVendorId();
+                        id == null
+                            ? Navigator.pushNamed(
+                                context,
+                                PageRoutes.login,
+                              )
+                            : Navigator.pushNamed(
+                                context, PageRoutes.homeScreen,
+                                arguments: {Constant.name: id.toString()}
+                              );
                       },
                     ),
                   )

@@ -11,12 +11,16 @@ class ApiRoutes {
   static String checkMobileNumber(data) => "validate/mobile/$data";
   static const addGalleryImages = "shop/gallery/upload/images";
   static const addGalleryVideos = "shop/gallery/upload/videos";
-  static const addCategory = "listing-service/add/category";
-  static String addServiceToCategory(data) =>
-      "listing-service/add-service/$data";
-  static String addSubServiceToServiceInCategory(data) =>
-      "listing-service/add-sub/category/$data";
-  static String showDataOfCategory(data) => "listing-service/category/$data";
+  static String getAllCategories(vendorId) =>
+      "listing-services/show/all/category/$vendorId";
+  static String addCategory(vendorId) =>
+      "listing-services/add-category/$vendorId";
+  static String getCategoryData(category, vendorId) =>
+      "listing-services/category/$category/$vendorId";
+  static String addServiceToCategory(categoryId, vendorId) =>
+      "listing-services/add-service/$categoryId/$vendorId";
+  static String addSubCategoryToService(serviceId, vendorId) =>
+      "listing-services/add-sub/category/$serviceId/$vendorId";
   static String vendorLogin(email, password) =>
       "vendor/login/withEmailAndPassword/$email/$password";
 }

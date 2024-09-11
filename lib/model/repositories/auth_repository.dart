@@ -12,6 +12,7 @@ class AuthRepository {
   final ApiService apiService = ApiService();
   final logger = Logger();
 
+
   Future<LoginResponse> loginVendor(LoginRequest request) async {
     try {
       final response = await apiService.sendRequest

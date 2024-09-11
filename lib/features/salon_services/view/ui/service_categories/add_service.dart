@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
@@ -8,18 +9,25 @@ import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/features/salon_services/model/add_service_request.dart';
+import 'package:vylee_partner/features/salon_services/model/category_data_response.dart';
+import 'package:vylee_partner/features/salon_services/view_model/cubits/service_category_cubit.dart';
+import 'package:vylee_partner/features/salon_services/view_model/cubits/service_category_state.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
-import 'package:vylee_partner/utilities/string.dart';
 
-class FemaleCustomService extends StatefulWidget {
-  const FemaleCustomService({super.key});
+class AddService extends StatefulWidget {
+  const AddService(
+      {super.key, this.service, this.categoryName, required this.categoryId});
+  final ServiceProduct? service;
+  final String? categoryName;
+  final int? categoryId;
 
   @override
-  State<FemaleCustomService> createState() => _FemaleCustomServiceState();
+  State<AddService> createState() => _AddServiceState();
 }
 
-class _FemaleCustomServiceState extends State<FemaleCustomService> {
+class _AddServiceState extends State<AddService> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController categoryController = TextEditingController();
   final TextEditingController serviceNameController = TextEditingController();
@@ -32,6 +40,16 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
   final TextEditingController descriptionController = TextEditingController();
   File? image;
   bool imagePicked = false;
+  @override
+  void initState() {
+    if (widget.service != null) {
+      setState(() {
+        categoryController.text = widget.service?.serviceName ?? "";
+      });
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,8 +90,9 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                         weight: 100,
                         color: AppColors.appViolet,
                       )),
-                   Text(
-                    Constant.addFemaleService,
+                  Text(
+                    "add ${widget.service?.serviceCategory?.categoryName ?? widget.categoryName ?? ""} service"
+                        .toUpperCase(),
                     style: const TextStyle(
                         color: AppColors.appViolet,
                         fontWeight: FontWeight.w400,
@@ -98,7 +117,7 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                       const Padding(
                         padding: EdgeInsets.only(left: 12.0),
                         child: Text(
-                          "Category",
+                          "Service",
                           style: TextStyle(
                               color: AppColors.appViolet,
                               fontWeight: FontWeight.w500,
@@ -109,6 +128,7 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                       CustomFormField(
                           isEnabled: true,
                           height: 80,
+                          isRequired: true,
                           width: double.infinity,
                           controller: categoryController),
                       // const SizedBox(
@@ -117,7 +137,7 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                       const Padding(
                         padding: EdgeInsets.only(left: 12.0),
                         child: Text(
-                          "Service Name",
+                          "Sub Category Name",
                           style: TextStyle(
                               color: AppColors.appViolet,
                               fontWeight: FontWeight.w500,
@@ -128,7 +148,8 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                       CustomFormField(
                           isEnabled: true,
                           height: SizeConfig.screenHeight! * 0.06,
-                          keyboardType: const TextInputType.numberWithOptions(),
+                          keyboardType: TextInputType.text,
+                          isRequired: true,
                           width: double.infinity,
                           controller: serviceNameController),
                       const SizedBox(
@@ -182,11 +203,11 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                           Stack(
                             children: [
                               Container(
-                                width: 100,
-                                height: 40,
+                                height: 50,
+                                width: SizeConfig.screenWidth! * 0.7,
                                 alignment: Alignment.center,
                                 padding:
-                                    const EdgeInsets.only(left: 30, bottom: 15),
+                                    const EdgeInsets.only(left: 30, bottom: 14),
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                       color: AppColors.appViolet, width: 1),
@@ -194,17 +215,23 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                                 ),
                                 child: TextFormField(
                                   controller: rpController,
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return "Enter Price";
+                                    }
+                                    return null;
+                                  },
                                   keyboardType: TextInputType.number,
                                   decoration: const InputDecoration(
                                       hintText: "Regular Price",
                                       hintStyle: TextStyle(
                                           color: AppColors.appViolet,
-                                          fontSize: 10),
+                                          fontSize: 14),
                                       border: InputBorder.none),
                                 ),
                               ),
                               const Positioned(
-                                top: 10,
+                                top: 15,
                                 left: 10,
                                 child: Text(
                                   "₹ | ",
@@ -213,40 +240,40 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                               )
                             ],
                           ),
-                          Stack(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 40,
-                                alignment: Alignment.center,
-                                padding:
-                                    const EdgeInsets.only(left: 30, bottom: 15),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: AppColors.appViolet, width: 1),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: TextFormField(
-                                  controller: spController,
-                                  keyboardType: TextInputType.number,
-                                  decoration: const InputDecoration(
-                                      hintText: "Special Price",
-                                      hintStyle: TextStyle(
-                                          color: AppColors.appViolet,
-                                          fontSize: 10),
-                                      border: InputBorder.none),
-                                ),
-                              ),
-                              const Positioned(
-                                top: 10,
-                                left: 10,
-                                child: Text(
-                                  "₹ | ",
-                                  style: TextStyle(color: AppColors.appViolet),
-                                ),
-                              )
-                            ],
-                          ),
+                          // Stack(
+                          //   children: [
+                          //     Container(
+                          //       width: 100,
+                          //       height: 40,
+                          //       alignment: Alignment.center,
+                          //       padding:
+                          //           const EdgeInsets.only(left: 30, bottom: 15),
+                          //       decoration: BoxDecoration(
+                          //         border: Border.all(
+                          //             color: AppColors.appViolet, width: 1),
+                          //         borderRadius: BorderRadius.circular(10),
+                          //       ),
+                          //       child: TextFormField(
+                          //         controller: spController,
+                          //         keyboardType: TextInputType.number,
+                          //         decoration: const InputDecoration(
+                          //             hintText: "Special Price",
+                          //             hintStyle: TextStyle(
+                          //                 color: AppColors.appViolet,
+                          //                 fontSize: 10),
+                          //             border: InputBorder.none),
+                          //       ),
+                          //     ),
+                          //     const Positioned(
+                          //       top: 10,
+                          //       left: 10,
+                          //       child: Text(
+                          //         "₹ | ",
+                          //         style: TextStyle(color: AppColors.appViolet),
+                          //       ),
+                          //     )
+                          //   ],
+                          // ),
                         ],
                       ),
                       const SizedBox(height: 30),
@@ -273,23 +300,48 @@ class _FemaleCustomServiceState extends State<FemaleCustomService> {
                           controller: descriptionController),
                       const SizedBox(height: 30),
                       Center(
-                        child: SizedBox(
-                          height: SizeConfig.screenHeight! * 0.055,
-                          width: SizeConfig.screenWidth! * 0.42,
-                          child: CustomButton(
-                            text: "SUBMIT",
-                            borderColor: AppColors.appBorderPurple,
-                            textStyle: GoogleFonts.lateef(
-                                fontWeight: FontWeight.w400, fontSize: 26),
-                            onPressed: () {
-                              if (mounted) {
-                                print(hourController.text);
-                                Navigator.of(context).popUntil(
-                                    ModalRoute.withName(
-                                        PageRoutes.homeScreen));
-                              }
-                            },
-                          ),
+                        child: BlocBuilder<ServiceCategoryCubit,
+                            ServiceCategoryState>(
+                          builder: (context, state) {
+                            if (state is ServiceCategoryLoadingState) {
+                              return const CircularProgressIndicator();
+                            }
+                            return SizedBox(
+                              height: SizeConfig.screenHeight! * 0.055,
+                              width: SizeConfig.screenWidth! * 0.42,
+                              child: CustomButton(
+                                text: "SUBMIT",
+                                borderColor: AppColors.appBorderPurple,
+                                textStyle: GoogleFonts.lateef(
+                                    fontWeight: FontWeight.w400, fontSize: 26),
+                                onPressed: () async {
+                                  if (_formKey.currentState!.validate()) {
+                                    await context
+                                        .read<ServiceCategoryCubit>()
+                                        .addService(AddServiceRequest(
+                                            serviceName:
+                                                categoryController.text,
+                                            categoryId: widget.categoryId ?? 0,
+                                            serviceId:
+                                                widget.service?.serviceId,
+                                            subCategoryName:
+                                                serviceNameController.text,
+                                            price: int.tryParse(
+                                                    rpController.text) ??
+                                                0));
+                                    await context
+                                        .read<ServiceCategoryCubit>()
+                                        .getAllCategories();
+                                    if (mounted) {
+                                      Navigator.of(context).popUntil(
+                                          ModalRoute.withName(
+                                              PageRoutes.homeScreen));
+                                    }
+                                  }
+                                },
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],

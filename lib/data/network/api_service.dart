@@ -36,14 +36,18 @@ class ApiService {
           // }
           if ((!options.path.toLowerCase().contains("otp") &&
                   !options.path.contains("login") &&
+                  !options.path.contains("services") &&
                   !options.path.contains("registration")) &&
               options.method.toLowerCase() != "get") {
             int? vendorId = await VendorIdProvider.getVendorId();
             options.data[Constant.vendorId] = vendorId;
-            _logger.i("Request : ${options.data}");
+            _logger.i(
+                " request Path: ${options.path} /n  Request data : ${options.data}");
             return handler.next(options);
           }
-          _logger.i("Request : ${options.path}");
+          _logger.i(
+              " request Path: ${options.path} /n  Request data : ${options.data}");
+ 
           return handler.next(options);
         },
         onResponse: (response, handler) {

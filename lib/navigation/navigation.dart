@@ -4,12 +4,12 @@ import 'package:vylee_partner/features/about/view/about_vylee.dart';
 import 'package:vylee_partner/features/profile/view/ui/account_information.dart';
 import 'package:vylee_partner/features/salon_details/view/ui/add_address.dart';
 import 'package:vylee_partner/features/banking/view/ui/add_bank_account.dart';
-import 'package:vylee_partner/features/salon_services/view/ui/all_services.dart';
+import 'package:vylee_partner/features/salon_services/view/ui/sub_categories_page.dart';
 import 'package:vylee_partner/features/profile/view/ui/available_slots.dart';
 import 'package:vylee_partner/features/banking/view/ui/bank_accounts.dart';
 import 'package:vylee_partner/features/profile/view/ui/edit_profile.dart';
-import 'package:vylee_partner/features/salon_services/view/ui/service_categories/female_custom_service.dart';
-import 'package:vylee_partner/features/salon_services/view/ui/service_categories/female_service_category.dart';
+import 'package:vylee_partner/features/salon_services/view/ui/service_categories/add_service.dart';
+import 'package:vylee_partner/features/salon_services/view/ui/service_categories/services_page.dart';
 import 'package:vylee_partner/features/salon_details/view/ui/gallery_page.dart';
 import 'package:vylee_partner/features/salon_details/view/ui/salon_information.dart';
 import 'package:vylee_partner/features/banking/view/ui/transactions.dart';
@@ -107,24 +107,13 @@ class Navigation {
             builder: (context) => ServiceCategory(
                   isEdit: (arguments as Map<String, dynamic>?)?[Constant.edit],
                 ));
-      case PageRoutes.femaleCategory:
-        return MaterialPageRoute(
-            settings: routeSettings,
-            builder: (context) => FemaleServiceCategory(
-                  gender: (arguments as Map<String, dynamic>)[Constant.gender],
-                ));
-      case PageRoutes.maleCategory:
-        return MaterialPageRoute(
-            settings: routeSettings,
-            builder: (context) => const ServiceCategory());
-      case PageRoutes.othersCategory:
-        return MaterialPageRoute(
-            settings: routeSettings,
-            builder: (context) => const ServiceCategory());
-      case PageRoutes.femaleCustomService:
-        return MaterialPageRoute(
-            settings: routeSettings,
-            builder: (context) => const FemaleCustomService());
+      // case PageRoutes.services:
+      //   return MaterialPageRoute(
+      //       settings: routeSettings,
+      //       builder: (context) => ServicesPage(
+      //             gender: (arguments as Map<String, dynamic>)[Constant.gender],
+      //           ));
+
       case PageRoutes.uploadDocuments:
         return MaterialPageRoute(
             settings: routeSettings,
@@ -139,10 +128,7 @@ class Navigation {
         return MaterialPageRoute(
             settings: routeSettings,
             builder: (context) => const AccountInformation());
-      case PageRoutes.allServices:
-        return MaterialPageRoute(
-            settings: routeSettings,
-            builder: (context) => const AllServices());
+
       case PageRoutes.bankAccounts:
         return MaterialPageRoute(
             settings: routeSettings,
