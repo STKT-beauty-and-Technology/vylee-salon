@@ -17,7 +17,6 @@ class RegisterRepository {
     try {
       final response = await apiService.sendRequest
           .post(ApiRoutes.register, data: request.toJson());
-      logger.i("esdsdadsadasdsadadasdasd" + response.data[Constant.vendorId]);
 
       return RegistrationResponse.fromDioResponse(response);
     } on DioException catch (e) {

@@ -4,7 +4,7 @@ import 'package:vylee_partner/features/bookings/view/ui/bookings_page.dart';
 
 mixin HomeViewModel {
   Widget getFirstScreen(String? name, Function welcomeAddOnPressed) {
-    bool onBoardingCompleted = true;
+    bool onBoardingCompleted = false;
     //logic to check if the user has filled mandatory details in profile
 
     // ignore: dead_code
