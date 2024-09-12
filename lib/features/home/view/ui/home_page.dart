@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> with HomeViewModel {
         bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: AppColors.black,
           selectedItemColor: AppColors.black,
-          backgroundColor: Colors.grey.shade300,
+          backgroundColor: AppColors.appViolet,
           currentIndex: pageIndex,
           onTap: (value) {
             switch (value) {

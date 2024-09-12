@@ -27,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -87,9 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Container(
                                   width: SizeConfig.screenWidth! * 0.7,
                                   height: 55,
-                                  alignment: Alignment.center,
+                                  alignment: Alignment.topLeft,
                                   padding: const EdgeInsets.only(
-                                      left: 60, bottom: 8),
+                                      left: 10, bottom: 8),
                                   decoration: BoxDecoration(
                                     color: AppColors.white,
                                     border: Border.all(
@@ -101,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     keyboardType: TextInputType.emailAddress,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return "Enter Email";
+                                        return "Email is Mandatory";
                                       }
                                       return null;
                                     },
@@ -122,9 +121,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 Container(
                                   width: SizeConfig.screenWidth! * 0.7,
                                   height: 55,
-                                  alignment: Alignment.center,
+                                  alignment: Alignment.topLeft,
                                   padding: const EdgeInsets.only(
-                                      left: 60, bottom: 8),
+                                      left: 10, bottom: 8),
                                   decoration: BoxDecoration(
                                     color: AppColors.white,
                                     border: Border.all(
@@ -136,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     keyboardType: TextInputType.visiblePassword,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return "Enter Password";
+                                        return "Password is Mandatory";
                                       }
                                       return null;
                                     },
@@ -278,7 +277,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14),
                                 ),
-                                const SizedBox(width: 10),
+                                const SizedBox(width: 5),
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.pushNamed(
@@ -337,7 +336,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
 
 extension EmailValidator on String {
   bool isValidEmail() {

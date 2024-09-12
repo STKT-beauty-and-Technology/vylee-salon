@@ -13,12 +13,12 @@ class Constant {
   static String gender = "gender";
 
   //login page:
-  static String enterUsername = "Enter Username";
+  static String enterUsername = "Enter Email";
   static String byContinuing = "By Continuing, you agree to our";
   static String termsPrivacy = "Terms of Services, Privacy & Content Policy.";
   static String login = "LOGIN";
   static String dontHaveAccount = "Don't have an Account?";
-  static String signUp = "Click Here";
+  static String signUp = "Sign Up";
   static String enterPassword = "Enter Password";
   static String forgotPassword = "Forgot Password";
   //OTP page:
