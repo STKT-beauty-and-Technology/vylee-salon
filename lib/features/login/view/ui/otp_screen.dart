@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_textfield.dart';
 import 'package:vylee_partner/common/utitlties/common_utilities.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
@@ -15,7 +14,6 @@ import 'package:vylee_partner/themes/app_colors.dart';
 import 'package:vylee_partner/utilities/string.dart';
 
 import '../../../../core/path/image_path.dart';
-import '../../../../navigation/page_routes.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({super.key, required this.mobileNumber});
@@ -167,7 +165,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             style: GoogleFonts.frankRuhlLibre(
                                 fontWeight: FontWeight.bold, fontSize: 20),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Container(
                             width: SizeConfig.screenWidth! * 0.7,
                             height: 55,

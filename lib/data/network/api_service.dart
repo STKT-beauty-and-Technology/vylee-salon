@@ -37,6 +37,7 @@ class ApiService {
           if ((!options.path.toLowerCase().contains("otp") &&
                   !options.path.contains("login") &&
                   !options.path.contains("services") &&
+                  !options.path.contains("gallery") &&
                   !options.path.contains("registration")) &&
               options.method.toLowerCase() != "get") {
             int? vendorId = await VendorIdProvider.getVendorId();

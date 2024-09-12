@@ -10,9 +10,9 @@ class ApiRoutes {
   static String updateAddress(vendorId) => "vendor/update/address/$vendorId";
   static String checkMobileNumber(data) => "validate/mobile/$data";
   static String addGalleryImages(vendorId) =>
-      "shop/gallery/upload/images/$vendorId";
+      "shop/gallery/upload/images";
   static String addGalleryVideos(vendorId) =>
-      "shop/gallery/upload/videos/$vendorId";
+      "shop/gallery/upload/videos";
   static String getAllCategories(vendorId) =>
       "listing-services/show/all/category/$vendorId";
   static String addCategory(vendorId) =>

@@ -250,13 +250,14 @@ class _GalleryPageState extends State<GalleryPage> {
                     showToast((state).error);
                   } else if (state is GallerySuccessState) {
                     showToast("Gallery Saved");
-                  }
-                  if (widget.isEdit != true) {
+                    if (widget.isEdit != true) {
                     Navigator.of(context)
                         .pushNamed(PageRoutes.serviceCategories);
                   } else {
                     Navigator.of(context).pop();
                   }
+                  }
+                
                 },
                 listenWhen: (previous, current) {
                   return current is! GalleryItemsPickedState;
