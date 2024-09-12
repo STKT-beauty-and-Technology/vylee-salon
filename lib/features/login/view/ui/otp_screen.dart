@@ -27,14 +27,22 @@ class OtpScreen extends StatefulWidget {
 
 class _OtpScreenState extends State<OtpScreen> {
   bool termsAccepted = false;
+  bool _obscureText = true;
+  bool _passwordVisible = false;
   final TextEditingController passwordController = TextEditingController();
   String otp = "";
 
   @override
   void initState() {
+    _passwordVisible = false;
     super.initState();
     BlocProvider.of<OtpCubit>(context)
         .sendOtp(OtpRequest(email: widget.mobileNumber));
+  }
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
   }
 
   @override
@@ -84,9 +92,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700),
                           ),
-                          const SizedBox(height: 10),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
                                 "Enter the OTP sent to ${widget.mobileNumber}",
@@ -106,7 +113,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           ),
                           OtpTextField(
                             numberOfFields: 4,
-                            margin: const EdgeInsets.all(15),
+                            margin: const EdgeInsets.all(13),
                             // contentPadding: const EdgeInsets.all(20),
                             fieldWidth: SizeConfig.screenWidth! * 0.13,
                             enabled: true,
@@ -155,18 +162,68 @@ class _OtpScreenState extends State<OtpScreen> {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 15),
                           Text(
-                            "New Password",
+                            "Enter New Password",
                             style: GoogleFonts.frankRuhlLibre(
                                 fontWeight: FontWeight.bold, fontSize: 20),
                           ),
-                          CustomTextField(
-                              isEnabled: true,
-                              height: 60,
-                              width: SizeConfig.screenWidth! * 0.7,
-                              controller: passwordController),
-                          const SizedBox(height: 20),
+                          SizedBox(height: 8),
+                          Container(
+                            width: SizeConfig.screenWidth! * 0.7,
+                            height: 55,
+                            alignment: Alignment.topLeft,
+                            padding: const EdgeInsets.only(
+                                left: 10, bottom: 8),
+                            decoration: BoxDecoration(
+                              color: AppColors.white,
+                              border: Border.all(
+                                  color: AppColors.gray600, width: 3),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: TextFormField(
+                              obscureText: !_passwordVisible  ,
+                              controller: passwordController,
+                              keyboardType: TextInputType.text ,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Password is Mandatory";
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                  hintText: Constant.enterPassword,
+                                  fillColor: AppColors.white,
+                                  suffixIcon: IconButton(
+                                    icon: Icon(
+                                      _passwordVisible
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: AppColors.black,
+                                    ), onPressed: () {
+                                    setState(() {
+                                      _passwordVisible = !_passwordVisible;
+                                    });
+                                  },
+                                  ),
+                                  hintStyle: GoogleFonts.inter(
+                                      color: AppColors.black,
+                                      fontSize: 15),
+                                  // icon: IconButton(
+                                  //   icon: Icon(
+                                  //     _obscureText ? Icons.visibility : Icons.visibility_off,
+                                  //   ),
+                                  //   onPressed: _togglePasswordVisibility,
+                                  // ),
+                                  border: InputBorder.none),
+                            ),
+                          ),
+                          // CustomTextField(
+                          //     isEnabled: true,
+                          //     height: 60,
+                          //     width: SizeConfig.screenWidth! * 0.7,
+                          //     controller: passwordController),
+                          const SizedBox(height: 10),
                           Padding(
                             padding: const EdgeInsets.only(top: 25),
                             child: Center(

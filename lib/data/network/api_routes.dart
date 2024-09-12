@@ -23,4 +23,6 @@ class ApiRoutes {
       "listing-services/add-sub/category/$serviceId/$vendorId";
   static String vendorLogin(email, password) =>
       "vendor/login/withEmailAndPassword/$email/$password";
+  static String salonInfo(vendorId , whatsappNumber , description , websiteName) =>
+      "vendor/add/salon/information/$vendorId/$whatsappNumber/$description/$websiteName";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/utitlties/common_utilities.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
@@ -22,10 +23,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _obscureText = true;
+  bool _passwordVisible = false;
   bool termsAccepted = false;
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,8 +144,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: TextFormField(
+                                    obscureText: !_passwordVisible  ,
                                     controller: passwordController,
-                                    keyboardType: TextInputType.visiblePassword,
+                                    keyboardType: TextInputType.text ,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
                                         return "Password is Mandatory";
@@ -142,9 +156,27 @@ class _LoginScreenState extends State<LoginScreen> {
                                     decoration: InputDecoration(
                                         hintText: Constant.enterPassword,
                                         fillColor: AppColors.white,
+                                        suffixIcon: IconButton(
+                                          icon: Icon(
+                                            _passwordVisible
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                            color: AppColors.black,
+                                          ), onPressed: () {
+                                          setState(() {
+                                            _passwordVisible = !_passwordVisible;
+                                          });
+                                        },
+                                        ),
                                         hintStyle: GoogleFonts.inter(
                                             color: AppColors.black,
                                             fontSize: 15),
+                                        // icon: IconButton(
+                                        //   icon: Icon(
+                                        //     _obscureText ? Icons.visibility : Icons.visibility_off,
+                                        //   ),
+                                        //   onPressed: _togglePasswordVisibility,
+                                        // ),
                                         border: InputBorder.none),
                                   ),
                                 ),
@@ -223,18 +255,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                           }
                                           return ElevatedButton(
                                             onPressed: () async {
-                                              if (_formKey.currentState!
-                                                  .validate()) {
-                                                await context
-                                                    .read<LoginCubit>()
-                                                    .loginVendor(LoginRequest(
-                                                        email:
-                                                            userNameController
-                                                                .text,
-                                                        password:
-                                                            passwordController
-                                                                .text));
+                                              if(passwordController.text.isEmpty && userNameController.text.isEmpty){
+                                                showToast(
+                                                    "Enter Username and Password first");
                                               }
+                                              else {
+                                                if (_formKey.currentState!
+                                                    .validate()) {
+                                                  await context
+                                                      .read<LoginCubit>()
+                                                      .loginVendor(LoginRequest(
+                                                      email:
+                                                      userNameController
+                                                          .text,
+                                                      password:
+                                                      passwordController
+                                                          .text));
+                                                }
+                                            }
                                             },
                                             style: ElevatedButton.styleFrom(
                                                 backgroundColor:
