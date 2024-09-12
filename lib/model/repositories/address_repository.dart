@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
+import 'package:vylee_partner/data/local/vendorId_provider.dart';
 import 'package:vylee_partner/data/network/api_routes.dart';
 import 'package:vylee_partner/data/network/api_service.dart';
 import 'package:vylee_partner/features/salon_details/model/address_request.dart';
@@ -11,8 +12,9 @@ class AddressRepository {
 
   Future<AddressResponse> saveAddress(AddressRequest request) async {
     try {
+      final id = await VendorIdProvider.getVendorId();
       final response = await apiService.sendRequest
-          .post(ApiRoutes.updateAddress, data: request.toJson());
+          .put(ApiRoutes.updateAddress(id), data: request.toJson());
 
       return AddressResponse.fromDioResponse(response);
     } on DioException catch (e) {

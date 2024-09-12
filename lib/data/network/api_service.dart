@@ -40,7 +40,7 @@ class ApiService {
                   !options.path.contains("registration")) &&
               options.method.toLowerCase() != "get") {
             int? vendorId = await VendorIdProvider.getVendorId();
-            options.data[Constant.vendorId] = vendorId;
+            options.data["vendorId"] = vendorId;
             _logger.i(
                 " request Path: ${options.path} /n  Request data : ${options.data}");
             return handler.next(options);

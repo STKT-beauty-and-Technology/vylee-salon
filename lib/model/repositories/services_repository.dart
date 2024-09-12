@@ -67,10 +67,12 @@ class ServicesRepository {
 
   addService(AddServiceRequest request) async {
     final id = await VendorIdProvider.getVendorId();
+    int? serviceId = request.serviceId;
     try {
       final res1 = await apiService.sendRequest.post(
           ApiRoutes.addServiceToCategory(request.categoryId, id),
           data: request.toAddServiceJson());
+      request.serviceId = serviceId ?? res1.data["serviceProductId"];
     } catch (e) {
       logger.e(e);
       showToast("error in saving service");
