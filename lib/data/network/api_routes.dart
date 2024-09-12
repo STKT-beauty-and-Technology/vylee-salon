@@ -7,10 +7,12 @@ class ApiRoutes {
   static String validateOtp(email, otp, password) =>
       "vendor/validate/OTP/$email/$otp/$password";
   static const register = "vendor/new/registration";
-  static const updateAddress = "vendor/update/address";
+  static String updateAddress(vendorId) => "vendor/update/address/$vendorId";
   static String checkMobileNumber(data) => "validate/mobile/$data";
-  static const addGalleryImages = "shop/gallery/upload/images";
-  static const addGalleryVideos = "shop/gallery/upload/videos";
+  static String addGalleryImages(vendorId) =>
+      "shop/gallery/upload/images/$vendorId";
+  static String addGalleryVideos(vendorId) =>
+      "shop/gallery/upload/videos/$vendorId";
   static String getAllCategories(vendorId) =>
       "listing-services/show/all/category/$vendorId";
   static String addCategory(vendorId) =>

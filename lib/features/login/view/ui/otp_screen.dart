@@ -116,7 +116,6 @@ class _OtpScreenState extends State<OtpScreen> {
                             showFieldAsBox: true,
                             onCodeChanged: (String code) {
                               //handle validation or checks here
-                           
                             },
                             onSubmit: (String verificationCode) {
                               setState(() {
@@ -176,11 +175,8 @@ class _OtpScreenState extends State<OtpScreen> {
                                     if (state is OtpFailureState) {
                                       showToast(state.error);
                                     } else if (state is OtpSuccessState) {
-                                      Navigator.pushNamed(
-                                          context, PageRoutes.homeScreen,
-                                          arguments: {
-                                            Constant.name: "API integrate"
-                                          });
+                                      showToast("Login with new password");
+                                      Navigator.of(context).pop();
                                     }
                                   },
                                   builder: (context, state) {

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
+import 'package:vylee_partner/data/local/vendorId_provider.dart';
 import 'package:vylee_partner/data/network/api_routes.dart';
 import 'package:vylee_partner/data/network/api_service.dart';
 import 'package:vylee_partner/features/salon_details/model/gallery_add_request.dart';
@@ -11,11 +12,13 @@ class GalleryRepository {
 
   Future<GalleryAddResponse> addGalleryItems(
       GalleryAddRequest request, GalleryItemType item) async {
+    final id = await VendorIdProvider.getVendorId();
+        
     try {
       final response = await apiService.sendRequest.post(
           item == GalleryItemType.images
-              ? ApiRoutes.addGalleryImages
-              : ApiRoutes.addGalleryVideos,
+              ? ApiRoutes.addGalleryImages(id)
+              : ApiRoutes.addGalleryVideos(id),
           data: request.toJson());
 
       return GalleryAddResponse.fromDioResponse(response);

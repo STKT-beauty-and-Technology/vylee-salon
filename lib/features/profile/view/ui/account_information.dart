@@ -7,6 +7,7 @@ import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
+import 'package:vylee_partner/data/local/vendorId_provider.dart';
 import 'package:vylee_partner/features/splash/view/ui/splash_screen.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
@@ -122,15 +123,15 @@ class _AccountInformationState extends State<AccountInformation> {
                                           style: GoogleFonts.inter(
                                               color: AppColors.appViolet,
                                               fontWeight: FontWeight.w500,
-                                              textStyle:
-                                                  const TextStyle(fontSize: 15))),
+                                              textStyle: const TextStyle(
+                                                  fontSize: 15))),
                                       Text("*",
                                           textAlign: TextAlign.start,
                                           style: GoogleFonts.inter(
                                               color: AppColors.red,
                                               fontWeight: FontWeight.w500,
-                                              textStyle:
-                                              const TextStyle(fontSize: 15))),
+                                              textStyle: const TextStyle(
+                                                  fontSize: 15))),
                                     ],
                                   ),
                                   Text("Complete your kYC to start earn money.",
@@ -188,15 +189,15 @@ class _AccountInformationState extends State<AccountInformation> {
                                           style: GoogleFonts.inter(
                                               color: AppColors.appViolet,
                                               fontWeight: FontWeight.w500,
-                                              textStyle:
-                                                  const TextStyle(fontSize: 15))),
+                                              textStyle: const TextStyle(
+                                                  fontSize: 15))),
                                       Text("*",
                                           textAlign: TextAlign.start,
                                           style: GoogleFonts.inter(
                                               color: AppColors.red,
                                               fontWeight: FontWeight.w500,
-                                              textStyle:
-                                              const TextStyle(fontSize: 15))),
+                                              textStyle: const TextStyle(
+                                                  fontSize: 15))),
                                     ],
                                   ),
                                   Text(
@@ -275,7 +276,7 @@ class _AccountInformationState extends State<AccountInformation> {
                                             color: AppColors.red,
                                             fontWeight: FontWeight.w500,
                                             textStyle:
-                                            const TextStyle(fontSize: 15))),
+                                                const TextStyle(fontSize: 15))),
                                   ],
                                 ),
                               ],
@@ -297,8 +298,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           child: CustomButton(
                             onPressed: () {
                               if (mounted) {
-                                Navigator.of(context)
-                                    .pushNamed(
+                                Navigator.of(context).pushNamed(
                                     PageRoutes.galleryPage,
                                     arguments: {"edit": true});
                               }
@@ -321,14 +321,14 @@ class _AccountInformationState extends State<AccountInformation> {
                                         color: AppColors.appViolet,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                                 Text("*",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.red,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                               ],
                             ),
                           ),
@@ -348,8 +348,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           child: CustomButton(
                             onPressed: () {
                               if (mounted) {
-                                Navigator.of(context)
-                                    .pushNamed(
+                                Navigator.of(context).pushNamed(
                                     PageRoutes.salonInformation,
                                     arguments: {"edit": true});
                               }
@@ -372,14 +371,14 @@ class _AccountInformationState extends State<AccountInformation> {
                                         color: AppColors.appViolet,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                                 Text("*",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.red,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                               ],
                             ),
                           ),
@@ -399,8 +398,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           child: CustomButton(
                             onPressed: () {
                               if (mounted) {
-                                Navigator.of(context)
-                                    .pushNamed(
+                                Navigator.of(context).pushNamed(
                                     PageRoutes.workingHours,
                                     arguments: {"edit": true});
                               }
@@ -423,14 +421,14 @@ class _AccountInformationState extends State<AccountInformation> {
                                         color: AppColors.appViolet,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                                 Text("*",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.red,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                               ],
                             ),
                           ),
@@ -450,8 +448,7 @@ class _AccountInformationState extends State<AccountInformation> {
                           child: CustomButton(
                             onPressed: () {
                               if (mounted) {
-                                Navigator.of(context)
-                                    .pushNamed(
+                                Navigator.of(context).pushNamed(
                                     PageRoutes.addAddress,
                                     arguments: {"edit": true});
                               }
@@ -474,14 +471,14 @@ class _AccountInformationState extends State<AccountInformation> {
                                         color: AppColors.appViolet,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                                 Text("*",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.red,
                                         fontWeight: FontWeight.w500,
                                         textStyle:
-                                        const TextStyle(fontSize: 15))),
+                                            const TextStyle(fontSize: 15))),
                               ],
                             ),
                           ),
@@ -659,7 +656,8 @@ class _AccountInformationState extends State<AccountInformation> {
                         borderColor: AppColors.appBorderPurple,
                         textStyle: GoogleFonts.lateef(
                             fontWeight: FontWeight.w400, fontSize: 26),
-                        onPressed: () {
+                        onPressed: () async {
+                          await VendorIdProvider.removeVendorId();
                           if (mounted) {
                             Navigator.of(context).pushAndRemoveUntil<void>(
                               MaterialPageRoute<void>(

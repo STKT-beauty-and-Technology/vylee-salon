@@ -3,7 +3,7 @@ class AddServiceRequest {
   final int categoryId;
   final String subCategoryName;
   final int price;
-  final int? serviceId;
+  int? serviceId;
   AddServiceRequest({
     required this.serviceName,
     required this.categoryId,
