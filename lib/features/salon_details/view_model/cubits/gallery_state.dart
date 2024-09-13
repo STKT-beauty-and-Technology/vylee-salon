@@ -11,14 +11,11 @@ class GalleryFailureState extends GalleryState {
 
 //items picked
 class GalleryItemsPickedState extends GalleryState {
-  List<String> images;
   List<String> imagePaths;
-  List<String> videos;
   List<String> videoPaths;
 
   GalleryItemsPickedState(
-      {required this.images,
-      required this.videos,
+      {
       required this.imagePaths,
       required this.videoPaths});
 }

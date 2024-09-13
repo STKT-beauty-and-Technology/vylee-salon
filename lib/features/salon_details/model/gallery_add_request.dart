@@ -4,29 +4,37 @@
 
 import 'dart:convert';
 
-GalleryAddRequest GalleryAddRequestFromJson(String str) =>
-    GalleryAddRequest.fromJson(json.decode(str));
-
-String GalleryAddRequestToJson(GalleryAddRequest data) =>
-    json.encode(data.toJson());
+import 'package:dio/dio.dart';
 
 enum GalleryItemType { images, videos }
 
 class GalleryAddRequest {
-  final List<String>? files;
+  final List<String> files;
+  final int vendorId;
 
   GalleryAddRequest({
-    this.files,
+    required this.files,
+    required this.vendorId,
   });
 
-  factory GalleryAddRequest.fromJson(Map<String, dynamic> json) =>
-      GalleryAddRequest(
-        files: json["files"] == null
-            ? []
-            : List<String>.from(json["files"]!.map((x) => x)),
-      );
+  FormData toImagesFormData() {
+    final formData = FormData();
+    formData.files.addAll(List.generate(files.length, (index) {
+      return MapEntry('files', MultipartFile.fromFileSync(files[index]));
+    }));
+    formData.fields.add(MapEntry("vendorId", vendorId.toString()));
 
-  Map<String, dynamic> toJson() => {
-        "files": files == null ? [] : List<dynamic>.from(files!.map((x) => x)),
-      };
+    return formData;
+  }
+
+  FormData toVideosFormData() {
+    final formData = FormData();
+    formData.files.addAll(List.generate(files.length, (index) {
+      return MapEntry('files', MultipartFile.fromFileSync(files[index]));
+    }));
+    formData.fields.add(MapEntry("vendorId", vendorId.toString()));
+    formData.fields.add(const MapEntry("names", "vylle"));
+
+    return formData;
+  }
 }

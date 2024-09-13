@@ -68,7 +68,8 @@ class ServicesRepository {
   addService(AddServiceRequest request) async {
     final id = await VendorIdProvider.getVendorId();
     int? serviceId = request.serviceId;
-    try {
+    if (serviceId == null) {
+      try {
       final res1 = await apiService.sendRequest.post(
           ApiRoutes.addServiceToCategory(request.categoryId, id),
           data: request.toAddServiceJson());
@@ -77,10 +78,15 @@ class ServicesRepository {
       logger.e(e);
       showToast("error in saving service");
     }
+    }
+   
+    
     try {
+      logger.e(request.toAddSubCategoryJson());
       final res2 = await apiService.sendRequest.post(
           ApiRoutes.addSubCategoryToService(request.serviceId, id),
           data: request.toAddSubCategoryJson());
+   
     } catch (e) {
       logger.e(e);
       showToast("error in saving sub category");

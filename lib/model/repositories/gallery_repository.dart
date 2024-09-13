@@ -13,13 +13,13 @@ class GalleryRepository {
   Future<GalleryAddResponse> addGalleryItems(
       GalleryAddRequest request, GalleryItemType item) async {
     final id = await VendorIdProvider.getVendorId();
-        
+
     try {
-      final response = await apiService.sendRequest.post(
-          item == GalleryItemType.images
-              ? ApiRoutes.addGalleryImages(id)
-              : ApiRoutes.addGalleryVideos(id),
-          data: request.toJson());
+      final response = item == GalleryItemType.images
+          ? await apiService.sendRequest.post(ApiRoutes.addGalleryImages(id),
+              data: request.toImagesFormData())
+          : await apiService.sendRequest.post(ApiRoutes.addGalleryVideos(id),
+              data: request.toVideosFormData());
 
       return GalleryAddResponse.fromDioResponse(response);
     } on DioException catch (e) {
