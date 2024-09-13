@@ -13,7 +13,10 @@ class SalonInfoRepository {
   Future<SalonInfoResponse> salonInfo(SalonInfoRequest request) async {
     try {
       final response = await apiService.sendRequest
-          .get(ApiRoutes.salonInfo(request.vendorId, request.whatsappNumber,request.description,request.websiteName));
+          .post(
+          ApiRoutes.salonInfo(request.vendorId, request.whatsappNumber,
+              request.description, request.websiteName),
+          data: request.toFormData());
 
       return SalonInfoResponse.fromDioResponse(response);
     } on DioException catch (e) {
@@ -21,7 +24,7 @@ class SalonInfoRepository {
       return SalonInfoResponse(message: "Connection to Server failed");
     } catch (e) {
       logger.e(e);
-      return SalonInfoResponse(message: "Error ocurred in Login $e");
+      return SalonInfoResponse(message: "Error ocurred : $e");
     }
   }
 }

@@ -22,8 +22,10 @@ class ApiService {
     return _instance;
   }
 
+  static const currentUrl = ApiRoutes.devUrl;
+
   initApiService() {
-    _dio.options.baseUrl = ApiRoutes.devUrl;
+    _dio.options.baseUrl = currentUrl;
     _dio.options.headers['Content-Type'] = 'application/json';
     _dio.interceptors
       ..add(InterceptorsWrapper(
@@ -38,10 +40,13 @@ class ApiService {
                   !options.path.contains("login") &&
                   !options.path.contains("services") &&
                   !options.path.contains("gallery") &&
+                  !options.path.contains("information") &&
                   !options.path.contains("registration")) &&
               options.method.toLowerCase() != "get") {
             int? vendorId = await VendorIdProvider.getVendorId();
-            options.data["vendorId"] = vendorId;
+            if (options.data != null) {
+              options.data["vendorId"] = vendorId;
+            }
             _logger.i(
                 " request Path: ${options.path} /n  Request data : ${options.data}");
             return handler.next(options);

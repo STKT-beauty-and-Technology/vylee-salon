@@ -8,6 +8,8 @@ import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
 import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/data/local/vendorId_provider.dart';
+import 'package:vylee_partner/data/network/api_routes.dart';
+import 'package:vylee_partner/data/network/api_service.dart';
 import 'package:vylee_partner/features/splash/view/ui/splash_screen.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
@@ -20,9 +22,9 @@ class AccountInformation extends StatefulWidget {
 }
 
 class _AccountInformationState extends State<AccountInformation> {
-  File? image;
   bool imagePicked = false;
   final picker = ImagePicker();
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -676,40 +678,26 @@ class _AccountInformationState extends State<AccountInformation> {
           ),
         ),
         Positioned(
-            top: SizeConfig.screenHeight! * 0.08,
+            top: SizeConfig.screenHeight! * 0.07,
             left: SizeConfig.screenWidth! * 0.36,
             child: GestureDetector(
               onTap: () async {
-                final xfile =
-                    await picker.pickImage(source: ImageSource.gallery);
-                if (xfile != null) {
-                  setState(() {
-                    image = File(xfile.path);
-                  });
-                }
+                Navigator.of(context).pushNamed(PageRoutes.salonInformation);
               },
-              child: CircleAvatar(
-                backgroundColor: AppColors.white,
-                radius: 60,
-                foregroundImage: image != null ? AssetImage(image!.path) : null,
-                child: image != null
-                    ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.file(
-                            image!,
-                          ),
-                        ),
-                      )
-                    : Text(
-                        "ADD LOGO",
-                        style: GoogleFonts.frankRuhlLibre(
-                          fontWeight: FontWeight.w400,
-                          color: AppColors.appViolet,
-                        ),
-                      ),
-              ),
+              child: FutureBuilder(
+                  future: VendorIdProvider.getVendorId(),
+                  builder: (context, snapshot) {
+                    if (snapshot.data == null) {
+                      return const SizedBox();
+                    }
+                    return CircleAvatar(
+                      backgroundColor: AppColors.white,
+                      radius: 60,
+                      foregroundImage: NetworkImage(ApiService.currentUrl +
+                          ApiRoutes.getLogo(snapshot.data)),
+                      onForegroundImageError: (exception, stackTrace) {},
+                    );
+                  }),
             )),
       ],
     );
