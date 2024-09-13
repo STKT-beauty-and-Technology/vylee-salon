@@ -373,7 +373,7 @@ class _SalonInformationState extends State<SalonInformation>
                                         .salonInfo(
                                       SalonInfoRequest(
                                         description: descriptionController.text,
-                                        whatsappNumber: phoneController.text,
+                                        //whatsappNumber: phoneController.text,
                                         websiteName: websiteController.text
                                       ),
                                     );

@@ -116,9 +116,9 @@ class _SubCategoriesPageState extends State<SubCategoriesPage> {
                   )
                 ],
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 15),
               SizedBox(
-                width: SizeConfig.screenWidth! * 0.8,
+                width: SizeConfig.screenWidth! * 0.9,
                 child: Column(
                   children: List.generate(
                       widget.service.subCategories?.length ?? 0,
@@ -155,7 +155,7 @@ class _SubCategoriesPageState extends State<SubCategoriesPage> {
                 ),
               ),
               const SizedBox(
-                height: 50,
+                height: 20,
               ),
               Center(
                 child: SizedBox(

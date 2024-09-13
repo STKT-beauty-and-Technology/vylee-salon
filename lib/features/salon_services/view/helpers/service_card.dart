@@ -19,15 +19,6 @@ class ServiceCard extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: AppColors.appGray,
-          // gradient: const LinearGradient(
-          //   colors: [
-          //     Color(0xFFF5EDF6),
-          //     Color(0xFFF6EAF9),
-          //     // Color(0xFFF6EAF9),
-          //     // Color(0xFFFFFFFF),
-          //   ],
-          //   begin: Alignment.topCenter,
-          // ),
           borderRadius: const BorderRadius.all(Radius.circular(15)),
           border: Border.all(color: AppColors.appViolet, width: 1)),
       child: Column(
