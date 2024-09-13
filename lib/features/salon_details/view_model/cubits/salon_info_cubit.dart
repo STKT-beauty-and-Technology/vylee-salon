@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
+import 'package:vylee_partner/data/local/vendorId_provider.dart';
 import 'package:vylee_partner/features/salon_details/model/salon_info_request.dart';
 import 'package:vylee_partner/features/salon_details/view_model/cubits/salon_info_state.dart';
 import 'package:vylee_partner/model/repositories/salon_info_repository.dart';
@@ -12,6 +13,9 @@ class SalonInfoCubit extends Cubit<SalonInfoState> {
   salonInfo(SalonInfoRequest request) async {
     emit(SalonInfoLoadingState());
     try {
+      final id = await VendorIdProvider.getVendorId();
+      logger.i(request.whatsappNumber);
+      request.vendorId = id;
       final res = await _salonInfoRespository.salonInfo(request);
       if (res.success == true) {
         emit(SalonInfoSuccessState());

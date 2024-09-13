@@ -1,27 +1,19 @@
-import 'dart:ffi';
+import 'package:dio/dio.dart';
 
 class SalonInfoRequest {
-  Int? vendorId;
-  Int? whatsappNumber;
+  int? vendorId;
+  String? whatsappNumber;
   String? description;
+  String filePath;
   String? websiteName;
-
   SalonInfoRequest(
-      {this.vendorId, this.whatsappNumber, this.description, this.websiteName});
+      {this.vendorId,
+      this.whatsappNumber,
+      this.description,
+      this.websiteName,
+      required this.filePath});
 
-  factory SalonInfoRequest.fromJson(Map<String, dynamic> json) =>
-      SalonInfoRequest(
-        vendorId: json["vendorId"],
-        whatsappNumber: json["whatsappNumber"],
-        description: json["description"],
-        websiteName: json["websiteName"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "vendorId": vendorId,
-        "whatsappNumber": whatsappNumber,
-        "description": description,
-        "websiteName": websiteName,
-
-      };
+  FormData toFormData() {
+    return FormData.fromMap({'file': MultipartFile.fromFileSync(filePath)});
+  }
 }

@@ -7,6 +7,7 @@ class ApiRoutes {
   static String validateOtp(email, otp, password) =>
       "vendor/validate/OTP/$email/$otp/$password";
   static const register = "vendor/new/registration";
+  static String getLogo(vendorId) => "vendor/get-logo/$vendorId";
   static String updateAddress(vendorId) => "vendor/update/address/$vendorId";
   static String checkMobileNumber(data) => "validate/mobile/$data";
   static String addGalleryImages(vendorId) =>
@@ -25,6 +26,6 @@ class ApiRoutes {
       "listing-services/add-sub/category/$serviceId/$vendorId";
   static String vendorLogin(email, password) =>
       "vendor/login/withEmailAndPassword/$email/$password";
-  static String salonInfo(vendorId) =>
+  static String salonInfo(vendorId, String? whatsappNumber, String? description, String? websiteName) =>
       "vendor/add/salon/information/$vendorId";
 }

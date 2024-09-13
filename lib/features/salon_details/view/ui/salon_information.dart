@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -127,6 +128,7 @@ class _SalonInformationState extends State<SalonInformation>
                           child: CustomFormField(
                               isEnabled: true,
                               height: 60,
+                              isRequired: true,
                               keyboardType: TextInputType.multiline,
                               isMultiline: true,
                               width: double.infinity,
@@ -146,6 +148,7 @@ class _SalonInformationState extends State<SalonInformation>
                         CustomFormField(
                             isEnabled: true,
                             height: 60,
+                            isRequired: true,
                             width: double.infinity,
                             controller: websiteController),
                         const SizedBox(
@@ -162,7 +165,13 @@ class _SalonInformationState extends State<SalonInformation>
                         CustomFormField(
                             isEnabled: true,
                             height: 60,
-                            keyboardType: const TextInputType.numberWithOptions(),
+                            isRequired: true,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                              LengthLimitingTextInputFormatter(10)
+                            ],
+                            keyboardType:
+                                const TextInputType.numberWithOptions(),
                             width: double.infinity,
                             controller: whatsappNumberController),
                         const SizedBox(height: 15),
@@ -187,9 +196,11 @@ class _SalonInformationState extends State<SalonInformation>
                                           onPressed: () async {
                                             final pickedImage =
                                                 await picker.pickImage(
-                                                    source: ImageSource.gallery);
+                                                    source:
+                                                        ImageSource.gallery);
                                             if (pickedImage != null) {
-                                              final file = File(pickedImage.path);
+                                              final file =
+                                                  File(pickedImage.path);
                                               setState(() {
                                                 imagePicked = true;
                                                 image = file;
@@ -297,7 +308,8 @@ class _SalonInformationState extends State<SalonInformation>
                         CustomFormField(
                             isEnabled: true,
                             height: 60,
-                            keyboardType: const TextInputType.numberWithOptions(),
+                            keyboardType:
+                                const TextInputType.numberWithOptions(),
                             width: double.infinity,
                             controller: phoneController),
                         const SizedBox(height: 15),
@@ -351,13 +363,13 @@ class _SalonInformationState extends State<SalonInformation>
                                 showToast((state).error);
                               } else if (state is SalonInfoSuccessState) {
                                 showToast("Details Saved");
-                              }
-                              if (mounted) {
-                                if (widget.isEdit != true) {
-                                  Navigator.of(context)
-                                      .pushNamed(PageRoutes.accountInformation);
-                                } else {
-                                  Navigator.of(context).pop();
+                                if (mounted) {
+                                  if (widget.isEdit != true) {
+                                    Navigator.of(context).pushNamed(
+                                        PageRoutes.accountInformation);
+                                  } else {
+                                    Navigator.of(context).pop();
+                                  }
                                 }
                               }
                             },
@@ -367,16 +379,23 @@ class _SalonInformationState extends State<SalonInformation>
                               }
                               return ElevatedButton(
                                 onPressed: () async {
+                                  if (image == null) {
+                                    showToast("Add Logo first");
+                                    return;
+                                  }
                                   if (_formKey.currentState!.validate()) {
                                     await context
                                         .read<SalonInfoCubit>()
                                         .salonInfo(
-                                      SalonInfoRequest(
-                                        description: descriptionController.text,
-                                        //whatsappNumber: phoneController.text,
-                                        websiteName: websiteController.text
-                                      ),
-                                    );
+                                          SalonInfoRequest(
+                                              description:
+                                                  descriptionController.text,
+                                              whatsappNumber:
+                                                  whatsappNumberController.text,
+                                              websiteName:
+                                                  websiteController.text,
+                                              filePath: image!.path),
+                                        );
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
