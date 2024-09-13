@@ -5,6 +5,7 @@ import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 
 import '../../../../common/common widgets/custom_appbar.dart';
+import '../../../../common/utitlties/common_utilities.dart';
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
 import '../../../../core/responsive/size_config.dart';
@@ -273,6 +274,8 @@ class _AddBankAccountState extends State<AddBankAccount> {
                     onPressed: () {
                       if (mounted) {
                         Navigator.of(context).pop();
+                        showToast(
+                            "Bank Details added successfully");
                       }
                     },
                   ),

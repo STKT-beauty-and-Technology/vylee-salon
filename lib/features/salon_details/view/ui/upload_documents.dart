@@ -12,6 +12,8 @@ import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
+import '../../../../common/utitlties/common_utilities.dart';
+
 class UploadDocuments extends StatefulWidget {
   const UploadDocuments({super.key});
 
@@ -349,6 +351,8 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                               if (mounted) {
                                 //save details first
                                 Navigator.of(context).pop();
+                                showToast(
+                                    "Documents Added Successfully");
                               }
                             },
                           ),
