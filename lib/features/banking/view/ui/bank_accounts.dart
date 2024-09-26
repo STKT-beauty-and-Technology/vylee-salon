@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
+import 'package:vylee_partner/features/banking/view_model/get_bankdetails_cubit.dart';
+import 'package:vylee_partner/features/banking/view_model/get_bankdetails_state.dart';
 
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
@@ -18,6 +19,12 @@ class BankAccounts extends StatefulWidget {
 }
 
 class _BankAccountsState extends State<BankAccounts> {
+  @override
+  void initState() {
+    context.read<GetBankdetailsCubit>().getBankDetail();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,13 +87,206 @@ class _BankAccountsState extends State<BankAccounts> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              Text(
-                "No Data Found",
-                style: GoogleFonts.inter(
-                  color: AppColors.appViolet,
-                  fontWeight: FontWeight.w500,
-                ),
+              const SizedBox(height: 0),
+              // Text(
+              //   "No Data Found",
+              //   style: GoogleFonts.inter(
+              //     color: AppColors.appViolet,
+              //     fontWeight: FontWeight.w500,
+              //   ),
+              // ),
+              BlocConsumer<GetBankdetailsCubit, GetBankdetailsState>(
+                builder: (BuildContext context, state) {
+                  if (state is! GetBankdetailsSuccessState) {
+                    return const SizedBox();
+                  }
+                  return SizedBox(
+                    height: 560,
+                    child: ListView(
+                        children: List.generate(
+                      (state as GetBankdetailsSuccessState).bankDetails.length,
+                      (index) {
+                        final bankdetaill = state.bankDetails[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20, right: 20, top: 20),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: AppColors.pinkLight),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 15, right: 15, top: 25),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Account Name:-",
+                                        style: TextStyle(
+                                            color: AppColors.themeColorPink,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        bankdetaill.accountHolderName ?? "",
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 15, right: 15, top: 8),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Bank Account Number:-",
+                                        style: TextStyle(
+                                            color: AppColors.themeColorPink,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        bankdetaill.bankAccountNumber
+                                            .toString(),
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 15, right: 15, top: 8),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Bank Name:-",
+                                        style: TextStyle(
+                                            color: AppColors.themeColorPink,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        bankdetaill.bankName ?? "",
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 15, right: 15, top: 8),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "IFSC Code:-",
+                                        style: TextStyle(
+                                            color: AppColors.themeColorPink,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        bankdetaill.ifscCode ?? "",
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 15, right: 15, top: 8),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Email Address:-",
+                                        style: TextStyle(
+                                            color: AppColors.themeColorPink,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        bankdetaill.emailAddress ?? "",
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 15, right: 15, top: 8),
+                                  child: Row(
+                                    children: [
+                                      const Text(
+                                        "Mobile Number:-",
+                                        style: TextStyle(
+                                            color: AppColors.themeColorPink,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        bankdetaill.mobileNumber.toString(),
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 15, right: 15, top: 8, bottom: 25),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Address:-",
+                                        style: TextStyle(
+                                            color: AppColors.themeColorPink,
+                                            fontSize: 13),
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        bankdetaill.address ?? "",
+                                        style: TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 13),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    )),
+                  );
+                },
+                listener: (BuildContext context, GetBankdetailsState state) {},
               )
             ],
           ),

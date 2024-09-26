@@ -38,7 +38,7 @@ class Constant {
   //registration:
   static String vendorRegister = "VENDOR REGISTRATION";
   static String fieldsMarked = "Fields marked with";
-  static String areMandatory = "are Mandatory";
+  static String areMandatory = "are mandatory";
   static String fullName = "Full Name";
   static String salonName = "Salon Name";
   static String email = "Email Address";

@@ -175,7 +175,8 @@ class _BookingsPageState extends State<BookingsPage> with BookingsViewModel {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "Booking ${bookingsList[index] < 10 ? "0" : ""}${bookingsList[index]}",
+                          "Your Bookings will show here",
+                          // "Booking ${bookingsList[index] < 10 ? "0" : ""}${bookingsList[index]}",
                           style: const TextStyle(
                             color: AppColors.black,
                             fontSize: 25,

@@ -78,7 +78,7 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                       fontSize: 28),
                 ),
                 const SizedBox(
-                  height: 35,
+                  height: 25,
                 ),
                 SizedBox(
                   width: SizeConfig.screenWidth! * 0.8,
@@ -138,20 +138,20 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                         ),
                         const SizedBox(height: 30),
                         Center(
-                          child: BlocConsumer<RegisterCubit, RegisterState>(listener: (context, state) {
+                          child: BlocConsumer<RegisterCubit, RegisterState>(
+                            listener: (context, state) {
                               if (state is RegisterFailureState) {
                                 Fluttertoast.showToast(msg: (state).error);
                               } else if (state is RegisterSuccessState) {
                                 showToast("Registration Success");
                                 if (mounted) {
-                                Navigator.of(context).pushNamed(
-                                    PageRoutes.homeScreen,
-                                    arguments: {
-                                      Constant.name: salonNameController.text
-                                    });
+                                  Navigator.of(context).pushNamed(
+                                      PageRoutes.homeScreen,
+                                      arguments: {
+                                        Constant.name: salonNameController.text
+                                      });
+                                }
                               }
-                              }
-                             
                             },
                             builder: (context, state) {
                               if (state is RegisterLoadingState) {
@@ -169,12 +169,11 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                                     await context
                                         .read<RegisterCubit>()
                                         .registerVendor(RegistrationRequest(
-                                          fullName: nameController.text,
-                                          mobileNumber: phoneController.text,
-                                          salonName: salonNameController.text,
-                                          vendorEmail: emailController.text,
-                                          password: passwordController.text
-                                        ));
+                                            fullName: nameController.text,
+                                            mobileNumber: phoneController.text,
+                                            salonName: salonNameController.text,
+                                            vendorEmail: emailController.text,
+                                            password: passwordController.text));
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(

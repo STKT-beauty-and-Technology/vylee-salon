@@ -87,7 +87,7 @@ class _BookingDetailsState extends State<BookingDetails>
                             ),
                           ),
                           Text(
-                            "12:00 HRS",
+                            "",
                             style: TextStyle(
                               color: AppColors.appViolet,
                               fontWeight: FontWeight.w500,
@@ -101,7 +101,7 @@ class _BookingDetailsState extends State<BookingDetails>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "TIME",
+                            "DATE",
                             style: TextStyle(
                               color: AppColors.appViolet,
                               fontWeight: FontWeight.w400,
@@ -109,7 +109,7 @@ class _BookingDetailsState extends State<BookingDetails>
                             ),
                           ),
                           Text(
-                            "12-08-24",
+                            "",
                             style: TextStyle(
                               color: AppColors.appViolet,
                               fontWeight: FontWeight.w500,
@@ -139,7 +139,7 @@ class _BookingDetailsState extends State<BookingDetails>
                             ),
                           ),
                           Text(
-                            "12:00 HRS",
+                            "",
                             style: TextStyle(
                               color: AppColors.appViolet,
                               fontWeight: FontWeight.w500,
@@ -161,7 +161,7 @@ class _BookingDetailsState extends State<BookingDetails>
                             ),
                           ),
                           Text(
-                            "56789",
+                            "",
                             style: TextStyle(
                               color: AppColors.appViolet,
                               fontWeight: FontWeight.w500,
@@ -189,7 +189,7 @@ class _BookingDetailsState extends State<BookingDetails>
                         ),
                       ),
                       Text(
-                        "LOREM IPUSM DOLOR SET ITME",
+                        "",
                         style: TextStyle(
                           color: AppColors.appViolet,
                           fontWeight: FontWeight.w500,
@@ -214,7 +214,7 @@ class _BookingDetailsState extends State<BookingDetails>
                         ),
                       ),
                       Text(
-                        "\$23.89",
+                        "",
                         style: TextStyle(
                           color: AppColors.appViolet,
                           fontWeight: FontWeight.w500,

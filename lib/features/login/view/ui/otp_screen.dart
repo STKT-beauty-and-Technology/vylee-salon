@@ -37,6 +37,7 @@ class _OtpScreenState extends State<OtpScreen> {
     BlocProvider.of<OtpCubit>(context)
         .sendOtp(OtpRequest(email: widget.mobileNumber));
   }
+
   void _togglePasswordVisibility() {
     setState(() {
       _obscureText = !_obscureText;
@@ -170,8 +171,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             width: SizeConfig.screenWidth! * 0.7,
                             height: 55,
                             alignment: Alignment.topLeft,
-                            padding: const EdgeInsets.only(
-                                left: 10, bottom: 8),
+                            padding: const EdgeInsets.only(left: 10, bottom: 8),
                             decoration: BoxDecoration(
                               color: AppColors.white,
                               border: Border.all(
@@ -179,9 +179,9 @@ class _OtpScreenState extends State<OtpScreen> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: TextFormField(
-                              obscureText: !_passwordVisible  ,
+                              obscureText: !_passwordVisible,
                               controller: passwordController,
-                              keyboardType: TextInputType.text ,
+                              keyboardType: TextInputType.text,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return "Password is Mandatory";
@@ -197,15 +197,15 @@ class _OtpScreenState extends State<OtpScreen> {
                                           ? Icons.visibility
                                           : Icons.visibility_off,
                                       color: AppColors.black,
-                                    ), onPressed: () {
-                                    setState(() {
-                                      _passwordVisible = !_passwordVisible;
-                                    });
-                                  },
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _passwordVisible = !_passwordVisible;
+                                      });
+                                    },
                                   ),
                                   hintStyle: GoogleFonts.inter(
-                                      color: AppColors.black,
-                                      fontSize: 15),
+                                      color: AppColors.black, fontSize: 15),
                                   // icon: IconButton(
                                   //   icon: Icon(
                                   //     _obscureText ? Icons.visibility : Icons.visibility_off,

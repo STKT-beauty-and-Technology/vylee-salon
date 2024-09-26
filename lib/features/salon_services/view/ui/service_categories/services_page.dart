@@ -106,7 +106,7 @@ class _ServicesPageState extends State<ServicesPage> {
                     child: ServiceCard(service: widget.services[index]),
                   );
                 }),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
           ],
         ),
       ),

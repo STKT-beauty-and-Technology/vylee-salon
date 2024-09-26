@@ -10,10 +10,8 @@ class ApiRoutes {
   static String getLogo(vendorId) => "vendor/get-logo/$vendorId";
   static String updateAddress(vendorId) => "vendor/update/address/$vendorId";
   static String checkMobileNumber(data) => "validate/mobile/$data";
-  static String addGalleryImages(vendorId) =>
-      "shop/gallery/upload/images";
-  static String addGalleryVideos(vendorId) =>
-      "shop/gallery/upload/videos";
+  static String addGalleryImages(vendorId) => "shop/gallery/upload/images";
+  static String addGalleryVideos(vendorId) => "shop/gallery/upload/videos";
   static String getAllCategories(vendorId) =>
       "listing-services/show/all/category/$vendorId";
   static String addCategory(vendorId) =>
@@ -26,6 +24,11 @@ class ApiRoutes {
       "listing-services/add-sub/category/$serviceId/$vendorId";
   static String vendorLogin(email, password) =>
       "vendor/login/withEmailAndPassword/$email/$password";
-  static String salonInfo(vendorId , whatsappNumber , description , websiteName) =>
-      "vendor/add/salon/information/$vendorId/$whatsappNumber/$description/$websiteName";
+  static String salonInfo(vendorId, String? whatsappNumber, String? description,
+          String? websiteName) =>
+      "vendor/add/salon/information/$vendorId";
+  static String addBankAccount(vendorId) =>
+      "listing-services/add/bank-account/$vendorId";
+  static String getBankDetails(vendorId) =>
+      "listing-services/get/all-bank-deatils/$vendorId";
 }
