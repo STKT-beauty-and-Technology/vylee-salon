@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_textfield.dart';
 import 'package:vylee_partner/common/utitlties/common_utilities.dart';
 import 'package:vylee_partner/features/salon_services/model/add_category_request.dart';
 import 'package:vylee_partner/features/salon_services/view/helpers/service_category_card.dart';
@@ -9,6 +8,7 @@ import 'package:vylee_partner/features/salon_services/view_model/cubits/service_
 import 'package:vylee_partner/features/salon_services/view_model/cubits/service_category_state.dart';
 
 import '../../../../../common/common widgets/custom_appbar.dart';
+import '../../../../../common/common widgets/custom_dropdown.dart';
 import '../../../../../core/load_image/image_loader.dart';
 import '../../../../../core/path/image_path.dart';
 import '../../../../../core/responsive/size_config.dart';
@@ -147,12 +147,12 @@ class _ServiceCategoryState extends State<ServiceCategory> {
               height: SizeConfig.screenHeight! * 0.2,
               child: Column(
                 children: [
-                  CustomTextField(
-                    isEnabled: true,
+                  CustomDropdown(
                     height: 50,
-                    width: SizeConfig.screenWidth! * 0.7,
+                    width: SizeConfig.screenWidth! * 0.5,
                     controller: categoryController,
-                    text: "Category (Male/Female/Others etc.)",
+                    hintText: "Select Category",
+                    itemList: const ['Male', 'Female', 'Others'],
                   ),
                   const SizedBox(height: 30),
                   CustomButton(

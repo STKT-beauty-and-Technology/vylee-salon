@@ -60,7 +60,7 @@ class ServicesRepository {
       return GetCategoriesResponse(message: response.data);
     } catch (e) {
       logger.e(e);
-      showToast(e.toString());
+      showToast("Category Added");
       return GetCategoriesResponse(message: e.toString());
     }
   }
@@ -70,23 +70,21 @@ class ServicesRepository {
     int? serviceId = request.serviceId;
     if (serviceId == null) {
       try {
-      final res1 = await apiService.sendRequest.post(
-          ApiRoutes.addServiceToCategory(request.categoryId, id),
-          data: request.toAddServiceJson());
-      request.serviceId = serviceId ?? res1.data["serviceProductId"];
-    } catch (e) {
-      logger.e(e);
-      showToast("error in saving service");
+        final res1 = await apiService.sendRequest.post(
+            ApiRoutes.addServiceToCategory(request.categoryId, id),
+            data: request.toAddServiceJson());
+        request.serviceId = serviceId ?? res1.data["serviceProductId"];
+      } catch (e) {
+        // logger.e(e);
+        showToast("error in saving service");
+      }
     }
-    }
-   
-    
+
     try {
       logger.e(request.toAddSubCategoryJson());
       final res2 = await apiService.sendRequest.post(
           ApiRoutes.addSubCategoryToService(request.serviceId, id),
           data: request.toAddSubCategoryJson());
-   
     } catch (e) {
       logger.e(e);
       showToast("error in saving sub category");

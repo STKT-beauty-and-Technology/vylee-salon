@@ -1,4 +1,6 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../common/common widgets/custom_appbar.dart';
 import '../../../core/load_image/image_loader.dart';
@@ -42,9 +44,11 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+                    onPressed: () =>
+                        AudioPlayer().play(AssetSource(ImagePath.mySound)),
+                    // onPressed: () {
+                    //   Navigator.of(context).pop();
+                    // },
                     icon: const Icon(
                       Icons.arrow_back_ios_rounded,
                       size: 25,
@@ -60,7 +64,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Padding(
@@ -78,31 +82,40 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                           fontWeight: FontWeight.w400,
                           fontSize: 18),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
                       children: [
                         ImageLoader.assetSvg(ImagePath.atSymbol),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          Constant.supportEmail,
-                          style: const TextStyle(
-                              color: AppColors.appViolet,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18),
+                        GestureDetector(
+                          onTap: () {
+                            final Uri emailLaunchUri = Uri(
+                              scheme: 'mailto',
+                              path: 'support@vyleesalon.in',
+                            );
+                            launchUrl(emailLaunchUri);
+                          },
+                          child: Text(
+                            Constant.supportEmail,
+                            style: const TextStyle(
+                                color: AppColors.appViolet,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18),
+                          ),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
                       children: [
                         ImageLoader.assetSvg(ImagePath.callSymbol),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(

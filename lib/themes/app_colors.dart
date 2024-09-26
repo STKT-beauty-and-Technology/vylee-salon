@@ -15,6 +15,7 @@ class AppColors {
   static const themeColorPink = Color(0XFFAA24B2);
   static const Color white = Colors.white;
   static const Color appViolet = Color(0XFFD899FF);
+  static const Color pinkLight = Color(0XFFf5e6ff);
   static const Color splashViolet = Color(0XFFD28DFD);
   // static const Color appViolet = Color(0xff791DAE);
   static const Color appPurple = Color(0xff9636D1);
@@ -26,12 +27,4 @@ class AppColors {
   static const Color maroon = Color(0xffA03131);
   static const Color grayBlue = Color(0xffA03131);
   static const Color bottomNavigationIcon = Color(0xff65558F);
-
-
-
-
-
-
-
-
 }

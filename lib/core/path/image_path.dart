@@ -32,5 +32,5 @@ class ImagePath {
   static const editProfile = "asset/images/edit_profile/";
   static const atSymbol = "asset/images/at_symbol2.svg/";
   static const callSymbol = "asset/images/call_symbol.svg/";
-
+  static const mySound = "asset/audio/my_sound.mp3/";
 }

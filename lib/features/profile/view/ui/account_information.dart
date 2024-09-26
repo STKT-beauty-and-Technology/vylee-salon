@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -67,7 +66,20 @@ class _AccountInformationState extends State<AccountInformation> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 15,
+                  ),
+                  Center(
+                    child: Text(
+                      "ADD MANDATORY IMPORTANT\nINFORMATION TO GET LISTED",
+                      style: GoogleFonts.frankRuhlLibre(
+                        textStyle: const TextStyle(fontSize: 15),
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.appViolet,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                   const Align(
                     alignment: Alignment.centerLeft,
@@ -467,7 +479,7 @@ class _AccountInformationState extends State<AccountInformation> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Saloon Address",
+                                Text("Salon Address",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.appViolet,

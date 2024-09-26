@@ -1,4 +1,4 @@
-package com.vylee.vylee_partner
+package xyz.appmaker.vylee
 
 import io.flutter.embedding.android.FlutterActivity
 
