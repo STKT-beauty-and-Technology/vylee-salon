@@ -187,7 +187,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                               if (mounted) {
                                 if (widget.isEdit != true) {
                                   Navigator.of(context)
-                                      .pushNamed(PageRoutes.workingHours);
+                                      .pushNamed(PageRoutes.successScreen);
                                 } else {
                                   Navigator.of(context).pop();
                                 }

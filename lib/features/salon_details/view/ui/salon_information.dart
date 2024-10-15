@@ -17,6 +17,9 @@ import 'package:vylee_partner/themes/app_colors.dart';
 import 'package:vylee_partner/utilities/string.dart';
 
 import '../../../../common/utitlties/common_utilities.dart';
+import '../../../../navigation/page_routes.dart';
+import '../../model/salon_info_request.dart';
+import '../../view_model/cubits/salon_info_state.dart';
 
 class SalonInformation extends StatefulWidget {
   const SalonInformation({super.key, this.isEdit});
@@ -352,109 +355,109 @@ class _SalonInformationState extends State<SalonInformation>
                         //     // ),
                         //   ),
                         // ),
-                        const SizedBox(height: 50),
-                        // const SizedBox(height: 10),
-                        // Center(child: BlocConsumer<SalonInfoCubit, SalonInfoState>(
-                        //     listener: (context, state) {
-                        //       if (state is SalonInfoFailureState) {
-                        //         showToast((state).error);
-                        //       } else if (state is SalonInfoSuccessState) {
-                        //         showToast("Details Saved");
-                        //         if (mounted) {
-                        //           if (widget.isEdit != true) {
-                        //             Navigator.of(context).pushNamed(
-                        //                 PageRoutes.accountInformation);
-                        //           } else {
-                        //             Navigator.of(context).pop();
-                        //           }
-                        //         }
-                        //       }
-                        //     },
-                        //     builder: (context, state) {
-                        //       if (state is SalonInfoLoadingState) {
-                        //         return const CircularProgressIndicator();
-                        //       }
-                        //       return ElevatedButton(
-                        //         onPressed: () async {
-                        //           if (image == null) {
-                        //             showToast("Add Logo first");
-                        //             return;
-                        //           }
-                        //           if (_formKey.currentState!.validate()) {
-                        //             await context
-                        //                 .read<SalonInfoCubit>()
-                        //                 .salonInfo(
-                        //                   SalonInfoRequest(
-                        //                       description:
-                        //                           descriptionController.text,
-                        //                       whatsappNumber:
-                        //                           whatsappNumberController.text,
-                        //                       websiteName:
-                        //                           websiteController.text,
-                        //                       filePath: image!.path),
-                        //                 );
-                        //           }
-                        //         },
-                        //         style: ElevatedButton.styleFrom(
-                        //             backgroundColor: AppColors.appViolet,
-                        //             shape: RoundedRectangleBorder(
-                        //                 borderRadius: BorderRadius.circular(8)),
-                        //             elevation: 0),
-                        //         child: Padding(
-                        //             padding: const EdgeInsets.symmetric(
-                        //                 horizontal: 12.0, vertical: 10.0),
-                        //             child: Text(
-                        //               widget.isEdit == true
-                        //                   ? "SAVE"
-                        //                   : "CONTINUE",
-                        //               style: const TextStyle(
-                        //                   color: AppColors.white, fontSize: 22),
-                        //             )),
-                        //       );
-                        //     },
-                        //   ),
-                        // )
+                        const SizedBox(height: 10),
                         Center(
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              // if (image == null) {
-                              //   showToast("Add Logo first");
-                              //   return;
-                              // }
-                              // if (_formKey.currentState!.validate()) {
-                              //   await context
-                              //       .read<SalonInfoCubit>()
-                              //       .salonInfo(
-                              //     SalonInfoRequest(
-                              //         description:
-                              //         descriptionController.text,
-                              //         whatsappNumber:
-                              //         whatsappNumberController.text,
-                              //         websiteName:
-                              //         websiteController.text,
-                              //         filePath: image!.path),
-                              //   );
-                              // }
-                              Future.delayed(const Duration(seconds: 2), () {
-                                Navigator.of(context).pop();
-                                showToast("Details Saved successfully");
-                              });
+                          child: BlocConsumer<SalonInfoCubit, SalonInfoState>(
+                            listener: (context, state) {
+                              if (state is SalonInfoFailureState) {
+                                showToast((state).error);
+                              } else if (state is SalonInfoSuccessState) {
+                                showToast("Details Saved");
+                                if (mounted) {
+                                  if (widget.isEdit != true) {
+                                    Navigator.of(context)
+                                        .pushNamed(PageRoutes.successScreen);
+                                  } else {
+                                    Navigator.of(context).pop();
+                                  }
+                                }
+                              }
                             },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.appViolet,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)),
-                                elevation: 0),
-                            child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0, vertical: 10.0),
-                                child: Text(
-                                  widget.isEdit == true ? "SAVE" : "CONTINUE",
-                                  style: const TextStyle(
-                                      color: AppColors.white, fontSize: 22),
-                                )),
+                            builder: (context, state) {
+                              if (state is SalonInfoLoadingState) {
+                                return const CircularProgressIndicator();
+                              }
+                              return ElevatedButton(
+                                onPressed: () async {
+                                  if (image == null) {
+                                    showToast("Add Logo first");
+                                    return;
+                                  }
+                                  if (_formKey.currentState!.validate()) {
+                                    await context
+                                        .read<SalonInfoCubit>()
+                                        .salonInfo(
+                                          SalonInfoRequest(
+                                              description:
+                                                  descriptionController.text,
+                                              whatsappNumber:
+                                                  whatsappNumberController.text,
+                                              websiteName:
+                                                  websiteController.text,
+                                              file: image!.path),
+                                        );
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.appViolet,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8)),
+                                    elevation: 0),
+                                child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0, vertical: 10.0),
+                                    child: Text(
+                                      widget.isEdit == true
+                                          ? "SAVE"
+                                          : "CONTINUE",
+                                      style: const TextStyle(
+                                          color: AppColors.white, fontSize: 22),
+                                    )),
+                              );
+                            },
                           ),
                         )
+                        // Center(
+                        //   child: ElevatedButton(
+                        //     onPressed: () async {
+                        //       // if (image == null) {
+                        //       //   showToast("Add Logo first");
+                        //       //   return;
+                        //       // }
+                        //       // if (_formKey.currentState!.validate()) {
+                        //       //   await context
+                        //       //       .read<SalonInfoCubit>()
+                        //       //       .salonInfo(
+                        //       //     SalonInfoRequest(
+                        //       //         description:
+                        //       //         descriptionController.text,
+                        //       //         whatsappNumber:
+                        //       //         whatsappNumberController.text,
+                        //       //         websiteName:
+                        //       //         websiteController.text,
+                        //       //         filePath: image!.path),
+                        //       //   );
+                        //       // }
+                        //       Future.delayed(const Duration(seconds: 2), () {
+                        //         Navigator.of(context).pop();
+                        //         showToast("Details Saved successfully");
+                        //       });
+                        //     },
+                        //     style: ElevatedButton.styleFrom(
+                        //         backgroundColor: AppColors.appViolet,
+                        //         shape: RoundedRectangleBorder(
+                        //             borderRadius: BorderRadius.circular(8)),
+                        //         elevation: 0),
+                        //     child: Padding(
+                        //         padding: const EdgeInsets.symmetric(
+                        //             horizontal: 12.0, vertical: 10.0),
+                        //         child: Text(
+                        //           widget.isEdit == true ? "SAVE" : "CONTINUE",
+                        //           style: const TextStyle(
+                        //               color: AppColors.white, fontSize: 22),
+                        //         )),
+                        //   ),
+                        // )
                       ],
                     ),
                   ),

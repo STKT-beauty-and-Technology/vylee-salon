@@ -93,6 +93,7 @@ flutter:
      - asset/images/edit_profile/
      - asset/lotties/
      - asset/videos/
+     - asset/audio/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -121,9 +122,10 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 flutter_native_splash:
-  color: "#791DAE"
+  color: "#EFDAFC"
   fullscreen: true
   android_12:
-    icon_background_color: "#791DAE"
+    icon_background_color: "#EFDAFC"
+    image : "asset/images/splash_back.png"
 
 

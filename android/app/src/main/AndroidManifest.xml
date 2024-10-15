@@ -6,6 +6,7 @@
     <application
         android:label="VYLEE\nPartner"
         android:name="${applicationName}"
+        android:theme="@style/LaunchTheme"
         android:icon="@mipmap/splash_logo">
         <activity
             android:name=".MainActivity"

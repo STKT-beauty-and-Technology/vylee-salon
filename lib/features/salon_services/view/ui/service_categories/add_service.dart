@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_dropdown.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
@@ -16,6 +15,8 @@ import 'package:vylee_partner/features/salon_services/view_model/cubits/service_
 import 'package:vylee_partner/features/salon_services/view_model/cubits/service_category_state.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
+
+import '../../../../../common/utitlties/common_utilities.dart';
 
 class AddService extends StatefulWidget {
   const AddService(
@@ -92,7 +93,7 @@ class _AddServiceState extends State<AddService> {
                         color: AppColors.appViolet,
                       )),
                   Text(
-                    "add ${widget.service?.serviceCategory?.categoryName ?? widget.categoryName ?? ""} service"
+                    "add ${widget.service?.serviceName.toString() ?? widget.categoryName ?? ""} service"
                         .toUpperCase(),
                     style: const TextStyle(
                         color: AppColors.appViolet,
@@ -156,37 +157,37 @@ class _AddServiceState extends State<AddService> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 12.0),
-                        child: Text(
-                          "Service Duration",
-                          style: TextStyle(
-                              color: AppColors.appViolet,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15),
-                        ),
-                      ),
+                      // const Padding(
+                      //   padding: EdgeInsets.only(left: 12.0),
+                      //   child: Text(
+                      //     "Service Duration",
+                      //     style: TextStyle(
+                      //         color: AppColors.appViolet,
+                      //         fontWeight: FontWeight.w400,
+                      //         fontSize: 15),
+                      //   ),
+                      // ),
+                      // const SizedBox(height: 10),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     CustomDropdown(
+                      //         hintText: "Hours",
+                      //         itemList:
+                      //             List.generate(12, (i) => (i + 1).toString()),
+                      //         controller: hourController,
+                      //         width: SizeConfig.screenWidth! * 0.30,
+                      //         height: 40),
+                      //     CustomDropdown(
+                      //         hintText: "Minutes",
+                      //         itemList:
+                      //             List.generate(59, (i) => (i + 1).toString()),
+                      //         controller: hourController,
+                      //         width: SizeConfig.screenWidth! * 0.35,
+                      //         height: 40),
+                      //   ],
+                      // ),
                       const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomDropdown(
-                              hintText: "Hours",
-                              itemList:
-                                  List.generate(12, (i) => (i + 1).toString()),
-                              controller: hourController,
-                              width: SizeConfig.screenWidth! * 0.30,
-                              height: 40),
-                          CustomDropdown(
-                              hintText: "Minutes",
-                              itemList:
-                                  List.generate(59, (i) => (i + 1).toString()),
-                              controller: hourController,
-                              width: SizeConfig.screenWidth! * 0.35,
-                              height: 40),
-                        ],
-                      ),
-                      const SizedBox(height: 30),
                       const Padding(
                         padding: EdgeInsets.only(left: 12.0),
                         child: Text(
@@ -198,7 +199,7 @@ class _AddServiceState extends State<AddService> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Row(
+                      Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Stack(
@@ -277,17 +278,19 @@ class _AddServiceState extends State<AddService> {
                           // ),
                         ],
                       ),
-                      const SizedBox(height: 30),
-                      CustomDropdown(
-                          hintText: "Max. Service Quantity",
-                          itemList:
-                              List.generate(12, (i) => (i + 1).toString()),
-                          controller: maxServiceQuantController,
-                          spaceBetweenTextAndIcon:
-                              SizeConfig.screenWidth! * 0.25,
-                          width: double.infinity,
-                          height: 55),
-                      const SizedBox(height: 40),
+                      // CustomDropdown(
+                      //     hintText: "Max. Service Quantity",
+                      //     itemList:
+                      //         List.generate(12, (i) => (i + 1).toString()),
+                      //     controller: maxServiceQuantController,
+                      //     spaceBetweenTextAndIcon:
+                      //         SizeConfig.screenWidth! * 0.25,
+                      //     width: double.infinity,
+                      //     height: 55),
+                      // const SizedBox(height: 40),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       CustomFormField(
                           isEnabled: true,
                           borderSide: const BorderSide(
@@ -301,8 +304,17 @@ class _AddServiceState extends State<AddService> {
                           controller: descriptionController),
                       const SizedBox(height: 30),
                       Center(
-                        child: BlocBuilder<ServiceCategoryCubit,
+                        child: BlocConsumer<ServiceCategoryCubit,
                             ServiceCategoryState>(
+                          listener: (context, state) {
+                            if (state is ServiceCategoryInitialState) {
+                            } else if (state is ServiceCategorySuccessState) {
+                              showToast("Service Added Successfully");
+                              if (mounted) {
+                                Navigator.of(context).pop();
+                              }
+                            }
+                          },
                           builder: (context, state) {
                             if (state is ServiceCategoryLoadingState) {
                               return const CircularProgressIndicator();
@@ -344,6 +356,49 @@ class _AddServiceState extends State<AddService> {
                             );
                           },
                         ),
+                        // child: BlocBuilder<ServiceCategoryCubit, ServiceCategoryState>(
+                        //   builder: (context, state) {
+                        //     if (state is ServiceCategoryLoadingState) {
+                        //       return const CircularProgressIndicator();
+                        //     }
+                        //       return SizedBox(
+                        //         height: SizeConfig.screenHeight! * 0.055,
+                        //         width: SizeConfig.screenWidth! * 0.42,
+                        //         child: CustomButton(
+                        //           text: "SUBMIT",
+                        //           borderColor: AppColors.appBorderPurple,
+                        //           textStyle: GoogleFonts.lateef(
+                        //               fontWeight: FontWeight.w400, fontSize: 26),
+                        //           onPressed: () async {
+                        //             if (_formKey.currentState!.validate()) {
+                        //               await context
+                        //                   .read<ServiceCategoryCubit>()
+                        //                   .addService(AddServiceRequest(
+                        //                   serviceName:
+                        //                   categoryController.text,
+                        //                   categoryId: widget.categoryId ?? 0,
+                        //                   serviceId:
+                        //                   widget.service?.serviceId,
+                        //                   subCategoryName:
+                        //                   serviceNameController.text,
+                        //                   price: int.tryParse(
+                        //                       rpController.text) ??
+                        //                       0));
+                        //               await context
+                        //                   .read<ServiceCategoryCubit>()
+                        //                   .getAllCategories();
+                        //               if (mounted) {
+                        //                 Navigator.of(context).popUntil(
+                        //                     ModalRoute.withName(
+                        //                         PageRoutes.homeScreen));
+                        //               }
+                        //             }
+                        //           },
+                        //         ),
+                        //       );
+                        //
+                        //   },
+                        // ),
                       ),
                     ],
                   ),

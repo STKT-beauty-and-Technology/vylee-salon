@@ -11,6 +11,7 @@ import 'package:vylee_partner/features/salon_details/model/gallery_add_request.d
 import 'package:vylee_partner/features/salon_details/view_model/cubits/gallery_cubit.dart';
 import 'package:vylee_partner/features/salon_details/view_model/cubits/gallery_state.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
+
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
@@ -251,13 +252,11 @@ class _GalleryPageState extends State<GalleryPage> {
                   } else if (state is GallerySuccessState) {
                     showToast("Gallery Saved");
                     if (widget.isEdit != true) {
-                    Navigator.of(context)
-                        .pushNamed(PageRoutes.serviceCategories);
-                  } else {
-                    Navigator.of(context).pop();
+                      Navigator.of(context).pushNamed(PageRoutes.successScreen);
+                    } else {
+                      Navigator.of(context).pushNamed(PageRoutes.successScreen);
+                    }
                   }
-                  }
-                
                 },
                 listenWhen: (previous, current) {
                   return current is! GalleryItemsPickedState;

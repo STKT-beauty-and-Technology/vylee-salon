@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
 import 'package:vylee_partner/core/path/image_path.dart';
@@ -6,6 +7,11 @@ import 'package:vylee_partner/features/salon_services/model/category_data_respon
 import 'package:vylee_partner/features/salon_services/view/helpers/service_card.dart';
 import 'package:vylee_partner/features/salon_services/view/ui/service_categories/add_service.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
+
+import '../../../../../common/utitlties/common_utilities.dart';
+import '../../../model/delete_category_request.dart';
+import '../../../view_model/cubits/delete_category_cubit.dart';
+import '../../../view_model/cubits/delete_category_state.dart';
 
 class ServicesPage extends StatefulWidget {
   const ServicesPage(
@@ -34,6 +40,13 @@ class _ServicesPageState extends State<ServicesPage> {
   //   "Pre Bridal",
   //   "Spa & Massage"
   // ];
+  // @override
+  // void initState() {
+  //   context
+  //       .read<DeleteCategoryCubit>()
+  //       .removeCategory(DeleteCategoryRequest(categoryId: widget.categoryId));
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +103,47 @@ class _ServicesPageState extends State<ServicesPage> {
                       color: AppColors.appViolet,
                       fontWeight: FontWeight.w400,
                       fontSize: 20),
+                ),
+                const Spacer(),
+                BlocConsumer<DeleteCategoryCubit, DeleteCategoryState>(
+                  listener: (context, state) {
+                    if (state is DeleteCategoryFailureState) {
+                      // showToast((state).error);
+                      showToast("Category Deleted");
+                      Navigator.of(context).pop();
+                    } else if (state is DeleteCategorySuccessState) {
+                      showToast("Category Deleted Successfully");
+                    }
+                  },
+                  builder: (BuildContext context, state) {
+                    if (state is DeleteCategoryLoadingState) {
+                      return const CircularProgressIndicator();
+                    }
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: PopupMenuButton<int>(
+                          onSelected: (value) async {
+                            if (value == 1) {
+                              await context
+                                  .read<DeleteCategoryCubit>()
+                                  .removeCategory(
+                                    DeleteCategoryRequest(
+                                      categoryId: widget.categoryId,
+                                    ),
+                                  );
+                            }
+                          },
+                          icon: const Icon(Icons.more_vert),
+                          itemBuilder: (context) => [
+                            const PopupMenuItem<int>(
+                                value: 1, child: Text("Delete Category"))
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

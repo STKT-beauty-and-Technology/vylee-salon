@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:logger/logger.dart';
 import 'package:vylee_partner/common/utitlties/common_utilities.dart';
 import 'package:vylee_partner/data/local/vendorId_provider.dart';
@@ -59,7 +61,6 @@ class ServicesRepository {
           .post(ApiRoutes.addCategory(id), data: request.toJson());
       return GetCategoriesResponse(message: response.data);
     } catch (e) {
-      logger.e(e);
       showToast("Category Added");
       return GetCategoriesResponse(message: e.toString());
     }
@@ -85,6 +86,8 @@ class ServicesRepository {
       final res2 = await apiService.sendRequest.post(
           ApiRoutes.addSubCategoryToService(request.serviceId, id),
           data: request.toAddSubCategoryJson());
+      request.serviceId = serviceId ?? res2.data["serviceProductId"];
+      logger.e("Error adding subcategory: $e");
     } catch (e) {
       logger.e(e);
       showToast("error in saving sub category");

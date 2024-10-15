@@ -56,15 +56,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Container(
-                    //   margin: const EdgeInsets.only(right: 10),
-                    //   padding: const EdgeInsets.only(top: 10),
-                    //   width: 40,
-                    //   child: const Divider(
-                    //     color: AppColors.appViolet,
-                    //     thickness: 2,
-                    //   ),
-                    // ),
+                    Container(
+                      margin: const EdgeInsets.only(right: 10),
+                      padding: const EdgeInsets.only(top: 10),
+                      width: 40,
+                      child: const Divider(
+                        color: AppColors.appViolet,
+                        thickness: 2,
+                      ),
+                    ),
                     Text(
                       widget.name.toUpperCase(),
                       style: GoogleFonts.inter(

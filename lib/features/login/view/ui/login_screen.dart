@@ -262,10 +262,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             }
                                             return ElevatedButton(
                                               onPressed: () async {
-                                                if (_isChecked == false) {
-                                                  showToast(
-                                                      "Please Accept Terms and conditions first");
-                                                } else if (passwordController
+                                                if (passwordController
                                                         .text.isEmpty &&
                                                     userNameController
                                                         .text.isEmpty) {
@@ -349,56 +346,56 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 45),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Checkbox(
-                                    value: _isChecked,
-                                    onChanged: (bool? value) {
-                                      // This is where we update the state when the checkbox is tapped
-                                      setState(() {
-                                        _isChecked = value!;
-                                        () {};
-                                      });
-                                    },
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        Constant.byContinuing,
-                                        style: GoogleFonts.inter(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            color: AppColors.black,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 10),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.pushNamed(
-                                            context,
-                                            PageRoutes.termsConditions,
-                                          );
-                                        },
-                                        child: Text(
-                                          Constant.termsPrivacy,
-                                          style: GoogleFonts.inter(
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              color: AppColors.black,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 10),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                              // const SizedBox(height: 30),
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.start,
+                              //   crossAxisAlignment: CrossAxisAlignment.center,
+                              //   children: [
+                              //     Checkbox(
+                              //       value: _isChecked,
+                              //       onChanged: (bool? value) {
+                              //         // This is where we update the state when the checkbox is tapped
+                              //         setState(() {
+                              //           _isChecked = value!;
+                              //           () {};
+                              //         });
+                              //       },
+                              //     ),
+                              //     Column(
+                              //       mainAxisAlignment: MainAxisAlignment.center,
+                              //       crossAxisAlignment:
+                              //           CrossAxisAlignment.start,
+                              //       children: [
+                              //         Text(
+                              //           Constant.byContinuing,
+                              //           style: GoogleFonts.inter(
+                              //               decoration:
+                              //                   TextDecoration.underline,
+                              //               color: AppColors.black,
+                              //               fontWeight: FontWeight.w400,
+                              //               fontSize: 10),
+                              //         ),
+                              //         GestureDetector(
+                              //           onTap: () {
+                              //             Navigator.pushNamed(
+                              //               context,
+                              //               PageRoutes.termsConditions,
+                              //             );
+                              //           },
+                              //           child: Text(
+                              //             Constant.termsPrivacy,
+                              //             style: GoogleFonts.inter(
+                              //                 decoration:
+                              //                     TextDecoration.underline,
+                              //                 color: AppColors.black,
+                              //                 fontWeight: FontWeight.w400,
+                              //                 fontSize: 10),
+                              //           ),
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                         ),

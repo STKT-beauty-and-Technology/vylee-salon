@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
-import 'package:vylee_partner/common/common%20widgets/custom_textfield.dart';
 import 'package:vylee_partner/features/salon_services/model/category_data_response.dart';
 import 'package:vylee_partner/features/salon_services/model/update_price_request.dart';
 import 'package:vylee_partner/features/salon_services/view/ui/service_categories/add_service.dart';
@@ -70,7 +69,7 @@ class _SubCategoriesPageState extends State<SubCategoriesPage> {
                             color: AppColors.appViolet,
                           )),
                       Text(
-                        widget.service.serviceName ?? "",
+                        widget.service.serviceName?.toUpperCase() ?? "",
                         style: const TextStyle(
                             color: AppColors.appViolet,
                             fontWeight: FontWeight.w400,
@@ -101,7 +100,7 @@ class _SubCategoriesPageState extends State<SubCategoriesPage> {
                               ),
                               SizedBox(width: 10),
                               Text(
-                                "CUSTOM SERVICE",
+                                "ADD SERVICE",
                                 style: TextStyle(
                                     color: AppColors.appViolet,
                                     fontWeight: FontWeight.w200,
@@ -127,26 +126,68 @@ class _SubCategoriesPageState extends State<SubCategoriesPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(widget.service.subCategories?[index]
-                                        .subCategoryName ??
-                                    ""),
+                                Text(
+                                  widget.service.subCategories![index]
+                                          .subCategoryName ??
+                                      "",
+                                  style: TextStyle(fontSize: 20),
+                                ),
                                 GestureDetector(
                                   onTap: () async {
                                     await showSetPriceDialog(
                                         widget.service.subCategories![index],
                                         widget.service.serviceId!);
                                   },
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        border: Border.all(
-                                            color: AppColors.appViolet,
-                                            width: 1)),
-                                    child: const Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10, 2, 10, 2),
-                                      child: Text("Set Price"),
-                                    ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(
+                                                color: AppColors.appViolet,
+                                                width: 1)),
+                                        child: const Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(10, 2, 10, 2),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text("Set Price"),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      PopupMenuButton<int>(
+                                        onSelected: (value) {
+                                          // if (value == 1) {
+                                          //   () async {
+                                          //     await context
+                                          //         .read<DeleteBankCubit>()
+                                          //         .removeBank(
+                                          //       DeleteBankRequest(
+                                          //           bankAccountId:
+                                          //           bankdetaill.id ?? 0),
+                                          //     );
+                                          //     showToast(
+                                          //         "Bank Account Deleted Successfully");
+                                          //   };
+                                          // }
+                                        },
+                                        icon: const Icon(Icons.more_vert),
+                                        itemBuilder: (context) => [
+                                          const PopupMenuItem<int>(
+                                              value: 1,
+                                              child: Text("Update Price")),
+                                          const PopupMenuItem<int>(
+                                              value: 1,
+                                              child: Text("Delete Service")),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 )
                               ],

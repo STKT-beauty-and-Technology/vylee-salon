@@ -12,8 +12,7 @@ class SalonInfoRepository {
 
   Future<SalonInfoResponse> salonInfo(SalonInfoRequest request) async {
     try {
-      final response = await apiService.sendRequest
-          .post(
+      final response = await apiService.sendRequest.post(
           ApiRoutes.salonInfo(request.vendorId, request.whatsappNumber,
               request.description, request.websiteName),
           data: request.toFormData());

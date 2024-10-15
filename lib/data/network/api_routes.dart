@@ -26,9 +26,13 @@ class ApiRoutes {
       "vendor/login/withEmailAndPassword/$email/$password";
   static String salonInfo(vendorId, String? whatsappNumber, String? description,
           String? websiteName) =>
-      "vendor/add/salon/information/$vendorId";
+      "vendor/add/salon/information/$vendorId/$whatsappNumber/$description/$websiteName";
   static String addBankAccount(vendorId) =>
       "listing-services/add/bank-account/$vendorId";
   static String getBankDetails(vendorId) =>
       "listing-services/get/all-bank-deatils/$vendorId";
+  static String removeCategory(categoryId, vendorId) =>
+      "listing-services/remove-category/$categoryId/$vendorId";
+  static String deleteBankAccount(vendorId, bankAccountId) =>
+      "listing-services/delete/bank-account/$vendorId/$bankAccountId";
 }

@@ -16,6 +16,7 @@ class HelpAndSupport extends StatefulWidget {
 }
 
 class _HelpAndSupportState extends State<HelpAndSupport> {
+  final player = AudioPlayer();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +45,10 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                    onPressed: () =>
-                        AudioPlayer().play(AssetSource(ImagePath.mySound)),
-                    // onPressed: () {
-                    //   Navigator.of(context).pop();
-                    // },
+                    // onPressed: () => playSound(),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     icon: const Icon(
                       Icons.arrow_back_ios_rounded,
                       size: 25,
@@ -118,12 +118,21 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
                         const SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          Constant.supportNumber,
-                          style: const TextStyle(
-                              color: AppColors.appViolet,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 18),
+                        GestureDetector(
+                          onTap: () {
+                            final Uri emailLaunchUri = Uri(
+                              scheme: 'tel',
+                              path: '9319375444',
+                            );
+                            launchUrl(emailLaunchUri);
+                          },
+                          child: Text(
+                            Constant.supportNumber,
+                            style: const TextStyle(
+                                color: AppColors.appViolet,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18),
+                          ),
                         ),
                       ],
                     )
@@ -135,5 +144,10 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
         ),
       ),
     );
+  }
+
+  Future<void> playSound() async {
+    String player1 = "asset/audio/my_sound.mp3";
+    await player.play(AssetSource(player1));
   }
 }

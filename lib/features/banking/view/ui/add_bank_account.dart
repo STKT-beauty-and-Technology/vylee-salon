@@ -312,7 +312,7 @@ class _AddBankAccountState extends State<AddBankAccount> {
                         if (mounted) {
                           if (widget.isEdit != true) {
                             Navigator.of(context)
-                                .pushNamed(PageRoutes.accountInformation);
+                                .pushNamed(PageRoutes.bankAccounts);
                           } else {
                             Navigator.of(context).pop();
                           }

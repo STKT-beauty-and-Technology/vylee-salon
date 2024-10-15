@@ -23,6 +23,16 @@ class ServiceCategory extends StatefulWidget {
 }
 
 class _ServiceCategoryState extends State<ServiceCategory> {
+  Future<void> _refreshData() async {
+    // Simulate a network request with a delay
+    await Future.delayed(Duration(seconds: 2));
+
+    // Update the list or perform any action here
+    setState(() {
+      ServiceCategoryCubit();
+    });
+  }
+
   @override
   void initState() {
     context.read<ServiceCategoryCubit>().getAllCategories();
@@ -53,85 +63,99 @@ class _ServiceCategoryState extends State<ServiceCategory> {
         backgroundColor: AppColors.appViolet,
         leadingWidth: 100,
       ),
-      body: SingleChildScrollView(
-        child: Container(
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(colors: [
-              Color(0xFFF5EDF6),
-              Color(0xFFF6EAF9),
-              Color(0xFFF6EAF9),
-              Color(0xFFFFFFFF),
-            ])),
-            width: SizeConfig.screenWidth,
-            // height: SizeConfig.screenHeight! * 0.9,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back_ios_rounded,
-                          size: 25,
-                          weight: 100,
-                          color: AppColors.appViolet,
-                        )),
-                    const Text(
-                      "SERVICE CATEGORIES",
-                      style: TextStyle(
-                          color: AppColors.appViolet,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 20),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
-                BlocConsumer<ServiceCategoryCubit, ServiceCategoryState>(
-                  listener: (context, state) {
-                    if (state is ServiceCategoryFailureState) {
-                      showToast("Failed to fetch categories");
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state is ServiceCategoryLoadingState) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (state is ServiceCategorySuccessState) {
-                      return state.categories.isEmpty
-                          ? const Center(
-                              child: Text(
-                                  "No Categories Found. Please Add Category"),
-                            )
-                          : Column(
-                              children: List.generate(state.categories.length,
-                                  (index) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(bottom: 30.0),
-                                  child: ServiceCategoryCard(
-                                    categoryId:
-                                        state.categories[index].categoryId ?? 0,
-                                    categoryName:
-                                        state.categories[index].categoryName ??
-                                            "category",
-                                    services: state.categories[index]
-                                            .categoryData?.serviceProducts ??
-                                        [],
-                                  ),
-                                );
-                              }),
-                            );
-                    }
-                    return const SizedBox();
-                  },
-                ),
-              ],
-            )),
+      body: RefreshIndicator(
+        onRefresh: _refreshData,
+        child: SingleChildScrollView(
+          child: Container(
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                Color(0xFFF5EDF6),
+                Color(0xFFF6EAF9),
+                Color(0xFFF6EAF9),
+                Color(0xFFFFFFFF),
+              ])),
+              width: SizeConfig.screenWidth,
+              // height: SizeConfig.screenHeight! * 0.9,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: const Icon(
+                            Icons.arrow_back_ios_rounded,
+                            size: 25,
+                            weight: 100,
+                            color: AppColors.appViolet,
+                          )),
+                      const Text(
+                        "SERVICE CATEGORIES",
+                        style: TextStyle(
+                            color: AppColors.appViolet,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 20),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                  BlocConsumer<ServiceCategoryCubit, ServiceCategoryState>(
+                    listener: (context, state) {
+                      if (state is ServiceCategoryFailureState) {
+                        showToast("Failed to fetch categories");
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is ServiceCategoryLoadingState) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else if (state is ServiceCategorySuccessState) {
+                        return state.categories.isEmpty
+                            ? const Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "No Categories Found. Please Add Category",
+                                      style: TextStyle(
+                                          color: AppColors.black,
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            : Column(
+                                children: List.generate(state.categories.length,
+                                    (index) {
+                                  return Padding(
+                                    padding:
+                                        const EdgeInsets.only(bottom: 30.0),
+                                    child: ServiceCategoryCard(
+                                      categoryId:
+                                          state.categories[index].categoryId ??
+                                              0,
+                                      categoryName: state
+                                              .categories[index].categoryName ??
+                                          "category",
+                                      services: state.categories[index]
+                                              .categoryData?.serviceProducts ??
+                                          [],
+                                    ),
+                                  );
+                                }),
+                              );
+                      }
+                      return const SizedBox();
+                    },
+                  ),
+                ],
+              )),
+        ),
       ),
     );
   }

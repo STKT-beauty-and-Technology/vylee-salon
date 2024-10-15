@@ -57,7 +57,7 @@ class _AccountInformationState extends State<AccountInformation> {
                   ),
                   Center(
                     child: Text(
-                      "SALON NAME",
+                      "AKINA SALON",
                       style: GoogleFonts.frankRuhlLibre(
                         textStyle: const TextStyle(fontSize: 15),
                         fontWeight: FontWeight.w400,
@@ -148,7 +148,7 @@ class _AccountInformationState extends State<AccountInformation> {
                                                   fontSize: 15))),
                                     ],
                                   ),
-                                  Text("Complete your kYC to start earn money.",
+                                  Text("Complete your KYC to start earn money.",
                                       style: GoogleFonts.inter(
                                           color: AppColors.black,
                                           fontWeight: FontWeight.w500,
@@ -329,7 +329,7 @@ class _AccountInformationState extends State<AccountInformation> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("Edit shop photo and video",
+                                Text("Salon Gallery",
                                     textAlign: TextAlign.start,
                                     style: GoogleFonts.inter(
                                         color: AppColors.appViolet,
@@ -677,7 +677,7 @@ class _AccountInformationState extends State<AccountInformation> {
                               MaterialPageRoute<void>(
                                   builder: (BuildContext context) =>
                                       const SplashScreen()),
-                              ModalRoute.withName(PageRoutes.splash),
+                              ModalRoute.withName(PageRoutes.getStarted),
                             );
                           }
                         },

@@ -4,16 +4,16 @@ class SalonInfoRequest {
   int? vendorId;
   String? whatsappNumber;
   String? description;
-  String filePath;
+  String file;
   String? websiteName;
   SalonInfoRequest(
       {this.vendorId,
       this.whatsappNumber,
       this.description,
       this.websiteName,
-      required this.filePath});
+      required this.file});
 
   FormData toFormData() {
-    return FormData.fromMap({'file': MultipartFile.fromFileSync(filePath)});
+    return FormData.fromMap({'file': MultipartFile.fromFileSync(file)});
   }
 }

@@ -6,6 +6,7 @@ import 'package:vylee_partner/core/responsive/size_config.dart';
 import 'package:vylee_partner/features/banking/view_model/get_bankdetails_cubit.dart';
 import 'package:vylee_partner/features/login/view_model/cubits/otp_cubit.dart';
 import 'package:vylee_partner/features/salon_details/view_model/cubits/gallery_cubit.dart';
+import 'package:vylee_partner/features/salon_services/view_model/cubits/delete_category_cubit.dart';
 import 'package:vylee_partner/features/salon_services/view_model/cubits/service_category_cubit.dart';
 
 import 'navigation/navigation.dart';
@@ -45,10 +46,13 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (context) => GetBankdetailsCubit(),
               ),
+              BlocProvider(
+                create: (context) => DeleteCategoryCubit(),
+              ),
             ],
             child: MaterialApp(
                 // theme: TorbitoTheme.lightTheme,
-                initialRoute: PageRoutes.splash,
+                initialRoute: PageRoutes.getStarted,
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                     fontFamily: GoogleFonts.frankRuhlLibre().fontFamily),

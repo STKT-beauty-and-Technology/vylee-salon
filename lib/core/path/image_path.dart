@@ -32,5 +32,9 @@ class ImagePath {
   static const editProfile = "asset/images/edit_profile/";
   static const atSymbol = "asset/images/at_symbol2.svg/";
   static const callSymbol = "asset/images/call_symbol.svg/";
-  static const mySound = "asset/audio/my_sound.mp3/";
+  static const mySound = "asset/audio/my_sound.mp3";
+  static const get1 = "asset/images/get_1.png";
+  static const get2 = "asset/images/get_2.png";
+  static const get3 = "asset/images/get_3.png";
+  static const successGif = "asset/images/gif.gif";
 }

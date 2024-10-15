@@ -4,13 +4,14 @@ import 'package:vylee_partner/common/common%20widgets/custom_form_field.dart';
 import 'package:vylee_partner/themes/app_colors.dart';
 
 class RegisterTitleField extends StatelessWidget {
-  const RegisterTitleField(
-      {super.key,
-      required this.controller,
-      required this.title,
-      required this.isMandatory,
-      this.isMobile,
-      this.inputType});
+  const RegisterTitleField({
+    super.key,
+    required this.controller,
+    required this.title,
+    required this.isMandatory,
+    this.isMobile,
+    this.inputType,
+  });
 
   final TextEditingController controller;
   final String title;
@@ -54,7 +55,7 @@ class RegisterTitleField extends StatelessWidget {
             isRequired: isMandatory,
             keyboardType: inputType,
             width: double.infinity,
-            controller: controller),
+            controller: controller)
       ],
     );
   }

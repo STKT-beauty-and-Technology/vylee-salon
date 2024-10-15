@@ -24,4 +24,7 @@ class PageRoutes {
   static const String helpAndSupport = "help-and-support";
   static const String freeSlots = "free-slots";
   static const String bookingDetails = "booking-details";
+  static const String getStart2 = "get-start-2";
+  static const String getStart3 = "get-start-3";
+  static const String successScreen = "success-screen";
 }

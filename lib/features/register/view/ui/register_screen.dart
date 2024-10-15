@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_appbar.dart';
 import 'package:vylee_partner/common/utitlties/common_utilities.dart';
 import 'package:vylee_partner/core/load_image/image_loader.dart';
@@ -32,7 +33,7 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
-
+  bool _isChecked = false;
   @override
   void initState() {
     setState(() {
@@ -159,21 +160,28 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                               }
                               return ElevatedButton(
                                 onPressed: () async {
-                                  if (confirmPasswordController.text !=
+                                  if (_isChecked == false) {
+                                    showToast(
+                                        "Please Accept Terms and conditions first");
+                                  } else if (confirmPasswordController.text !=
                                       passwordController.text) {
                                     showToast(
                                         "confirm password and password should be same.");
                                     return;
-                                  }
-                                  if (_formKey.currentState!.validate()) {
-                                    await context
-                                        .read<RegisterCubit>()
-                                        .registerVendor(RegistrationRequest(
-                                            fullName: nameController.text,
-                                            mobileNumber: phoneController.text,
-                                            salonName: salonNameController.text,
-                                            vendorEmail: emailController.text,
-                                            password: passwordController.text));
+                                  } else {
+                                    if (_formKey.currentState!.validate()) {
+                                      await context
+                                          .read<RegisterCubit>()
+                                          .registerVendor(RegistrationRequest(
+                                              fullName: nameController.text,
+                                              mobileNumber:
+                                                  phoneController.text,
+                                              salonName:
+                                                  salonNameController.text,
+                                              vendorEmail: emailController.text,
+                                              password:
+                                                  passwordController.text));
+                                    }
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -193,7 +201,53 @@ class _State extends State<RegisterScreen> with RegisterViewModel {
                             },
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Checkbox(
+                              value: _isChecked,
+                              onChanged: (bool? value) {
+                                // This is where we update the state when the checkbox is tapped
+                                setState(() {
+                                  _isChecked = value!;
+                                  () {};
+                                });
+                              },
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Constant.byContinuing,
+                                  style: GoogleFonts.inter(
+                                      decoration: TextDecoration.underline,
+                                      color: AppColors.black,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 10),
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      PageRoutes.termsConditions,
+                                    );
+                                  },
+                                  child: Text(
+                                    Constant.termsPrivacy,
+                                    style: GoogleFonts.inter(
+                                        decoration: TextDecoration.underline,
+                                        color: AppColors.black,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 10),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                         // Center(
                         //   child: SizedBox(
                         //    height: 40 * SizeConfig.screenHeight!,

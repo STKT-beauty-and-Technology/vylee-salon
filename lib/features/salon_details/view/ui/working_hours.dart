@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:vylee_partner/common/common%20widgets/custom_button.dart';
 import 'package:vylee_partner/navigation/page_routes.dart';
 import 'package:vylee_partner/utilities/string.dart';
+
 import '../../../../common/common widgets/custom_appbar.dart';
 import '../../../../core/load_image/image_loader.dart';
 import '../../../../core/path/image_path.dart';
@@ -131,7 +132,6 @@ class _WorkingHoursState extends State<WorkingHours> {
                                   setState(() {
                                     workingHoursData[workingHoursData.keys
                                         .toList()[index]]?[0] = timeSelected;
-                                    checkIfAllHoursProvided();
                                   });
                                 }
                               },
@@ -216,25 +216,16 @@ class _WorkingHoursState extends State<WorkingHours> {
                 height: SizeConfig.screenHeight! * 0.055,
                 width: SizeConfig.screenWidth! * 0.42,
                 child: CustomButton(
-                  text: widget.isEdit == true ? Constant.save : Constant.cont,
-                  bgcolor: allHoursProvided ? null : AppColors.gray600,
-                  borderColor: AppColors.appBorderPurple,
-                  textStyle: GoogleFonts.lateef(
-                      fontWeight: FontWeight.w400, fontSize: 26),
-                  onPressed: allHoursProvided
-                      ? () {
-                          if (widget.isEdit != true) {
-                            Navigator.of(context)
-                                .pushNamed(PageRoutes.galleryPage);
-                          } else {
-                            Navigator.of(context).pop();
-                          }
-                        }
-                      : () {
-                          Fluttertoast.showToast(
-                              msg: "Before proceeding, First fill all Hours");
-                        },
-                ),
+                    text: widget.isEdit == true ? Constant.save : Constant.cont,
+                    bgcolor: allHoursProvided ? null : AppColors.appViolet,
+                    borderColor: AppColors.appBorderPurple,
+                    textStyle: GoogleFonts.lateef(
+                        fontWeight: FontWeight.w400, fontSize: 26),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(PageRoutes.successScreen);
+                      Fluttertoast.showToast(
+                          msg: "Working hours added successfully");
+                    }),
               ),
             ),
             const SizedBox(

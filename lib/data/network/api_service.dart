@@ -1,12 +1,8 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:vylee_partner/data/local/vendorId_provider.dart';
 import 'package:vylee_partner/data/network/api_routes.dart';
-import 'package:vylee_partner/utilities/string.dart';
 
 class ApiService {
   final Dio _dio = Dio();
@@ -53,7 +49,7 @@ class ApiService {
           }
           _logger.i(
               " request Path: ${options.path} /n  Request data : ${options.data}");
- 
+
           return handler.next(options);
         },
         onResponse: (response, handler) {

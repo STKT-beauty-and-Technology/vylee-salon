@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vylee_partner/features/home/view/ui/welcome_screen.dart';
 import 'package:vylee_partner/features/bookings/view/ui/bookings_page.dart';
+import 'package:vylee_partner/features/home/view/ui/welcome_screen.dart';
 
 mixin HomeViewModel {
   Widget getFirstScreen(String? name, Function welcomeAddOnPressed) {

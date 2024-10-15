@@ -27,7 +27,7 @@ class ServiceCategoryCubit extends Cubit<ServiceCategoryState> {
     emit(ServiceCategoryLoadingState());
     try {
       final res = await _serviceRepository.addCategory(req);
-      showToast(res.message ?? "added category");
+      showToast(res.message ?? "added service");
       await getAllCategories();
     } catch (e) {
       logger.e(e);
@@ -35,13 +35,25 @@ class ServiceCategoryCubit extends Cubit<ServiceCategoryState> {
     }
   }
 
+  // addService(AddServiceRequest req) async {
+  //   emit(ServiceCategoryLoadingState());
+  //   try {
+  //     await _serviceRepository.addService(req);
+  //     showToast("added Service");
+  //   } catch (e) {
+  //     logger.e(e);
+  //     emit(ServiceCategoryFailureState(e.toString()));
+  //   }
+  // }
   addService(AddServiceRequest req) async {
-    emit(ServiceCategoryLoadingState());
     try {
-      await _serviceRepository.addService(req);
-      showToast("added Service");
+      final res2 = await _serviceRepository.addService(req);
+      if (res2 != null && res2.success == true) {
+        emit(ServiceCategorySuccessState(res2));
+      } else {
+        emit(ServiceCategoryFailureState(res2.message ?? "error"));
+      }
     } catch (e) {
-      logger.e(e);
       emit(ServiceCategoryFailureState(e.toString()));
     }
   }

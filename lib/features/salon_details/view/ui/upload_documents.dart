@@ -350,9 +350,9 @@ class _UploadDocumentsState extends State<UploadDocuments> {
                             onPressed: () {
                               if (mounted) {
                                 //save details first
-                                Navigator.of(context).pop();
-                                showToast(
-                                    "Documents Added Successfully");
+                                Navigator.of(context)
+                                    .pushNamed(PageRoutes.successScreen);
+                                showToast("Documents Added Successfully");
                               }
                             },
                           ),
